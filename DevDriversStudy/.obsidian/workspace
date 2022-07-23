@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "ce9fbdd1a122b4ff",
+    "type": "split",
+    "children": [
+      {
+        "id": "a271426613316f41",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Core.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a9939b5ecb5d3200",
+    "type": "split",
+    "children": [
+      {
+        "id": "16a3afd429a40ac6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a8dfc0d860565ba0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "6515fd420bc62373",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9b01dfa451eb5f44",
+    "type": "split",
+    "children": [
+      {
+        "id": "9c41ca894f8c3049",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3abe3d1e5b5203a6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Core.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "a271426613316f41",
+  "lastOpenFiles": [
+    "Core.md",
+    "Qotable Nuotes.md"
+  ]
+}
