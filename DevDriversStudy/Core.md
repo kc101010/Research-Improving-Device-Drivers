@@ -62,4 +62,48 @@ kernel is a big chunk of executable code that handles all resource requests from
 	+ system is in charge of delivering packets across program and network interfaces and must control program execution acocording to network activity
 	+ all routting and address resolutions are implemented within the kernel
 ### Kernel Modules
-+ 
++ extend kernel features at runtime, add/remove functionality while kernel is up and running
++ Linux offers support for a few different types/classes including device drivers
++ Each module made up of object code (unlinked from executable) that can then be linked & unlinked dynamically to running kernel by using insmod and rmmod
++ modules are separated by class depending on what they actually do
+
+### Module/Device Classes
++ 3 flexible types
+	+ ###### Char module
+		- stream of bytes
+		- uses open, close, read, write
+		- examples; text console and serial ports
+		- accessed via file system nodes
+		- char devices can only be accessed sequentially unlike a regular file
+	+ ###### Block module
+		+ block refers to a device that can host a filesystem (a disk)
+		+ Linux reads/writes block like a char device, any number of bytes at a time. Incls functions
+		+ block & char devs only differ by way that data is managed
+		+ also accessed via fs nodes
+		+ block and char drivers have totally different interfaces to kernel
+	+ ###### Network module
+		+ any net transaction is made through an interface (device able to exchange data between other hosts)
+		+ interface may be hardware or software (loopback intf)
+		+ in charge of sending/receiving packets, driven by net subsys of kernel, w/o knowing how transactions and packets properly relate
+		+ usually designed around transmission/receipt of packets, knowing nothing abouot individual connections
+		+ as its not a stream, it's not mapped to a fs node. Unix still assigns a unique name but that has no entry in FS
+		+ Rather than using read and write, kernel calls functions related to packet transmission
++ Good programmers typically create a different module for each new functionality they implement. 
++ Decomposition is a key element of scalability and extendability
+
+{SYSTEM CALL INTERFACE}
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Proc mgmt     mem mgmt   fs     devctl   net
+FEATURES (concurrency, VRAM, Files/Dirs, dev access, connectivity)
+SOFTWARE SUPPORT (arch code, mem mger, FS types, char devs, net subs)
+HARDWARE (CPU, MEM, DISKS/CDs, CONSOLES, NET INTERFs)
+
++ Some drivers work with more kernel layers of kernel support functions for a certain type of device. USB devices are driven by USB module that works with USB subsys but device shows up in subsys as char (USB serial port), block (USB mem card reader) or net device (USB net interface)
++ More classes added e.g. FireWire drivers, I2o drivers
++ ==Kernel developers collected class-wide features and exported them to driver programmers to avoid duplication of work and bugs, this simplified and strengthened the process of writing such drivers
++ Hardware and software functionalities are modularised in the kernel. Such as filesystems, fs type determines organisation of info on a block device to represent the tree of dirs and files. This is not a driver as there's no specific device related to the information. FS type is a software driver as it maps low-level data structs to high-level data structs. The FS decides filename rules and stored info in a dir. 
++ FS module must implement lowest sys calls to access dirs and files, by mapping filenames, paths and access modes (essentially inodes) to data structs stored in data blocks. This interface is totally separate to the physical data transfer between the disk, which is accomplished by a block device driver.
+
++ UNIX/Linux keeps it ability to decode FS info at lowest level 
++ Programmer shouldn't need to write a FS module as the kernel includes code for most important FS types
+
