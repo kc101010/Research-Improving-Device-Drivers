@@ -103,7 +103,36 @@ HARDWARE (CPU, MEM, DISKS/CDs, CONSOLES, NET INTERFs)
 + ==Kernel developers collected class-wide features and exported them to driver programmers to avoid duplication of work and bugs, this simplified and strengthened the process of writing such drivers
 + Hardware and software functionalities are modularised in the kernel. Such as filesystems, fs type determines organisation of info on a block device to represent the tree of dirs and files. This is not a driver as there's no specific device related to the information. FS type is a software driver as it maps low-level data structs to high-level data structs. The FS decides filename rules and stored info in a dir. 
 + FS module must implement lowest sys calls to access dirs and files, by mapping filenames, paths and access modes (essentially inodes) to data structs stored in data blocks. This interface is totally separate to the physical data transfer between the disk, which is accomplished by a block device driver.
-
 + UNIX/Linux keeps it ability to decode FS info at lowest level 
 + Programmer shouldn't need to write a FS module as the kernel includes code for most important FS types
++ Modules are used to provide broad necessary functionality e.g. provide low-level functions needed for most filesystems to properly function
 
+
+### Security Issues
++ Security checks are carried out by kernel so if kernel is insecure, the rest of the system is just as (in)secure
++ Only auth/privileged users can load modules, checks for this are carried out by init_module syscall, Only superuser or privileged intruder can exploit such privileged code.
++ Driver programmers should avoid encoding security policy within code as Security policy can be better handled at higher levels within the kernel via a sysadmin
++ Should be aware of device access types that might seriously affect the rest of the system and thus provide adequate controls to prevent further issues. E: device ops that affect global res' which could in turn damage hardware or affect other users are typically locked to privileged users and this check MUST then be carried out in the driver
++ Being able to write/create errors in C is very easy. If the language is used improperly this will more likely than not lead to security problems. (Many security problems can be caused by buffer overrun errors, where programmer forgets to check amount of data written to buffer so data is stored/overwritten beyond the intended size)
++ Errors like the buffer overrun have the ability to compromise the entire system and MUST be avoided. With dev drivers, this can be avoided by ensuring the interface for the user is narrowly defined and highly controlled
++ ###### General security ideas
+	+ Any input received from user processes should be treated with great suspicion, shouldn't be trusted unless verified
+	+ Treat uninitialised mem carefully, make sure to zero (or init) memory from the kernel before passing over to a user proc/device, as not doing so could result in a leak of sensitive info
+	+ If your device interprets incoming data, ensure the user can't send anything that could compromise the system
+	+ Think about possible effect of device operations (such as formatting a disk) that could affect the system, these MUST and SHOULD be restricted to privileged users
+	+ Be careful of receiving software from 3rd parties, especially for the kernel. Avoid running kernels compiled by an untrusted friend as this could very very easily lead to unexpected back doors
+	+ (Linux can be compiled to have no module support which prevents all these issues which then means that drivers need to be built directly into the kernel. There are other similar security measures that aren't as drastic)
+
+
+### Licensing
++ Code is likely better off as free software
++ If code is intended for main kernel or requires patches to kernel, you MUST use a GPL-compatible license on releasing the code. Include the code as its necessary to let people rebuild the program at will
+
+### Kernel Dev Community
++ central gathering point is the linux kernel mailing list
+	+ [Majordomo Lists at VGER.KERNEL.ORG](http://vger.kernel.org/vger-lists.html#linux-kernel)
+	+ [The linux-kernel mailing list FAQ](http://vger.kernel.org/lkml/)
+	+ 
+
+##### Key words/potential further research
++ Development kernels
