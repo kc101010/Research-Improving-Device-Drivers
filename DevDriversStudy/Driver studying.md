@@ -132,7 +132,7 @@ HARDWARE (CPU, MEM, DISKS/CDs, CONSOLES, NET INTERFs)
 + central gathering point is the linux kernel mailing list
 	+ [Majordomo Lists at VGER.KERNEL.ORG](http://vger.kernel.org/vger-lists.html#linux-kernel)
 	+ [The linux-kernel mailing list FAQ](http://vger.kernel.org/lkml/)
-	+ 
+	
 
 ##### Key words/potential further research
 + Development kernels
