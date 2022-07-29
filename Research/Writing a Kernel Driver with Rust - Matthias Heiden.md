@@ -1,3 +1,5 @@
+#rust #windows
+
 ["Writing a Kernel Driver with Rust" - Matthias Heiden, October 2020)](https://www.youtube.com/watch?v=wREGR7QQHco)
 ["Blog: Writing a kernel driver with Rust - Matthias Heiden, 15 July 2020"](https://not-matthias.github.io/posts/kernel-driver-with-rust/)
 ["Github: kernel-driver-with-rust by not-matthias"](https://github.com/not-matthias/kernel-driver-with-rust)
