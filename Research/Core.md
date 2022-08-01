@@ -7,4 +7,7 @@ List (in case of removal)
 
 ["The Rust Programming Language - Steve Klabnik, Carol Nichols and Rust Community"](https://doc.rust-lang.org/book/title-page.html)
 
+[Effective Static Analysis of Concurrency Use-After-Free Bugs in Linux Device Drivers - 2019 USENIX Annual tech con ](https://www.usenix.org/system/files/atc19-bai.pdf)
+
+
 + Thought: It's likely that for the sake of discussing perfomance or even evaluating feasability of a rust driver, i'll need to look at present rust implemnetations and uses in current kernels and/or OS
