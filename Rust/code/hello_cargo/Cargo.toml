@@ -1,0 +1,8 @@
+[package] #section indicates that below is config for a package
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies] #this is where we list all dependencies for the program aka crates
