@@ -46,4 +46,17 @@
 	+ `.parse()` converts a string to another type
 	+ `:` after variable names denotes that the var type will be annotated
 		+ the annotation means that rust assumes that similar variables will be of the same type? 
-	+   
+
+###### Conventions
++ Naming
+	+ CamelCase for types and traits such as types, traits, enum variants, type params
+	+ snake_case for value-level constructs such as crates, modules, functions, methods, local variables
+	+ SCREAMING_SNAKE_CASE for static and const vars
+
+
+
+
+
+###### Notes/Thoughts
++ Learning to write Rust feels like I'm learning to make sentences as simple and concise as possible.
++ It's very different to what im used to in terms of programming
