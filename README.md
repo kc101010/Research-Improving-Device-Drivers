@@ -7,12 +7,12 @@ by Kyle Christie
 [Trello board/additional project management](https://trello.com/b/zYURFiee/research-improving-device-drivers) (created 5/8/22)
 ***
 <u> <b>Directories</b> </u>
-/Admin                                          - Stores admin/project management notes
-/DevDriversStudy                        - Stores files and notes on my study for Drivers
-/HonoursProject                          - Stores files, notes on the Honours project itself
-/ProposalNotesImprovements   - Stores content on RMIC proposal improvements
-/Research                                    - Stores main body of research for Hons project
-/Rust                                            - Stores content on study/learning of Rust language
++ /Admin                                          - Stores admin/project management notes
++ /DevDriversStudy                        - Stores files and notes on my study for Drivers
++ /HonoursProject                          - Stores files, notes on the Honours project itself
++ /ProposalNotesImprovements   - Stores content on RMIC proposal improvements
++ /Research                                    - Stores main body of research for Hons project
++ /Rust                                            - Stores content on study/learning of Rust language
 
 ***
 ##### Related YouTube playlists
