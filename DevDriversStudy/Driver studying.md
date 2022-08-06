@@ -1,4 +1,6 @@
-### Intro
+[Karthik M - YouTube](https://www.youtube.com/channel/UCQ-NwyLyw_-FUQrvXmyW_BA) (Channel no longer active but is a useful resource which I have previously used and learned from)
+
+## Intro
 + 'black-boxes' to make specific hardware work with an internal code interface
 	+ black box: no knowledge of internal workings - focused on inputs/outputs
 + role: system calls are mapped to device operations used on hardware
@@ -136,3 +138,89 @@ HARDWARE (CPU, MEM, DISKS/CDs, CONSOLES, NET INTERFs)
 
 ##### Key words/potential further research
 + Development kernels
+
+
+***
+***
+
+***
+
+***
+***
+## Modules
+#### Compilation & Execution
++ Makefile with line `obj-m += 'MOD_NAME_HERE'`
++ `make -C /lib/modules/$(uname -r)/build M=$PWD modules` (this can be automated in a script)
+
+Running the make command will generate several files, one of which being a '.ko' (kernel object) file which will be provided to the kernel.
+
+To add a module to the kernel, run `insmod 'MOD_NAME_HERE'`
+To remove a module from the kernel, run `rmmod 'MOD_NAME_HERE'`
+Kernel messages can be viewed by using `dmesg`
+
+![[DriverDmesg.png]]
+
+#### Differences between kernel modules & user application
+Kernel modules always tell the kernel whether or not they are present/can be used. (similar to event driven programming) where most small/medium sized applications perform just a single task. 
+
+Exiting; Applications can be lazy when freeing resources/avoids clean up. Kernel Modules must carefully undo everything that the *init* function built up otherwise bits and pieces will remain in the system until reboot. 
+
+Unloading means there is no need to constantly shutdown/reboot the development system which reduces dev time and provides easier testing.
+
+Modules are only linked to the kernel and can only call functions provided by the Kernel, no libraries can be used. Modules simply can't use standard headers/libraries.
+
+Each environment handles faults differently. A seg fault in an appicaion is harmless and can be debugged. A kernel fault kills the current process and potentially the entire system.
+
+(See Ch2 page 24 for notes on improving module compilation)
+
+`modprobe` is a command that can check and sort of auto-debug before inserting kernel modules. (Ch2 Page 25)
+
+`Documentation/kbuild`
+`Documentation/Changes` 
+
+Module code must be recompiled for each version of the kernel which it's linked to.
+
+Macros and `#ifdef` constructs can help when writing a module across multiple versions of the kernel.
+
+#### User space and Kernel space
+Modules run in Kernel Space. Applications, user space. OS and CPU are responsible for separating/protecting the 2 different spaces and every modern processer is able to carry this out.
+
+Typically, CPUs will use 2 different levels with different roles. Some actions are restricted depending on level. Program code can switch between levels through a limited number of gates (Unix systems are usually designed to utilise this hardware feature). Each mode can have its own memory mapping and address space. Unix kernel typically runs in highest level (supervisor mode) where everything and anything is allowed. Applications run in the lowest level (user mode) where CPU controls direct hardware access and unauthorised access to memory.
+
+Kernel typically works on behalf of processes (i.e. for syscalls. Interrupt code is async regarding processes and isn't related to a particular process.
+
+#### Kernel Concurrency
+Another difference between applications and modules.
+
+Most apps except multithreading usually run sequentially without worrying about changes to their environment. Kernel code isn't as simple and even simple modules must be written in a way that considers many things could happen at once.
+
+Most devices can interrupt the processor. Intr handlers are async and can be called even when a driver is trying to do something else. Other software abstractions (such as kernel timers) are also async. Linux can also run on SMP (Symmetric Multiprocessor systems) where the driver might execute concurrently on multiple CPUs.
+
+Linux kernel code including drivers must be reentrant (must be capable of running in more than 1 context at the same time). Data structs must be designed to hold many threads of execution separately, code must access shared data in a way that won't corrupt the data itself. Writing such code is complex. (Race Condition: Situations where an unfortunate execution order causes undesirable behaviour). "Proper management of concurrency is required to write correct kernel code."
+
+Common mistake: Assume concurrency isn't a problem as a long as certain code segments don't sleep or block. This isn't valid even on multiprocessor systems. In L2.6, kernel code can't assume that it will keep the processor for a length of code. Writing w/o considering concurrency can lead to catastrophe which will be difficult to debug. 
+
+#### Current process
+Kernel code can refer to current process by accessing global item `current` found in `<asm/current.h>` which has a pointer to `task_struct` in `<linux/sched.h>` This pointer refers to the currently executing process. Process information can be used if needed. (The system itself is a bit more complex and different, hiding certain data and being dependent on the arch )
+
+
+
+***
+#### Some Fundamentals
++ The Kernel has a very small stack compared to appl programs, as small as a single 4096 byte page. Own functions need to share this stack with the entire kernel call chain so it's never a good idea to declare large automatic vars. Larger structures should be allocated dynamically at call time.
++ Functions marked `__function` like this are a low-level component of interface, should be used with caution. "Be sure you know what you are doing"
++ Kernel code can't do floating point math. It would require extra overhead that isn't worthwhile
+
+***
+## Misc
+
+Thought (6/8/22): LDD3 book is written for Linux 2.6.x yet everything continues to work in the exact same way when using 4.19.0. Based on [this wiki article detailing Linux releases](https://en.wikipedia.org/wiki/Linux_kernel_version_history) and its data, there is a 14 year difference between 2.6 (2004) and 4.19 (2018) with this book being written in 2005 alongside Release 2.6.10. It seems the finding that there isn't much evolution in drivers holds up but I should also test this in more recent releases, my thought is that nothing will have changed. 
+
+Drivers are almost like high-stake/risk software due to the destructive potential of errors. 
+
+Kernel Workstation Details:
+Debian 10 (Buster) VM (running on top of Ubuntu Workstation)
+Originally installed XFCE (I think) but now use vanilla DWM 6.1
+Kernel 4.19.0-17-amd64
+6.5GB RAM
+1 Allocated CPU

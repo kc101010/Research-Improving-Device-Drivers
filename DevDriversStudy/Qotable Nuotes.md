@@ -1,1 +1,3 @@
 "Keeping Linux Device Drivers up to date is increasingly a challenge; the Linux kernel hackers continue to improve their code, and they have little patience for documentation that fails to keep up" - Corbet, J. Linux Device Drivers. 3rd Ed. pg 11. (January, 2005)
+
+"The hard part is understanding your  device and how to maximise performance." - Corbet, J. Linux Device Drivers. 3rd Ed. pg 18. (January, 2005)
