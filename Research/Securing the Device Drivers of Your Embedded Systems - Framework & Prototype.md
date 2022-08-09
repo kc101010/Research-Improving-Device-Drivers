@@ -122,7 +122,8 @@ Some parts of Rust stdlib are reimplemented for Linux kernel
 
 ### Common Bugs in Device Drivers
 Categorised into 3 groups
-1. Language-specifc security issues
+
+##### 1. Language-specifc security issues
 Several security issues can be accredited to the use of unsafe languages such as C. Using a safe language can very easily solve these issues.
 
 <u> Names of issues (alongside CVE issues and loose examples) </u>
@@ -132,13 +133,13 @@ Several security issues can be accredited to the use of unsafe languages such as
 + Incorrect kernel memory management: CVE-2018-8087. `kmalloc(), kfree()`
 	+ (can also lead to null-ptr deref, mem leakage, double free, user after free)
 
-2. General security issues
+#### 2. General security issues
 Inevitable but Rust can give some help in mitigating issues
 
 + Integer overflow: math result doesn't fit into fixed-size integer.
 + Concurrency: SMP splitting kernel code to different CPUs. Code can lose CPU at ANY time. Interrupts are sync. (Rust isn't perfect for solving this but type checking helps)
 
-3. Logic errors
+#### 3. Logic errors
 Developers are responsible for minimising and handling logic errors during development
 
 + Deadlock: Group of locks are waiting for each other, none are able to proceed. Happens due to incorrect concurrency management. Rust can't prevent deadlocks (it doesn't consider them for performance) so devs must handle these
