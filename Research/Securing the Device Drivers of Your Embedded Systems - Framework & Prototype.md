@@ -41,6 +41,113 @@ ity, Reliability and Security (ARES 2019) (ARES ’19), August 26–29, 2019
 	+ Ownership system which avoids bugs like use-after-free
 	+ Borrow checker tracks references to ensure they're always valid, clears dangling ptrs and other mem corruptions
 	+ No garbage collection for mem mgmt, records lifetime of allocation(s) and statically determines when to deallocate resources
-	+ Its possible for Rust to perform within the same range of C/C++
+	+ Its possible for Rust to perform within the same range as C/C++
 
 ## Background
+### Linux drivers
+Drivers are an important component to interface between OS & Hardware
+
+Responsibilities
+1. Config/Manage 1 (or more) devices
+2. Convert requests from kernel into requests to hardware
+3. Deliver results from hardware to kernel
+
+Linux is kernel is monolithic but built in a way that it can still extend functions at runtime via kernel modules. (kernel mod is an obj file linked w/ kernel when inserted).
+
+3rd party vendors use modules to distribute their drivers rather than merging source code to the mainline kernel.
+
+These kernel modules introduce several security threats.
+
+Linux kernel has 3 classes of driver types
++ Char devices - byte-stream/file
++ Block devices - random accesses
++ Network devices - work with streams of packets
+
+![[Figure 1 LDD architecture Li et al.png]]
+
+Communicate w/ hardware so drivers only need to work with a system call interface i.e. they all use a unified kernel interface so - to the user - there are no differences
+
+[Callback](https://en.wikipedia.org/wiki/Callback_(computer_programming)) - reference to executable code passed as an argument to another piece of code. That code is expected to call back (or execute ) the callback function as part of its job. It might be immediate (synchronous callback) or happen at a later time (asynchronous callback). Several implementations; subroutines, lambda expressions, blocks or function pointers
+
+Writing a driver involves creating many 'callback functions' for the target device and registering them to the kernel. When the kernel needs to make use of the device, it will use the relevant callback functions. Devs also use various functions and data structures that are defined b the kernel, building drivers on top of other modules or subsystems.
+
+Writing a safe driver is not easy. The monolithic architecture means that the kernel itself and drivers run in the same address space and privilege level. This suggests that drivers can't be stopped from changing critical kernel memory or calling the wrong kernel functions which could lead to a kernel panic. 
+
+Monolothic is more efficient than Micro-kernels but leads to a broader vulnerabilities. Users are forced to trust al drivers even 3rd party vendors. Thus, any driver bug could lead to serious vulnerability which can then further compromise the rest of the system.
+
+Typical driver bugs (attributed to unsafe C):
++ Incorrect boundary checks
++ Null pointer dereference
++ Info leakage
++ Use after free
+
+### Rust
+integrates practical experience and research outcomes from C/C++ and ML/Haskell from last several decades
+
+Unique features:
+
+#### Ownership System
++ guarantee mem sagety w/o garbage collection
++ derived from 'linear logic' and 'linear types' so all values must be used exactly once which doesn't need reference counting or garbage collection as linear resources won't be duplicated/discarded
++ Allows safe parallel computation as shared resources don't exist
++ Linear type sys is too constrained for practical use so Rust uses ownership which is more relaxed
++ Each value has a unique owner which is destroyed when owner goes out of scope 
++ Ownership can be transferred between variables where it can't be accessed from the original variable binding
++ References are allowed that temporarily borrow a val w/o invalidating the original binding
++ References are restricted to prevent dangling pointer bugs 
+
+Ownership system eleminates aliasing and ensures every reference is valid, preventing several memory corruption bugs like double free and use-after-free. Compiler also auto handles deallocations without garbage collection plus race conditions are avoided as the mutable reference is unique so its impossible to have more than one thread accessing the same variable.
+
+#### Traits 
++ set of methods that a type *must* implement
++ defined an interface for types, shared behaviours in an abstract way
++ not the same as inheritance
++ defines a group of method signatures to depict behaviours required to fulfill a purpose
++ Using a trait means the programmer should provide all definitions of these methods
++ Enables generic programming which also allows the compiler to carry out type checking
+
+Foreign Function Interface (FFI)
+
+### Framework design, implementation etc (amalgamation of sections 3 and 4)
++ efficient & safe drivers
++ middleware between devs and kernel
++ each driver type modelled as a trait to enforce driver types etc, they can then be managed easily. "reduces some boilerplate code such as device driver registration and unregistration"
+
+Driver consists of 2 classes of code
+1. device logic implemented within the driver (written by programmers in pure rust)
+2. interactions between driver and kernel (provided in framework via FFI bindings)
+
+Some parts of Rust stdlib are reimplemented for Linux kernel
+
+
+### Common Bugs in Device Drivers
+Categorised into 3 groups
+1. Language-specifc security issues
+Several security issues can be accredited to the use of unsafe languages such as C. Using a safe language can very easily solve these issues.
+
+<u> Names of issues (alongside CVE issues and loose examples) </u>
++ Array-based buffer overflow: CVE-2017-1000363. boundary of array not checked
++ Using unsafe functions: CVE-2010-1084. ex: `gets(), strcpy(), sprintf()`
++ Uninitialised data: CVE-2010-3876. Leaking kernel space data to user space
++ Incorrect kernel memory management: CVE-2018-8087. `kmalloc(), kfree()`
+	+ (can also lead to null-ptr deref, mem leakage, double free, user after free)
+
+2. General security issues
+Inevitable but Rust can give some help in mitigating issues
+
++ Integer overflow: math result doesn't fit into fixed-size integer.
++ Concurrency: SMP splitting kernel code to different CPUs. Code can lose CPU at ANY time. Interrupts are sync. (Rust isn't perfect for solving this but type checking helps)
+
+3. Logic errors
+Developers are responsible for minimising and handling logic errors during development
+
++ Deadlock: Group of locks are waiting for each other, none are able to proceed. Happens due to incorrect concurrency management. Rust can't prevent deadlocks (it doesn't consider them for performance) so devs must handle these
++ Error handling: Most errors can be dealth with w/o a kernel panic if they are handled properly. 
+	+ "programers tend to focus on functionalities instead of carefully considering all possible causes of errors"
+	+ Missing error handling may not be realised until the product is shipped
+	+ "programmers usually use inconsistent and implicit placeholders as return values" (0 = success, -1 = failure) (Result enum in Rust can solve this)
+
+	C's method of error handling is 'clumsy and error-prone' 
+	Programmers have a common problem of forgetting to check the return value which is then a failure to handle the error
+
+
