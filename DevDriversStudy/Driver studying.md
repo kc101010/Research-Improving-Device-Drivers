@@ -220,7 +220,8 @@ Drivers are almost like high-stake/risk software due to the destructive potentia
 
 Kernel Workstation Details:
 Debian 10 (Buster) VM (running on top of Ubuntu Workstation)
-Originally installed XFCE (I think) but now use vanilla DWM 6.1
+Originally installed and used LXQT but now use vanilla DWM 6.1
 Kernel 4.19.0-17-amd64
 6.5GB RAM
 1 Allocated CPU
+SSH running via at startup via Cron to allow for development direct from host machine, must use VM to execute code, it's now easier to swap files between machines
