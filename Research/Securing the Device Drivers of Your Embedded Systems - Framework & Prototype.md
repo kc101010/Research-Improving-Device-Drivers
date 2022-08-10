@@ -69,7 +69,7 @@ Communicate w/ hardware so drivers only need to work with a system call interfac
 
 [Callback](https://en.wikipedia.org/wiki/Callback_(computer_programming)) - reference to executable code passed as an argument to another piece of code. That code is expected to call back (or execute ) the callback function as part of its job. It might be immediate (synchronous callback) or happen at a later time (asynchronous callback). Several implementations; subroutines, lambda expressions, blocks or function pointers
 
-Writing a driver involves creating many 'callback functions' for the target device and registering them to the kernel. When the kernel needs to make use of the device, it will use the relevant callback functions. Devs also use various functions and data structures that are defined b the kernel, building drivers on top of other modules or subsystems.
+Writing a driver involves creating many 'callback functions' for the target device and registering them to the kernel. When the kernel needs to make use of the device, it will use the relevant callback functions. Devs also use various functions and data structures that are defined by the kernel, building drivers on top of other modules or subsystems.
 
 Writing a safe driver is not easy. The monolithic architecture means that the kernel itself and drivers run in the same address space and privilege level. This suggests that drivers can't be stopped from changing critical kernel memory or calling the wrong kernel functions which could lead to a kernel panic. 
 
