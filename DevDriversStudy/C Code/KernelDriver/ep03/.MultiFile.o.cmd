@@ -1,0 +1,1 @@
+cmd_/home/guest/KernelDriver/ep03/MultiFile.o := ld -m elf_x86_64  -z max-page-size=0x200000    -r -o /home/guest/KernelDriver/ep03/MultiFile.o /home/guest/KernelDriver/ep03/MyInit.o /home/guest/KernelDriver/ep03/MyExit.o 
