@@ -212,6 +212,93 @@ Kernel code can refer to current process by accessing global item `current` foun
 + Kernel code can't do floating point math. It would require extra overhead that isn't worthwhile
 
 ***
+#### Platform Dependency 
++ Each computer platform has its own unique attributes which kernel designers are free to exploit in the name of better performance
++ Kernel devs can dedicate CPU registers to specific roles if needed. Kernel code can also be optimised for a certain processor within a CPU family to get best performance from target platform
+
+IA32 (x86) architecure is split into several different processor types.
+Modern instruction sets have provided new capabilities such as faster instructions for entering the kernel, interprocess locking, copying data. 
+
+Modules need to be built to suit the target kernel and target process (in the same way that the kernel suits a target CPU) otherwise they won't even be accepted by the kernel. 
+
+Best way to write driver for general distribution? Release driver under GPL-compat license and contribute it to the mainline kernel. Or utilise scripts to handle compilation (there are some tools which can do this). "distributing things in source form is an easier way to make your way in the world."
+
+
+
+
+
+
+#### Kernel Symbol Table
+Table which contains addreses of global kernel items, functions and variables required to write driver modules. Any symbol *exported* by a module will then become part of the kernel symbol table (Which is not often used). It's good practise to export symbols when other modules might benefit from their use, they can then be used by new modules.
+
+Module stacking:- 
++ Stack new mods on top of other mods
++ Useful in complex projects  (e.g. providing further interfaces for other, more low-level drivers/hardware)
++ video-for-linux is a generic module that exports symbols used by lower level drivers for specific hardware. You load the generic vid mod and then the specific mod for the installed hardware.
++ So module stacking is a method of building off of/using a group of modules together to fulfill an end goal. Essentially splitting modules into many layers that can help reduce development time as each layer can be further simplified.
+
+Symbol visibility can be controlled which can reduce namespace pollution (names that may conflict within the kernel) and utilises proper information hiding. Use the following macros when exporting symbols;
+`EXPORT_SYMBOL(name);`
+`EXPORT_SYMBOL_GPL(name);`
+
+Both makes the symbol available outside of the module itself. The GPL macro makes the symbol exclusively available to other GPL-license modules. Symbols MUST be export in global, outside of any function as the macros amalgamate into a special variable that is expected to be accessed globally.
+
+This var is stored in the ELF section of the module executable which is used by the kernel to find variables exported by the module at load time. 
+
+#### Important notes/requirements for code
+Most code includes a large number of header files to pull in functions defs, data types and vars. 
+`<linux/module.h>` and `<linux/init.h>` *must* be included in every loadable module.
+
+`</module.h>` = definitions of syms & funcs needed for modules
+`</init.h>` = provides init and cleanup functions
+`<linux/moduleparam.h>` = enables parameter passing at load time
+
+`MODULE_LICENSE("NAME");` isn't always necessary but is good practise
+Can use the following (modules w/o license are assumed to be proprietary)
++ GPL
++ GPL v2
++ GPL and additional rights
++ Dual BSD/GPL
++ Dual MPL/GPL
++ Proprietary
+
+`MODULE_AUTHOR` = denotes driver writer
+`MODULE_DESCRIPTION` = statement of module function(s)
+`MODULE_ALIAS` = additional name(s) for module
+`MODULE_DEVICE_TABLE` = devices supported by module
+(these declarations can appear anywhere outside of a function, conventions according to book, are to put these at the end of the file)
+
+#### Init, Shutdown, Cleanup
+###### init
+init function registers any facility offered by modules (any new functionality)
+init functions should be `static` as they're not supposed to be visible outside of the code/file
+`__init`  = hint to kernel that func is only used at init
+`__initdata` = data use only during init
+`__devinit` = init but if kernel can't hotplug devices
+`__devinitdata` = initdata but if kernel can't hotplug devices
+`module_init` = mandatory, adds special sect to obj code declaring init func (init won't work othewise)
+init function is dropped after module is loaded, freeing any/all mem allocated
+**Use these functions etc only for init code**
+
+Can register various facility types (devices, software abstractions etc)
++ devices
++ filesystems
++ cryptographic transforms
++ serial ports
++ misc devices
++ sysfs entries
++ `/proc` files
++ executable domains
++ line disciplines
+
+Specific kernel function for facility registration (typically use ptrs to data structs that describe te new facility and provide its name). Some facilities can be registered as add-ons for specific drivers.
+
+###### cleanup
+unregisters interfaces & returns system resources before removal.
+declared void.
+`__exit` = marks code for unload only and again creates a special ELF section or are simply discarded
+No clean equals no unloading!
+
 ## Misc
 
 Thought (6/8/22): LDD3 book is written for Linux 2.6.x yet everything continues to work in the exact same way when using 4.19.0. Based on [this wiki article detailing Linux releases](https://en.wikipedia.org/wiki/Linux_kernel_version_history) and its data, there is a 14 year difference between 2.6 (2004) and 4.19 (2018) with this book being written in 2005 alongside Release 2.6.10. It seems the finding that there isn't much evolution in drivers holds up but I should also test this in more recent releases, my thought is that nothing will have changed. 
