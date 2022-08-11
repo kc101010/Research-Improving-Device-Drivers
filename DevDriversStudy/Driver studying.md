@@ -299,6 +299,71 @@ declared void.
 `__exit` = marks code for unload only and again creates a special ELF section or are simply discarded
 No clean equals no unloading!
 
+###### Error handling during initialisation
+It's possible for facility registration to fail as even the simplest of actions require memory allocation which (memory) may not always be available. So it's necessary for code to always check return values and ensure operations have happened.
+
+Modules can usually still run after a registration failure (which might lead to worse functionality). When possible, its best to continue and just provide any capabilities possible.
+
+If the failure means that the module can't load, you need to clear any registration activities from beforehand. Module must back out of everything. Not doing so will leave the kernel in an unstable state (pointers now point to code that doesn't exist) which then requires a system reboot. 
+
+There are times where `goto` is useful, error recovery is one of them as it is an quick, immediate fail-safe that prevents any more destructive actions from ocurring. You could also manually track changes but this requires more code and processing time.
+
+Ensure proper error values are returned (as defined in `<linux/errno.h>`) as the modules can continue to provide useful error information.
+
+Complex init and cleanup means `goto` isn't as easy to use so for simplicity, it's best to call the cleanup function from inside the init when an error is encountered. The cleanup func then needs to check the status of each item before undoing registration.
+
+#### Race conditions
+Other parts of the kernel can immediatley use any facility after registration is completed. Code should be prepared for this so don't register any facility until after all the necessary inits are complete.
+
+#### Module parameters
+SCSI = [Small computer interface (for peripherals)](https://en.wikipedia.org/wiki/SCSI)
+IDE = [Integrated Device Electronics](https://www.techtarget.com/searchstorage/definition/IDE)
+DMA = [Direct Memory Access](https://www.techopedia.com/definition/2767/direct-memory-access-dma)
+
+A driver can designated parameters that can be changed when the module is loaded. 
+Values can be assigned at load time using `insmod` or `modprobe` (which can also read from a config file). Several values can be provided within 1 command. 
+
+Declare parameters using `module_param` from `<moduleparam.h>`
+Takes; var name, type & permission mask/symbol `<linux/stat.h>`
+Place macro outside of any function, typically found near head of source file
+
+Various types support:
++ bool
++ invbool (inverted value)
++ charp (char pointer, mem allocated for user string)
++ int 
++ long
++ short
++ uint
++ ulong
++ ushort
+
+Array parameters can also be used.
+Custom types can be defined via hooks.
+External changes to module paramters aren't notified to module and must be detected & reacted to by the developer.
+
+#### Userspace
+Advantages of user-space drivers
++ Linking to full C lib
++ Conventional debugger
++ Simply kill hanging drivers
++ If well designed, can still allow concurrency w/ device(s)
++ Easier to avoid licensing issues & problems w changes to kernel interfaces
+
+[USB](https://libusb.info/) [drivers](https://blog.soutade.fr/post/2016/07/create-your-own-usb-gadget-with-gadgetfs.html) can be written in user space
+
+Drawbacks
++ No interrupts (w/ select workarounds)
++ DMA only possible through privileged users
++ I/O access only available after calling `ioperm` or `iopl`, again restricted to privileged users
++ Slower response time ([context switch](https://en.wikipedia.org/wiki/Context_switch) required), drivers running from disks have unacceptable response times. Again, privilege user required.
++ Most important devices can't be handled in user space, including network interfaces, block devices and more
+
+A sensible use case for userspace drivers would be dealing with new, unusual hardware for the first time but eventually shifting your code from user to kernel space. Provides an opportunity to work with managing hardware without affecting the rest of the system. 
+
+
+## Char Drivers
+
 ## Misc
 
 Thought (6/8/22): LDD3 book is written for Linux 2.6.x yet everything continues to work in the exact same way when using 4.19.0. Based on [this wiki article detailing Linux releases](https://en.wikipedia.org/wiki/Linux_kernel_version_history) and its data, there is a 14 year difference between 2.6 (2004) and 4.19 (2018) with this book being written in 2005 alongside Release 2.6.10. It seems the finding that there isn't much evolution in drivers holds up but I should also test this in more recent releases, my thought is that nothing will have changed. 
