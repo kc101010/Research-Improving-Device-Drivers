@@ -31,3 +31,20 @@ WHOOP is an automated approach for static data race analysis in drivers, using s
 2. instruments the program to record locksets
 3. uses the locksets to assert that all accesses to the same shared resource are always protected by a common lock. 
 
+Applying analysis to the sequential program avoids holding a collecting of thread [interleavings](https://www.techopedia.com/definition/5683/interleaving#:~:text=Interleaving%20divides%20memory%20into%20small%20chunks.%20It%20is,overall%20performance%20of%20the%20processor%20and%20system%20increases.) , existing & successful sequential verification techniques can also be re-used.
+
+The guarantees provided by the symbolic analysis can be used to reduce comparisons that then accelarates CORRAL (precise bug-finder by MS to analyse drivers & other concurrent programs). WHOOP and CORRAL were tested on 16 Linux 4.0 drivers, using both led to a analysis speedup between 1.5 to 10 times faster. There were a couple of rare instances of greater speedups of 12 times and 20 times. 
+
+## Background
+
+Modern OS' facilitate responsiveness and performance by providing various sources of concurrency. Several entry points from the same driver can be called concurrenctly, a driver process can block which causes the driver to switch to execution to another process and hardware interrupts can be handled concurrently. These forms of concurrency execution are prone to data races. 
+
+Data Race: occurs when 2 separate threads access a location of shared memory. At least one is a write, at least one is non-atomic (unchangeable). There is no mechanism to prevent simultaneous access. Races are commonly avoided by protecting programs statements that access a shared resource with locks which form critical sections. 
+
+Carelessly using locks also has downfalls. Coarse-grained locking can hurt performance due to limited opportunity for concurrency. Fine-grained locking can easily lead to deadlocks.
+
+#### Lockset Analysis
+Lightweight race detection method proposed via Eraser (a dynamic data race detector)
+
+Works by tracking a set of locks consistently used to protect a memory location during program execution. An empty lockset suggests that a memory location might be accessed at the same time by 2 or more threads. Thus, the analysis reports a potential race on that memory location. 
+

@@ -54,7 +54,8 @@
 	+ SCREAMING_SNAKE_CASE for static and const vars
 
 
-
+###### Potentially useful libraries/crates
+[meval](https://docs.rs/meval/latest/meval/) - recognise and perform calculations from strings
 
 
 ###### Notes/Thoughts
