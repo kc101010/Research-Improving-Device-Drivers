@@ -48,3 +48,28 @@ Lightweight race detection method proposed via Eraser (a dynamic data race detec
 
 Works by tracking a set of locks consistently used to protect a memory location during program execution. An empty lockset suggests that a memory location might be accessed at the same time by 2 or more threads. Thus, the analysis reports a potential race on that memory location. 
 
+In super basic terms, lockset analysis checks threads and the variables they write to. If these threads can't consistently protect said variables then the tool reports a warning. 
+
+Pros:
++ Easy to implement
++ Lightweight
++ Good potential scalability
+
+Cons:
++ Possible to report false alarms (locking inconsistency will not always lead to a data race)
++ Code coverage is limited by execution paths explored under a given scheduler
+
+To conteract the cons, techniques like Locksmith and RELAY explored applying lockset analysis statically with dataflow analysis. 
+
+#### WHOOP - Symbolic Pairwise Lockset Analysis
+Data race analysis in device drivers (Can be applied directly to driver source code)
+
+##### The approach
++ For a given driver, consider each pair of entry points that may execute concurrently. 
++ For each pair, use symbolic verification to check whether it's possible for the pair to race on a shared memory location. 
++ Model effects of additional threads by treating the driver share state abstractly - when an entry point reads from shared state, an [nondeterministic](https://en.wikipedia.org/wiki/Nondeterministic_algorithm) value is returned.
+
+Restriction to pairs of entry points rather than analyzing all entries at the same time exploits the fact that data races happen between pairs of threads and limits complexity of the generated verification conditions. Trade-off is that a quadratic number of entry pairs must be checked.
+
+(Pairwise Analysis also has the advantage of being able to run the analysis for a pair in paralell, for performance reasons.)
+

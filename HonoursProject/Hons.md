@@ -1,3 +1,7 @@
+Edited 19/8/22
+Changes:
++ Change timeframes for project to be slightly more realistic
+
 ### 1.2 Aims
 + Gain an understanding of the potential issues surrounding device drivers.
 + Investigate further issues within an OS which could stem from device drivers.
@@ -7,7 +11,7 @@
 ### 1.3 Objectives
 + Establish whether drivers continue to act as the leading cause of error within operating systems.
 + Attempt to highlight various improvements which could be made to future driver maintainability.
-+ Test that such improvements would continue to be viable in present-day and/or future operatingsystems.
++ Test that such improvements would continue to be viable in present-day and/or future operating systems.
 
 #### What I'd like to do/gain throughout this project
 
@@ -17,7 +21,7 @@
 + Write plan, goals
 + Gain basic experience in target langs (Rust/Carbon) for end driver dev
 
-#### Start (Timeframe could be Sep - Dec)
+#### Start (Timeframe could be Sep - Nov)
 + Learning experiences with drivers
 	+ Gain insight into how the top Operating Systems employ drivers and the differences between each
 	+ Just how important is the kernel (lead into abstractions, breaking drivers off into modern languages)
@@ -25,7 +29,7 @@
 	+ Attempting to focus on research produced between 2010 and present. Or as recent as feasibly possible.
 	+ More findings on collateral evolution, is it a real issue that severly effects drivers
 + Find/Research dev sources of drivers i.e. Linux Kernel, MS, Apple
-#### Middle (Timeframe could be Dec - Feb)
+#### Middle (Timeframe could be Nov - Jan)
 + Research what tools are used within driver development
 	+ Testing
 	+ V&V?
@@ -39,7 +43,7 @@
 + Gain insight into the knowledge/expertise required to build a sucessful driver
 	+ This where questions/findings like "Driver writers specialise in a device over kernel" can asked and tested
 	+ This is also where interviews/focus groups/surveys can be employed to inform this question
-#### End (Timeframe could be Feb - Submission/End of Year)
+#### End (Timeframe could be Jan - Submission/End of Year)
 + Using the knowlege gained, attempt to write some sort of simple driver
 	+ Rather than write in C/C++ as is tradition, attempt to write in Rust/Carbon in order to create a modern comparison and test if these languages are the way
 	+ Involve Arduino?
