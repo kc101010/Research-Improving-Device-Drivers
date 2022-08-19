@@ -108,19 +108,70 @@ Ownership system eleminates aliasing and ensures every reference is valid, preve
 
 Foreign Function Interface (FFI)
 
-### Framework design, implementation etc (amalgamation of sections 3 and 4)
-+ efficient & safe drivers
-+ middleware between devs and kernel
-+ each driver type modelled as a trait to enforce driver types etc, they can then be managed easily. "reduces some boilerplate code such as device driver registration and unregistration"
 
-Driver consists of 2 classes of code
-1. device logic implemented within the driver (written by programmers in pure rust)
-2. interactions between driver and kernel (provided in framework via FFI bindings)
+## Framework design, implementation etc (amalgamation of sections 3 and 4)
+Framework for writing efficient and safe drivers with Rust.
+Using Rusts compiler & type system to write safe kernel modules.
 
-Some parts of Rust stdlib are reimplemented for Linux kernel
+----------------------------------
+Architecture is as follows.
+![[Figure 2 Rust driver framework Li et al.png]]
 
++ Several rust source files implement useful infrastructures (kernel mem allocator) and provide API for Rust dev driver development. API can be used my importing framework library in projects.
++ JSON spec file creates bare-metal target for Rust compiler.
++ Some of Rusts own libs must be recompiled for kernle use.
++ Kernel functions & data structs re-exported using `bindgen` 
++ Rust compiler compiles framework and dev libs, creating an object file.
++ Build system takes over linking where the object file is linked as a kernel module.
 
-### Common Bugs in Device Drivers
+Framework seen as middleware between devs and kernel. The system solves the following;
++ Build system gets Rust compiler to generate bare-metal code & recompiles necessary libs for kernel space
++ Bindgen transforms Linux kernels C interface into Rust FFI, making the necessary C code available in Rust.
++ Kbuild integrated for building kernel modules.
+-----------------------
+Framework models device driver types into trairs which then enforces the interface that each driver of a certain type needs to implement.
+
+Developers should define own struct for driver and implement the related trait into their struct.
+
+With this design pattern, all drivers share a unified interface for easy management within the framework. This is a much more elegant interface for driver implementation and reduces boilerplate code such as driver registration and unregistration. (WHICH DEMONSTRATES EXACTLY WHAT I DISCUSSED IN THE MODERN LANGUAGES SECTION OF MY INITIAL RESEARCH PAPER!!!!!)
+
+Driver typically consists of 2 types of code;
+1. Device logic implented within driver itself (should be written in pure Rust)
+2. Interactions between driver and kernel (provided by framework via FFI bindings)
+-----
+For the sake of following Rust conventions and providing kernel programming tools that are more useful, parts of the Rust STDLIB are reimplemented to fit into the Linux kernel.
+
+Mem allocator is based on the Rust Global allocator. Developers are able to customise the default memory allocator and redirect all memory alloc requests. This will allow `core` Rust types such as Box and Vex to continue to function within Kernel space. Framework also implements `Mutex` and `Spinlock` to further imitate the Rust stdlib.
+
+----
+Build system mixes Rust and Linux kernel. 
+
+Monolithic design of Linux kernel means kernel drivers can't access user space libraries or carry out forbidden operations (such as floating point operations). So the default target of Rust compiler must be changed to generate statically linked and OS-independant machine code w/o float point instructions. To properly leverage existing kernel data structs and functions, kernel headers need to be converted into Rust bindings. (This is fully automated through scripts and makefiles)
+
+Rust compiler is enhanced to generate code that runs directly on hardware, w/o relying on stdlib. Done by adding a new target to Rust compiler. New targets are supported by using JSON spec files that describe the properties of a compilation target (i.e. architecture, OS and default linker). The writers created a custom target which was further modified to match needs such as disabling dynamic linking and use of floating point hardware. 
+
+Pre-compiled libraries need to be recompiled for use with the new target, the libraries provide core Rust features and other useful additionss. 
+
+Kernel headers can't be directly used by Rust so the framework re-exports header symbols via FFI bindings. These will then work in Rust via external C functions . These APIs are automatically generated for practical reasons and to tailor for changes within different kernel versions.
+
+----
+Boilerplate code can summarised into a unified interface used for all drivers. 
+
+Below is a code snippet of a char driver implemented as a trait. Every char device must implement an `init()` which takes a string name and `cleanup()` which closes out the driver.
+
+![[CharDriverTrait Li et al.png]]
+
+The use of generic programming means the framework can easily manage different drivers as they all share the same interface. This reduces boilerplate code.
+
+Memory allocation and de-allocation is essentially automatic/handled by the compiler. The writers have implemented their own memory allocator to which all memory requests are re-directed. So when creating a data structure, the programmer isn't reponsible for allocating and later deallocating. "... developers are liberated from delicate and error-prone kernel memory management."
+
+`Mutex` and `Spinlock` are used to support synchronisation which has several benefits;
++ Devs can't access shared data unless `lock()` is specifically invoked
++ Which then prevents cases where devs forget to lock data before use
++ Rust ownership system will also help in releasing locks that are no longer in use or necessary
++ Improper use of this leads to a compilation error
+
+## Common Bugs in Device Drivers
 Categorised into 3 groups
 
 ##### 1. Language-specifc security issues

@@ -16,6 +16,12 @@
 + Matthias Heiden worked on a solution with pros and cons
 	+ *Pros*: less crashing = more speed, no need to worry about deallocation, custom allocator, more efficient language, similar setup to current drivers
 	+ *Cons:* implementation/translation isn't perfect, some aspects can be tedious, raw pointers
++ Li et al: Their paper showcases various reasons why Rust is beneficial to driver dev
+	+ Use of ownership system automates a lot of aspects such as mem mgmt
+	+ This framework manages to reduce boilerplate code by implementing driver types as traits which will share an interface (a point that I discussed in my research paper where I believed the use of more modern languages could likely reduce code volume or repeating code)
+	+ Drivers are more easily managed due to the sharing of a unified interface
+	+ Compiler messages are much clearer and more assistive
+	+ Rust merges fairly well with C, there are a few nicks and issues but the framework is viable.
 
 ###### There is room for blame on developers
 + "The hard part is understanding your  device and how to maximise performance." - Corbet, J. Linux Device Drivers. 3rd Ed. pg 18. (January, 2005)
