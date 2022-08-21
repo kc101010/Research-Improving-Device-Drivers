@@ -54,3 +54,34 @@ Usually, a device doesn't connect directly to the PCI bus but connects to a host
 It seems that MS has written certain sections of drivers which manufacturers, driver writers etc can use to easily make drivers.
 
 # General Concepts
+
+## User mode
+Windows creates process for user-mode app. This process gives the app a private virtual address space and private handle table. As each apps virtual address space is private, they can't overlap/overwrite each other. Each app runs in isolation so if a crash occurs, the crash is limited to that process/thread. This saves other apps and the OS as a whole. 
+
+Virtual address space of a user app is also limited. This limit is set in place in order to prevent apps from altering and likely damaging critical OS data. 
+
+## Kernel Mode 
+All kernel code shares a single virtual address space. Drivers aren't isolated from each other or OS code. It's very easy to compromise OS or other driver data if the wrong virtual address is written to. Kernel driver crashes means a crash for the OS itself. 
+
+![[UserKernelMode.PNG]]
+
+## Virtual address spaces
+When a processor reads/writes to a memory location, it uses a virtual address. During the read/write, the processor will translate that virtual address to a physical memory address.
+
+Advantages;
++ Program can use a sequential range of virt addreses to access a large memory buffer that is not contiguous in physical memory. 
++ Program can use virtual addresses to access a memory buffer that's larger than available physical memory. As physical memory supply becomes smaller, the mem manager starts saving pages of physical memory to a disk file. Pages of data or code are moved between physical memory and the disk as required.
++ Virtual addresses used by different processes are isolated from each other. Code from different processes can't change physical memory in use by another process or the OS.
+
+Virtual address space == range of virtual addresses available to a process.
++ 32bit processes have a Vaddress space of 2GB range, 0x00000000 through 0x7FFFFFFF
++ 64bit processes have a Vaddress space of 128TB range, 0x000'00000000 through 0x7FFF'FFFFFFFF
+
+
+(contiguous = sequential)
+A range of virtual addresses can also be called a range of virtual memory. 
+
+![[VRAM.PNG]]
+
+
+
