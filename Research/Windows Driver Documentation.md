@@ -83,5 +83,40 @@ A range of virtual addresses can also be called a range of virtual memory.
 
 ![[VRAM.PNG]]
 
+Drivers are a collection of callback that, once initialised, idle and wait to be called when the system needs something. This could be anything from a new device arriving, to managing an I/O request from a user app, a request from another driver or surprise removal event and more.
+
+
+# Writing a Windows driver
+Different frameworks for writing drivers available through MS Visual Studio.
+Also holds templates. 
++ UMDF (User Mode Driver Framework)
++ KMDF (Kernel Mode Driver Framework)
+
+Drivers are built into '.dll' the driver file itself and then '.inf' an info file about the driver for windows. This can depend on which type of driver is being created as drivers may also be built into a '.sys' file. When the sys file is made, the inf file is still there but a '.cat' file is also created which the installer uses to verify the drivers signature.
+
+Drivers are still written in C but are categorised as C++, I assume because MS has no C category.
+
+Seems to essentially have a similar setup to Linux Modules;
++ Config code
++ Separate kernel lib/functions
+
+Full Driver Code from examples
+![[FullDriverCodeExcerpt.PNG]]
+
+WinDbg is a debugging tool for kernel debugging.
+
+Various guidelines, [articles]([Creating Reliable Kernel-Mode Drivers - Windows drivers | Microsoft Docs](https://docs.microsoft.com/en-us/windows-hardware/drivers/kernel/creating-reliable-kernel-mode-drivers)) and [written guidance]([Driver Security Guidance - Windows drivers | Microsoft Docs](https://docs.microsoft.com/en-us/windows-hardware/drivers/driversecurity/)) for programming device drivers
+
+This driver doc is sometimes written in a way that readers are encouraged to utilise MS' own sample code but modify it for their own needs. In which case, developers need to replace several unique names, ids and so on.
+
+Also provides tools for hardware development and hardware development boards. Sharks Cove hardware dev, this can also be used driver debugging/testing.
+
+## Testing and debugging
+Debugger and driver run on separate computers. With a *host* running the debugger and *target* or *test* computer running the driver. The target computer must be [specifically configured](https://docs.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/provision-a-target-computer-wdk-8-1) for driver debugging/testing.
+
+Driver Module Framework
+WFD extension that enables extra functionality for a WDF driver dev. Helps write any type of WDF driver better and faster. 
+
+DMF Modules can be shared between different drivers. 
 
 
