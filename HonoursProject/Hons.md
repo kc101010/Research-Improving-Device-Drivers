@@ -2,6 +2,11 @@ Edited 19/8/22
 Changes:
 + Change timeframes for project to be slightly more realistic
 
+### Potential questions to work on/cover
++ How can Operating System models/layouts improve device drivers?
++ How do OS Models/Layouts affect device drivers?
++ Is the problem with device drivers caused by the OS?
+
 ### 1.2 Aims
 + Gain an understanding of the potential issues surrounding device drivers.
 + Investigate further issues within an OS which could stem from device drivers.

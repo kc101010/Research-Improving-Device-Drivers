@@ -80,6 +80,7 @@ And their solution implements a lot of what I discussed as being possible in my 
 
 I'll describe system extensions further with 2 quotes; "In userspace, outside the kernel" with a "comfortable, modern programming environment"
 
+##### What if we treated device drivers in the same way as applications
 
 
  
