@@ -364,6 +364,9 @@ A sensible use case for userspace drivers would be dealing with new, unusual har
 
 ## Char Drivers
 
+
+## Debugging
+
 ## Misc
 
 Thought (6/8/22): LDD3 book is written for Linux 2.6.x yet everything continues to work in the exact same way when using 4.19.0. Based on [this wiki article detailing Linux releases](https://en.wikipedia.org/wiki/Linux_kernel_version_history) and its data, there is a 14 year difference between 2.6 (2004) and 4.19 (2018) with this book being written in 2005 alongside Release 2.6.10. It seems the finding that there isn't much evolution in drivers holds up but I should also test this in more recent releases, my thought is that nothing will have changed. 
