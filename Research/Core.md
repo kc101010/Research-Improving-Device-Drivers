@@ -12,3 +12,9 @@ List (in case of removal)
 
 
 + Thought: It's likely that for the sake of discussing perfomance or even evaluating feasability of a rust driver, i'll need to look at present rust implemnetations and uses in current kernels and/or OS
+
+
+
+
+
+Here is a [oracle document](https://docs.oracle.com/cd/E19683-01/806-5222/index.html) on writing device drivers with copyright dated for 2010
