@@ -1,5 +1,7 @@
 Publish in 2009
 
+[non-trivial](https://www.yourdictionary.com/nontrivial): not lightweight, any task that is not quick and easy to accomplish. May mean extremely difficult and time consuming
+
 ## Abstract
 + "Device drivers are notorious for being a major source of failure in operating systems"
 + 39% of bugs are caused by 2 key shortcomings in driver architecture enforced by current OS'
@@ -47,3 +49,58 @@ Software protocol - regulates communication to OS
 "Each device has a unique device protocol defined by the manufacturer"
 
 Drivers essentially hide manufacturer protocols and standardise devices into families (Ethernet, audio, etc). These 'standard' software protocols are defined by the OS, this also includes definitions for the necessary support services. These protocols and services are known as the OS driver framework. 
+
+Driver stacking is common in OS I/O Frameworks and are typically built to reflect the structure of the underlying I/O bus hierarchy.
+
+Analysed a sample of real defects found within a collection of Linux drivers. Made use of a kernel history site to easily identify and categorise a large number of driver bugs. This was an exclusive investigation for Linux as Microsoft doesn't publicly disclose details about errors in Windows. It would make an interesting comparison as Linux and Windows implement different driver architectures.
+
+Study:
+Selected 13 different drivers for different types of devices for buses. With that, they created a bug database for these drivers by analysing all changes made to them between 2002 to 2008. This led to the discovery of 498 defects in the database.
+
+![[Table of driver analysis and faults.PNG]]
+
+
+Main sources of complexity are split into the following driver faults:
+
+### Device protocol faults 
++ Behaviour violates hardware protocol, leads to hardware failiing to provide its required service 
++ Make up 38% of overall defects
++ At least one third of faults in device-control logic are caused by poorly documented device behaviour
++ These faults are even more common when device documentation is not readily available, in this case such drivers are reverse engineered from another OS
++ Some of these faults are caused by devices whos behaviour deviates from hardware interface standards that are supposed to be in place. 
++ Similar faults are due to devices that violate their documented behaviour, this means that drivers which expect hardware to behave according to set standards/documentation will not function properly and will require workarounds to restore functionality
+
+
+### Software protocol violations 
++ when driver performs an operation that violates protcol with OS. (Includes all violations of expected ordering, format or timing in interactions between OS and driver.)
++ These types of faults are particularly common in error-handling paths and code paths which handle uncommon/unusual situations like hot-unplug and power management requests (which are often insufficiently tested anyway).
++ Examples of ordering violations; Forgetting to wait for a completion callback from async data request (data protcol violation), trying to resume a suspended device before restoring its PCI power state (power management) and releasing resources in the wrong order.
++ Examples of format violations; incorrectly modifying a data structure shared with the OS, incorrectly initialising a device descriptor before passing it to the OS and falsely returning a success status from an operation that failed.
++ These faults make up 20% of overall driver defects
+
+![[Types of software protocol violations.PNG]]
+
+
+### Concurrency faults
++ when a driver incorrectly synchronises multiple threads of control executing within it, causing a race condition or deadlock
++ These faults are somewhat unique in that they aren't related to a particular aspect of driver functionality but rather to the model of computation enforced on drivers by the OS
++ Any non-trivial/complex driver is involved in several concurrent activities such as handling I/O requests, processing interrupts and dealing with power management and hot-plugging events. Most OS are designed to run such activities in separate threads that invoke the driver in parallel,
++ This multithreaded model of computation requires the driver to protect itself from race conditions using a variety of sync primitives. A kernel driver needs to keep track of the sync context in which it is invoked. 
++ These faults account for 19% of total bugs.
++ Error rates are higher in USB and IEEE 1934 drivers than in PCI drivers. USB and IEEE busses support hot-plugging, which introduces a device disconnect event to the driver interface.
++ Concurrency faults are mostly introduced in situations where a sporadic event occurs while the driver is handling a steam of data requests.
+
+![[Types of concurrency faults.PNG]]
+
+
+### Generic programming faults
++ Common coding errors
++ I.e. memory allocation errors, typos, missing return value checks and program logic errors
++ These faults account for 23% of defects.
+
+## Dingo architecture
+
+
+
+## Thoughts
+1. Why are we implementing concurrent drivers in space where everything could change (cc context switch, interrupts, trap calls). Doesn't that just increase complexity of how we write drivers and make them a bit more volatile than typical software. This might be a good link/reason for exo-kernels as that problem is basically almost nulled. The way I think of this is that it's almost like a bundle of wires being tied together or something. 
