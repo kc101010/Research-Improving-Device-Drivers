@@ -363,9 +363,129 @@ A sensible use case for userspace drivers would be dealing with new, unusual har
 
 
 ## Char Drivers
+Char drivers are suitable for most hardware devies. They are aso easier to understand than block drivers or network drivers. Will be writing a modularised char driver.
 
+Code fragments are from a real char driver called scull (Simple Character Utility for Loading Localities). Acts on a memory area as if it were a device. It's not hardware dependent and just acts on some kernel memory. 
+
+First step of driver writing is defining capabalities/mechanisms that the driver will offer to user programs. 
+
+Devices; 
+scull0 to scull3. Each has memory that is global and persistent so all data is shared and can't be lost.
+
+scullpipe0 to scullpipe3
+4 FIFO devices that act like pipes. One proc reads what another proc writes. If many procs read the same device then they content for data. 
+
+scullsingle
+scullpriv
+sculluid
+scullwuid
+
+The above devices are similar to scull0 with limitations on when `open` can be used. scullsingle only allows 1 proc to use the driver at a time where scullpriv is private to each virtual console.
+
+Char devices can be found in `/dev` directory by using `ls -l`. Files for char drivers start with 'c' in the permission column (`crw-r--r--`). Block devices are the same and are identified by a 'b' (`brw-r--r--`)
+
+In the 5th column, the major and minor device numbers are written. Normally, the major num identifies the driver associated with the device and the minor number denotes to the kernel exactly which device is being referred to. 
+
+`dev_t` in `<linux/types.h>` holds device numbers - both major and minor. To properly find a major or minor parts of a `dev_t` use macros within `<linux/kdev_t.h>`.
+
+Finding major/minor numbers;
+`MAJOR(dev_t dev)`
+`MINOR(dev_t dev)`
+
+Turning major/minor nums into a `dev_t`
+`MKDEV(int major, int minor)`
+
+### Allocating/Freeing dev nums
+First thing a char driver should do is get 1 or more devie numbers to work with by using `int register_chrdev_region(dev_t first, unsigned int count, char *name);` in `<linux/fs.h>`
+
+`first` is the beginning dev number of the range you'd like to allocate
+`count` is the total number of contiguous device numbers you are requesting (it's possible for this to spill over to the next major num)
+`name` is the name of the device that should be associated with this number range
+
+return val will be 0 if successful. Errors should provide a negative error code and the region won't be provided. register works well if you know beforehand exactly which dev numbers you want.
+
+If you don't know what numbers your device will use then you can use dynamically allocated device numbers. The kernel can simply allocate a major number for you. This request is made with `int alloc_chrdev_region(dev_t *dev, unsigned int firstminor, unsigned int count, char *name);`
+
+`dev` - output-only param that will hold first number in allocated range
+`firstminor` - requested first minor number to use, usually 0
+`count` and `name` work the same as they do in register.
+
+Make sure to free device numbers when they are no longer in use.
+`void unregister_chrdev_region(dev_t first, unsigned int count);`
+This is usually carried out within the cleanup function.
+
+It's necessary to connect device numbers to internal functions that implement device operations in order for user-space programs to actually make use of these device numbers.
+
+### Dynamic alloc of major nums
+
+Certain major dev nums are statically assigned to common devices. (List found in Documentation/devices.txt)
+
+As a driver writer, your choices are to either pick a number that seems to be unused or allocate major numbers dynamically.
+
+Dynamic allocation is highly recommended for new drivers over choosing random numbers. 
+
+Disadvantage is that driver nodes can't be created in advance.
+
+To load a driver using a dynamic major number, you can use a script that 
+1. calls `insmod`
+2. then reads `/proc/devices` to create the necessary files
 
 ## Debugging
+
+
+
+
+----
+
+# [Karthik M: Episode 6 - Character Driver](https://www.youtube.com/watch?v=E_xrzGlHbac&t=1s)
+
+Block device driver
++ any device that you can mount a file system
++ pen drive, HDD, CD-ROM
++ Can always move back and forth in a regular file
+
+Char device driver
++ Char device is acessed as a steam of bytes 
++ consume data as it comes in (real-time) such as a keyboard, mouse, camera
++ most char devices are just data channels which are only accessed sequentially
+
+In the permission field of `ls -l`, drivers contain their type within their permissions so;
+
+`c` for char drivers
+
+Major and minor numbers also contained in this listing at the 5th column.
+
+Linux associates `/dev` entries to the driver by matching the major number. Minor is the number of instances of that device.
+
+Linux 2.4 approach.
+
+`<linux/fs.h>` for char driver support
+
+File operations to be performed by the driver should be stored in a struct of type `file_operations` which then gives access to the overall list of possible operations.
+
+[NOTE IF RUNNING INTO INCOMP-PTR ERROR](https://stackoverflow.com/questions/56312867/linux-driver-writing-file-operations-incompatible-pointer-type-errror)
+
+`cat /proc/devices` lists all drivers running/loaded in system. This can also be used to confirm major/minor numbers.
+
+![[proc_devices_driver.png]]
+
+![[Driver_Reg_UnReg_code.png]]
+
+
+Making a driver node/entry for `/dev`
+`sudo mknod -m 666 /dev/$DRIVER_NAME c 240 0`
+![[driver node entry.png]]
+
+
+Can test driver functions by running related commands on the driver entry as so;
+![[cat_char_drv.png]]
+![[cat_char_drv results.png]]
+
+
+----
+
+
+
 
 ## Misc
 

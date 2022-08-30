@@ -1,0 +1,1 @@
+cmd_/home/guest/KernelDriver/ep06-simplechar/char-drv.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T /usr/src/linux-headers-4.19.0-17-common/scripts/module-common.lds  --build-id  -o /home/guest/KernelDriver/ep06-simplechar/char-drv.ko /home/guest/KernelDriver/ep06-simplechar/char-drv.o /home/guest/KernelDriver/ep06-simplechar/char-drv.mod.o ;  true
