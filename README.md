@@ -4,6 +4,8 @@ Research @ University of the West of Scotland for Honours project
 "Investigation into improving performance and reliability of device drivers" (2022 - 2023) 
 by Kyle Christie
 
+NOTE: This project is best viewed with [Obsidian](https://obsidian.md/)
+
 [Trello board/additional project management](https://trello.com/b/zYURFiee/research-improving-device-drivers) (created 5/8/22)
 ***
 <u> <b>Directories</b> </u>
