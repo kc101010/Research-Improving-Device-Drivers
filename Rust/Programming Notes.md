@@ -1,5 +1,8 @@
 ![[rust programming language.pdf]]
 
+
+[Rust By Example - Online document](https://www.cs.brandeis.edu/~cs146a/rust/rustbyexample-02-21-2015/index.html)
+
 + rustup -  toolchain installer/manager 
 + rustc - similar 'gcc' cmd, compiles project
 
@@ -53,6 +56,9 @@
 	+ snake_case for value-level constructs such as crates, modules, functions, methods, local variables
 	+ SCREAMING_SNAKE_CASE for static and const vars
 
+###### [Features](https://doc.rust-lang.org/cargo/reference/features.html)
++ Mechanism to express conditional compilation and option dependencies
++ Package typically defines set of names features in features table of cargo file, each feature can either be enabled or disabled
 
 ###### Potentially useful libraries/crates
 [meval](https://docs.rs/meval/latest/meval/) - recognise and perform calculations from strings
