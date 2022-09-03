@@ -9,12 +9,12 @@ fn main() -> std::io::Result<()> {
     let listener = UnixListener::bind(SERVER_NAME);
     let mut server = UnixStream::connect(SERVER_NAME)?;
     let mut message = String::new();
-
+	
     stdin().read_line(&mut message)
         .ok()
         .expect("Failed to read line");
 
-    server.write_all(b"{message}")?;
+    server.write_all(message.as_bytes())?;
 
     Ok(())
 
