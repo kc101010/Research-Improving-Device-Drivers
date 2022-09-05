@@ -99,6 +99,31 @@ Main sources of complexity are split into the following driver faults:
 + These faults account for 23% of defects.
 
 ## Dingo architecture
++ Concurrency faults and software protocol violations consitute 39% of defects in study - clearly a significant source of problems for drivers.
++ "allows driver developers to focus on the main task of a driver: controlling the hardware"
+
+Dingo makes 2 main improvements over traditional hardware architectures
+1. Reduces amount of concurrency that the driver must handle by replacing the typical multithreaded model of computation with an event-driven model - eliminates majority of concurrency faults without impacting performance
+2. Provides a formal language for describing driver software protocols, which avoids confusion and ambiguity and helps developers implement the correct protocols 
+
+Doesn't try to provide solutions with other types of defects as these are provoked factors that are outwith the influence/control of the Operating System.
+
+Dingo specfies a model for communication between a driver and its environment.
+
+## Event-driven architecture for drivers
+Concurrency problems aren't unique to device drivers. In a multithreaded environment, concurrent activities interleave at the instruction levels which leads to non-determinism and state explosion. The result is that many programmers are typically ineffective in working with threads which is why multithreading is the leading source of bugs within a variety of applications including OS Kernels.
+
+An alternative for multithreaded concurrency is event driven concurrency. In this model, the program executes as many event-handlers which react to environment events. These events are strictly serialised and so can replace instruction-level interleaving with event-level interleaving.
+
+Serialisation means that the program state at the beginning of an event can only be changed by the current event handler. This simplifies reasoning about program behaviour and reduces potential for race conditions and deadlocks. 
+
+Threads vs events has been under debate within the systems community for an extremely long time. Writers argue that the use of an event-driven model with device drivers eliminates a majority of concurrency-related bugs. Events can also be implemented in a way that doesn't complicate development or negatively impact performance.
+
+An observation in favour of an event-driven apparoach is that modern drivers are partially event-driven for performance reasons. All perforamnce critical I/O is completed asyncronously. Async request handling leads to improved performance by parallelising I/IO and computation. The pattern of splitting long-running operations into steps of request and completion echoes that of event-driven systems. While drivers aren't fully utilising advantages found within an event-driven concurrency model, it is a style of a programming that is already familiar to developers.
+
+## Implementation
+Implemented on Linux by contructing adapters between Linux's mulithreaded driver protocols and Dingo's event-driven protocols. This means that Dingo and native Linux drivers continue to live together on the same system which offers "a gradual migration path to more reliable drivers".
+
 
 
 

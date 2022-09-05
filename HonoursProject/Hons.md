@@ -65,3 +65,37 @@ Changes:
 
 
 
+----
+
+## Project argument
+
+REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
+
++ Device Drivers are problematic - why?
+	+ Use of programming langs where mem unsafety is easy/common
+	+ They haven't changed much (Windows and Linux have not changed since the early 2000s)
+	+  It's not an area that has much focus - as far as I see
+	+ Developers might struggle to write the right code but they also work in a harash environment
+	+ Tools that are worked on/proposed don't seem to actually get much use
++ Here are various tools etc that are trying to fix this
+	+ Apples re-structuring kernel exts
+	+ Rust
+	+ Some other tools etc 
++ Here's what devs think
+	+ Jon Blow & Exo-kernels
++ Here's a few reasons how I propose we try to fix drivers
+	+ I do think that Rust is part of the way forward
+	+ I also think Apples way is another part, likely the best solution so far
+	+ I think there also certain tools that could do with widespread usage
+	+ Possibly another way forward is using such tools in the same way that app software uses debuggers etc?
++ Here's me doing 1 or 2 of my proposed fixes
+	+ Let's write the same driver in Rust & C and see how it goes!
+	+ Let's write a driver/extension for Apple and compare that to the C/Rust test.
+	+ Let's conduct some tests/analysis etc on the Rust, C and Apple drivers and compare all 3
++ Here's the results of those fixes
+	+ How was the experience between the drivers
+	+ Compare/measure errors/problems based on tests and analysis
++ Here's what else could be in the running for drivers
+	+ Future research
+	+ Recent work
+	+ My own personal opinion

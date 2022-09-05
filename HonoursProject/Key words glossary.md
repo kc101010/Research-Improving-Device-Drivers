@@ -9,4 +9,8 @@ Data Race - occurs when 2 separate threads access a location of shared memory. A
 OSDI  -Operating System Design & Implementation
 Hetergenous - not from the same source, individual
 
-[Mutex (Mutual exclusion object)](https://www.techtarget.com/searchnetworking/definition/mutex) - locking method to allow several threads to take turns in accessing a shared resource. 
+[Mutex (Mutual exclusion object)](https://www.techtarget.com/searchnetworking/definition/mutex) - locking method to allow several threads to take turns in accessing a shared resource
+
+[Interleaving (data) - Wikipedia](https://en.wikipedia.org/wiki/Interleaving_(data)#:~:text=In%20computing%2C%20interleaving%20of%20data%20refers%20to%20the,z2%20z3%20w0%20w1%20w2%20w3%20is%20not.) - interspersing of fields or channels of different meaning sequentially in memory, in processor registers or in file formats
+
+[Combinatorial explosion - Wikipedia](https://en.wikipedia.org/wiki/Combinatorial_explosion) (I assume this is the right thing) - rapid growth of the complexity of a problem due to how the combinatronics are affected by the input, contraints and bounds of the problem. With Computing, the explosion can occur in computing environments in a way analagous to communications and multi-dimensional space.
