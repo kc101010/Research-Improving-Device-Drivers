@@ -124,7 +124,11 @@ An observation in favour of an event-driven apparoach is that modern drivers are
 ## Implementation
 Implemented on Linux by contructing adapters between Linux's mulithreaded driver protocols and Dingo's event-driven protocols. This means that Dingo and native Linux drivers continue to live together on the same system which offers "a gradual migration path to more reliable drivers".
 
-
+## Conclusion
++ "Faulty drivers are a major cause of instability in operating systems"
++ concurrency faults and protocol (between OS and driver) violations are significant sources of failures in a variety of drivers
++ Developed and presented a new driver architecture to improve OS support which then enables simpler and more reliable drivers
++ The architecture can be implemented efficiently in a commodity OS and is effective in reducing real driver bugs
 
 
 ## Thoughts
