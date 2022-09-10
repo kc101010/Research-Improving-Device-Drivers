@@ -63,6 +63,11 @@
 ###### Potentially useful libraries/crates
 [meval](https://docs.rs/meval/latest/meval/) - recognise and perform calculations from strings
 
+###### Rust memory management
+https://deepu.tech/memory-management-in-rust/
+https://doc.rust-lang.org/reference/memory-allocation-and-lifetime.html
+
+
 
 ###### Notes/Thoughts
 + Learning to write Rust feels like I'm learning to make sentences as simple and concise as possible.
