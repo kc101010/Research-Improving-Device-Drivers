@@ -63,8 +63,69 @@
 ###### Potentially useful libraries/crates
 [meval](https://docs.rs/meval/latest/meval/) - recognise and perform calculations from strings
 
-###### Rust memory management
+### Rust memory management
 https://deepu.tech/memory-management-in-rust/
+
+Simple compared to memory structures of JVM, V8 and Go. As there's no garbage collection, there's also no generational memory or complex substructures.
+
+Rust manages memory as part of program execution during runtime with the Ownership model.
+
+![[RustMemoryLayout.png]]
+
+#### Heap
++ All dynamic data 
++ Biggest block of memory 
++ Managed by Rusts ownership model
+
+`Box` - abstraction for heap-allocated value in Rust.
+`Box::new` allocates memory
+`Box<T>` holds a smart pointer to the mem allocated for type `T` and reference is saved on stack
+
+#### Stack
++ 1 stack per thread
++ Default area for allocation of static values
++ Includes function frames, primitive values, structs and pointers to dynamic data in heap
+
+#### Mem usage
+All values are placed on Stack by default with 2 exceptions.
+1. When value size is Unknown/grows over time
+2. Manually creating a Box
+
+For these exceptions, the value will be allocated to the heap and a pointer to it will live on the Stack.
+
+*The article has a really useful slideshow that breaks down execution and how memory looks*
+
+Stack is automatically managed by OS rather than Rust. The heap is handled automatically with Rusts ownership model.
+
+#### Ownership
+Used to manage memory.
+
+Has rules:
+1. Each value must have a variable as its owner
+2. There must be 1 owner for a variable at any time
+3. When owner goes out of scope, the value is dropped and memory freed
+(These rules are applied to both heap and stack memory)
+
+Rules checked at compile-time, with mem management occuring at runtime w/ execution.
+Can use block scope for optimising memory.
+
+Ownership can be changed with `move`, this is done automatically when passing a variable to a function or creating a new assignment. For static primitives, a copy is used instead.
+
+#### RAIL
+
+Resource Acquisition is initialisation.
+
++ Borrowed from C++
++ Enforced when value is init, the variable owns the associated resources and destructor is called when variable goes out of scope. "This ensures that we will never have to manually free memory or worry about memory leaks."
+
+#### Borrowing
+Rather than take ownership of a variable, you can borrow it. There is a borrow-checker that ensures ownership rules aren't violated.
+
+#### Var lifetimes
+
+
+
+
 https://doc.rust-lang.org/reference/memory-allocation-and-lifetime.html
 
 
