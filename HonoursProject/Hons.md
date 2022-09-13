@@ -99,3 +99,12 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 	+ Future research
 	+ Recent work
 	+ My own personal opinion
+
+
+
+----
+## Research Questions
++ How do we use Rust to improve reliability of Linux Device Drivers? / How do we use Rust to improve reliability of Linux Kernel Modules?
++ How do we improve the reliability of Device Drivers ?
++ How do we apply Rust to prevent memory un-safety in Device Drivers?
++ What are the problems facing modern device drivers and how can we solve these?
