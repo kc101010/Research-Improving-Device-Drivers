@@ -17,3 +17,5 @@
 	+ Rust is good for fast prototyping (fast, instant feedback)
 	+ Type system (also gives 'superpowers?')
 	+ Compiler gives clear feedback on errors and how they might/should be solved
+
+https://www.phoronix.com/news/Rust-v8-For-Linux-Kernel

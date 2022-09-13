@@ -1,11 +1,3 @@
-Edited 19/8/22
-Changes:
-+ Change timeframes for project to be slightly more realistic
-
-### Potential questions to work on/cover
-+ How can Operating System models/layouts improve device drivers?
-+ How do OS Models/Layouts affect device drivers?
-+ Is the problem with device drivers caused by the OS?
 
 ### 1.2 Aims
 + Gain an understanding of the potential issues surrounding device drivers.
@@ -75,7 +67,7 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 	+ Use of programming langs where mem unsafety is easy/common
 	+ They haven't changed much (Windows and Linux have not changed since the early 2000s)
 	+  It's not an area that has much focus - as far as I see
-	+ Developers might struggle to write the right code but they also work in a harash environment
+	+ Developers might struggle to write the right code but they also work in a harsh environment
 	+ Tools that are worked on/proposed don't seem to actually get much use
 + Here are various tools etc that are trying to fix this
 	+ Apples re-structuring kernel exts
@@ -101,10 +93,85 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 	+ My own personal opinion
 
 
+----
+
+
+## Project Layout
+
++ ### Device Drivers have a lot of issues
+	+ Memory unsafety in C
+	+ Not much evolution/change
+		+ This is where I could discuss differences between OS drivers (win, lin, bsd, mac) and history
+	+ Not in the limelight very often
++ ### Stuff that was tried but didn't really help
+	+ Trying to harden C
+		+ Only mitigates issues, bugs still possible
+		+ Doesn't permanetly solve issue
+	+ Isolation
+		+ Sandboxing
+		+ Microkernel
+		+ Performance issues
+	+ C++ wasn't suitable
+		+ Rejected by torvalds for use linux
+	 
++ ### Tools, projects etc that might help 
+	+ Discuss Rust frameworks for drivers (both the windows and linux versions)
+		+ Then discuss Rust as a programming language and it's benefits 
+	+ Discuss Dingo framework for drivers
+	+ Apple re-structuring of Kernel Extensions
+	+ Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
+	
++ ### Here's my proposition of developing a Linux driver in Rust
+	+ Demonstrate driver work from before
+	+ Link back to Rust and it's benefits
+	+ Potentially try one of the frameworks
+	+ Own method 
+		+ `make VERBOSE` on C driver
+		+ Take info from that
+		+ Try to make Rust driver (maybe by binding C and Rust or vice versa)
+	+ Try it on MacOS?
+		+ Apple claim any language can be used, let's put it to the test with Rust and maybe something else? 
+	+ Write a driver that controls a generic computer mouse for Raspberry Pi 400 
+		
++ ### Discuss Results of Rust driver
+	+ Direct comparison to C
+	+ Showcase where Rust prevents issues (race conditions etc)
+	+ Discuss any shortcomings with Rust
+	+ Short discussion on development experience? (Productivity etc)
+	
++ ### What is in store for drivers
+	+ (Writing Linux Kernel mods in Rust)
+		+ Cover more Kernel APIs
+		+ Better kbuild integration
+		+ It's preferred to stop using C to support writing of true Rust modules in mainline kernel
+	+ Other future research
+
+
+
+
+
 
 ----
 ## Research Questions
+
+
+
+
+
+### Like
 + How do we use Rust to improve reliability of Linux Device Drivers? / How do we use Rust to improve reliability of Linux Kernel Modules?
-+ How do we improve the reliability of Device Drivers ?
++ Would the use of Rust be a sufficient enough improvement in device drivers?
++ Can tools (static analysis etc) be applied to improve device drivers?
++ Can moving driver code into user-space improve reliability in device drivers?
 + How do we apply Rust to prevent memory un-safety in Device Drivers?
 + What are the problems facing modern device drivers and how can we solve these?
+
+### Meh
++ How do we improve the reliability of Device Drivers?
++ How can Operating System models/layouts improve device drivers?
++ How do OS Models/Layouts affect device drivers?
+
+### No like
++ Is the problem with device drivers caused by the OS?
++ 
+
