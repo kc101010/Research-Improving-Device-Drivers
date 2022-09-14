@@ -122,7 +122,16 @@ Resource Acquisition is initialisation.
 Rather than take ownership of a variable, you can borrow it. There is a borrow-checker that ensures ownership rules aren't violated.
 
 #### Var lifetimes
+An concept that is important for ownership system to function. Construct used by borrow checker to ensure all references to an object are valid - this check is made during compile time. 
 
+Lifetime begins when a var is initialised and ends when it is closed/destroyed. It *is not* the same as variable scope.
+
+As code and lifetimes grow more complex, it is necessary to use [lifetime annotations](https://doc.rust-lang.org/stable/rust-by-example/scope/lifetime/explicit.html) to tell borrow checker how long references should be valid for. The compiler can't always infer lifetimes.
+
+#### Smart pointers
+Like pointers but with additional metadata capabilities - another concept taken from C++.
+
+Smart pointers own the data that they point to. `Box`, `String` and `Vec` are examples of smart pointers in Rust. You can also write custom smart pointers using structs.
 
 
 
