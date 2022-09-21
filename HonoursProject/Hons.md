@@ -113,8 +113,12 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 		+ Performance issues
 	+ C++ wasn't suitable
 		+ Rejected by torvalds for use linux
-	 
 + ### Tools, projects etc that might help 
+	+ Discuss Rust as a programming language
+		+ Improvements over C/C++
+		+ More and more peope are calling for Rust to replace C/C++
+		+ Loose discussion on similar memory safe programming lanuages
+			+ All provide some kind of unsafe 'loophole'
 	+ Discuss Rust frameworks for drivers (both the windows and linux versions)
 		+ Then discuss Rust as a programming language and it's benefits 
 	+ Discuss Dingo framework for drivers
@@ -130,7 +134,7 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 		+ Take info from that
 		+ Try to make Rust driver (maybe by binding C and Rust or vice versa)
 	+ Try it on MacOS?
-		+ Apple claim any language can be used, let's put it to the test with Rust and maybe something else? 
+		+ Apple claim any language can be used, let's put it to the test with Rust and maybe something else?- May not be feasible due to Apples OS protections but I could look for research etc that discusses
 	+ Write a driver that controls a generic computer mouse for Raspberry Pi 400 
 		
 + ### Discuss Results of Rust driver
@@ -154,14 +158,12 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 ----
 ## Research Questions
 
-
-
-
++  Can applying Rust improve reliability of Linux Device Drivers?
 
 ### Like
 + How do we use Rust to improve reliability of Linux Device Drivers? / How do we use Rust to improve reliability of Linux Kernel Modules?
 + Would the use of Rust be a sufficient enough improvement in device drivers?
-+ Can tools (static analysis etc) be applied to improve device drivers?
++ Can tools (static analysis etc) be sucessfully applied to improve device drivers?
 + Can moving driver code into user-space improve reliability in device drivers?
 + How do we apply Rust to prevent memory un-safety in Device Drivers?
 + What are the problems facing modern device drivers and how can we solve these?
@@ -172,6 +174,5 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 + How do OS Models/Layouts affect device drivers?
 
 ### No like
-+ Is the problem with device drivers caused by the OS?
-+ 
++ Is the problem with device drivers caused by the OS? 
 
