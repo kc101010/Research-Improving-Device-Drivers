@@ -8,3 +8,5 @@ Rust support planned for GCC 13.
 Talk by Andreas Hindborg of Western Digital about Rust-based NVMe Driver. It's still in early stages but benchmark results look promising. 
 
 Various graphs show that Rust is consistently meets or is close to meeting the performance of C. 
+
+https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf

@@ -98,7 +98,7 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 
 ## Project Layout
 
-+ ### Device Drivers have a lot of issues
++ ### Device Drivers have a lot of issues (order doesn't matter as all these topics are loosely related)
 	+ Memory unsafety in C
 	+ Not much evolution/change
 		+ This is where I could discuss differences between OS drivers (win, lin, bsd, mac) and history
@@ -116,26 +116,24 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 + ### Tools, projects etc that might help 
 	+ Discuss Rust as a programming language
 		+ Improvements over C/C++
-		+ More and more peope are calling for Rust to replace C/C++
-		+ Loose discussion on similar memory safe programming lanuages
-			+ All provide some kind of unsafe 'loophole'
-	+ Discuss Rust frameworks for drivers (both the windows and linux versions)
-		+ Then discuss Rust as a programming language and it's benefits 
+		+ More and more peope are calling for Rust to replace C/C++, provide examples
+		+ Loose discussion on similar memory safe programming lanuages (needs research)
+			+ All provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
+		+ Discuss Rust frameworks for drivers (both the windows and linux versions)
+	+  Apple re-structuring of Kernel Extensions
 	+ Discuss Dingo framework for drivers
-	+ Apple re-structuring of Kernel Extensions
 	+ Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
 	
 + ### Here's my proposition of developing a Linux driver in Rust
-	+ Demonstrate driver work from before
-	+ Link back to Rust and it's benefits
-	+ Potentially try one of the frameworks
-	+ Own method 
+	+ Demonstrate driver work written in C, undertaken before/during project.
+	+ Link back to Rust and it's benefits - its benefits can only make improvements to drivers, right?
+	+ Potentially try one of the frameworks and compare?
+	+ 'Own' method 
 		+ `make VERBOSE` on C driver
 		+ Take info from that
 		+ Try to make Rust driver (maybe by binding C and Rust or vice versa)
-	+ Try it on MacOS?
-		+ Apple claim any language can be used, let's put it to the test with Rust and maybe something else?- May not be feasible due to Apples OS protections but I could look for research etc that discusses
-	+ Write a driver that controls a generic computer mouse for Raspberry Pi 400 
+	+ Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)
+	+ Write a Rust driver that controls a generic computer mouse for Raspberry Pi 400 
 		
 + ### Discuss Results of Rust driver
 	+ Direct comparison to C
@@ -143,12 +141,14 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 	+ Discuss any shortcomings with Rust
 	+ Short discussion on development experience? (Productivity etc)
 	
-+ ### What is in store for drivers
-	+ (Writing Linux Kernel mods in Rust)
-		+ Cover more Kernel APIs
-		+ Better kbuild integration
-		+ It's preferred to stop using C to support writing of true Rust modules in mainline kernel
-	+ Other future research
++ ### What is in store for drivers/rust
+	+ Focusing on Drivers/Kernel etc
+		+ Addition of Rust into Linux, what has it done and what will it do?
+		+ Anymore progress from Apple/MS?
+		+ Are there any solutions/improvements appearing that aren't Rust?
+	+ Focusing on Rust;
+		+ Discuss how Volvo and other automotive companies are carrying out Research regarding Rust.
+		+ DRM driver w/ Linux on Apple silicon
 
 
 
@@ -158,7 +158,8 @@ REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
 ----
 ## Research Questions
 
-+  Can applying Rust improve reliability of Linux Device Drivers?
++ Can applying Rust improve reliability of Linux Device Drivers?
++ Can Rust improve reliability of Linux Device Drivers? 
 
 ### Like
 + How do we use Rust to improve reliability of Linux Device Drivers? / How do we use Rust to improve reliability of Linux Kernel Modules?
