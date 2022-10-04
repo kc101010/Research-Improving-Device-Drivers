@@ -10,7 +10,7 @@
 + Attempt to highlight various improvements which could be made to future driver maintainability.
 + Test that such improvements would continue to be viable in present-day and/or future operating systems.
 
-#### What I'd like to do/gain throughout this project
+# What I'd like to do/gain throughout this project
 
 #### Pre (Summer - Early Sep)
 + Generate lead-up to project
@@ -59,6 +59,16 @@
 
 ----
 
+
+
+# Core Objectives
++ Literature Review
+	+ Rust
+	+ Linux Driver Development
+	+ Research Projects related to Driver dev
++ Develop some kind of Rust driver
+
+
 # Project Plan
 
 ## October
@@ -73,7 +83,9 @@
 	+ Email backup to Mark
 	+ 2,500 - 3000 words
 	+ Full details on trello
++ Very quickly after interim is when I should start adding to the dissertation
 + Start driver development at mid-way/end of month (provided Research went well last month)
+
 
 
 ## December

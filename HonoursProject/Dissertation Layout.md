@@ -116,11 +116,11 @@ problems etc, not always needed
 
 Before you start writing, make sure you know:
 
--   The word count (and whether you will be penalised for being too many words over or under) 
--   Any compulsory sections and the structure required
+-   The word count (and whether you will be penalised for being too many words over or under) [X]
+-   Any compulsory sections and the structure required [X]
 -   The style of writing required
--   What types of sources are permitted
--   The types of methodology you are allowed to use
+-   What types of sources are permitted [X]
+-   The types of methodology you are allowed to use 
 -   The deadline for submission
 -   The requirements for submitting your paper copy for marking, such as formatting and binding 
--   Where, when, and how you submit your dissertation
+-   Where, when, and how you submit your dissertation [X]
