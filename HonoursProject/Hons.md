@@ -59,101 +59,31 @@
 
 ----
 
-## Project argument
+# Project Plan
 
-REFER BACK TO PROJECT PROPOSAL BEFORE FINALISING PLEASE
+## October
++ Work on literature review - remember, I've already got a decent chunk of papers read through so most vital & relevant ones now.
++ Conduct Research into how Rust drivers are written and produced - I have decent enough know-how on the writing and use of Linux drivers that I can switch to focus on Rust a bit more, it is more relevant to the project.
++ Start work on the interim report - ideally ASAP.
 
-+ Device Drivers are problematic - why?
-	+ Use of programming langs where mem unsafety is easy/common
-	+ They haven't changed much (Windows and Linux have not changed since the early 2000s)
-	+  It's not an area that has much focus - as far as I see
-	+ Developers might struggle to write the right code but they also work in a harsh environment
-	+ Tools that are worked on/proposed don't seem to actually get much use
-+ Here are various tools etc that are trying to fix this
-	+ Apples re-structuring kernel exts
-	+ Rust
-	+ Some other tools etc 
-+ Here's what devs think
-	+ Jon Blow & Exo-kernels
-+ Here's a few reasons how I propose we try to fix drivers
-	+ I do think that Rust is part of the way forward
-	+ I also think Apples way is another part, likely the best solution so far
-	+ I think there also certain tools that could do with widespread usage
-	+ Possibly another way forward is using such tools in the same way that app software uses debuggers etc?
-+ Here's me doing 1 or 2 of my proposed fixes
-	+ Let's write the same driver in Rust & C and see how it goes!
-	+ Let's write a driver/extension for Apple and compare that to the C/Rust test.
-	+ Let's conduct some tests/analysis etc on the Rust, C and Apple drivers and compare all 3
-+ Here's the results of those fixes
-	+ How was the experience between the drivers
-	+ Compare/measure errors/problems based on tests and analysis
-+ Here's what else could be in the running for drivers
-	+ Future research
-	+ Recent work
-	+ My own personal opinion
+## November
++ ***==!! Interim report due 25th @ 23:59.==
+	+ Draft to supervisor due 1 week before submission. 
+	+ Email backup to Mark
+	+ 2,500 - 3000 words
+	+ Full details on trello
++ Start development at mid-way/end of month
 
 
-----
+## December
 
+## January
 
-## Project Layout
+## February
 
-+ ### Device Drivers have a lot of issues (order doesn't matter as all these topics are loosely related)
-	+ Memory unsafety in C
-	+ Not much evolution/change
-		+ This is where I could discuss differences between OS drivers (win, lin, bsd, mac) and history
-	+ Not in the limelight very often
-+ ### Stuff that was tried but didn't really help
-	+ Trying to harden C
-		+ Only mitigates issues, bugs still possible
-		+ Doesn't permanetly solve issue
-	+ Isolation
-		+ Sandboxing
-		+ Microkernel
-		+ Performance issues
-	+ C++ wasn't suitable
-		+ Rejected by torvalds for use linux
-+ ### Tools, projects etc that might help 
-	+ Discuss Rust as a programming language
-		+ Improvements over C/C++
-		+ More and more peope are calling for Rust to replace C/C++, provide examples
-		+ Loose discussion on similar memory safe programming lanuages (needs research)
-			+ All provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
-		+ Discuss Rust frameworks for drivers (both the windows and linux versions)
-	+  Apple re-structuring of Kernel Extensions
-	+ Discuss Dingo framework for drivers
-	+ Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
-	
-+ ### Here's my proposition of developing a Linux driver in Rust
-	+ Demonstrate driver work written in C, undertaken before/during project.
-	+ Link back to Rust and it's benefits - its benefits can only make improvements to drivers, right?
-	+ Potentially try one of the frameworks and compare?
-	+ 'Own' method 
-		+ `make VERBOSE` on C driver
-		+ Take info from that
-		+ Try to make Rust driver (maybe by binding C and Rust or vice versa)
-	+ Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)
-	+ Write a Rust driver that controls a generic computer mouse for Raspberry Pi 400 
-		
-+ ### Discuss Results of Rust driver
-	+ Direct comparison to C
-	+ Showcase where Rust prevents issues (race conditions etc)
-	+ Discuss any shortcomings with Rust
-	+ Short discussion on development experience? (Productivity etc)
-	
-+ ### What is in store for drivers/rust
-	+ Focusing on Drivers/Kernel etc
-		+ Addition of Rust into Linux, what has it done and what will it do?
-		+ Anymore progress from Apple/MS?
-		+ Are there any solutions/improvements appearing that aren't Rust?
-	+ Focusing on Rust;
-		+ Discuss how Volvo and other automotive companies are carrying out Research regarding Rust.
-		+ DRM driver w/ Linux on Apple silicon
+## March
 
-
-
-Development
-Experimental Results
+## April
 
 
 ----
