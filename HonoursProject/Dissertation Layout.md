@@ -14,7 +14,11 @@
 ---
 
 # BACKGROUND[c] 10
-## Device Drivers have a lot of issues (order doesn't matter as all these topics are loosely related)
+
+## Device Drivers
+###  What are they?
+
+### They have a lot of issues 
 + Memory unsafety in C
 + Not much evolution/change
 	+ This is where I could discuss differences between OS drivers (win, lin, bsd, mac) and history
@@ -47,7 +51,7 @@
 # LITERATURE REVIEW [c] 20
 (chasing current research)
 
-### Tools, projects etc that might help 
+### Tools, works by previous projects
 + Discuss Rust as a programming language
 	+ Improvements over C/C++
 	+ More and more peope are calling for Rust to replace C/C++, provide examples
