@@ -14,22 +14,32 @@
 ---
 
 # BACKGROUND[c] 10
-### Device Drivers have a lot of issues (order doesn't matter as all these topics are loosely related)
+## Device Drivers have a lot of issues (order doesn't matter as all these topics are loosely related)
 + Memory unsafety in C
 + Not much evolution/change
 	+ This is where I could discuss differences between OS drivers (win, lin, bsd, mac) and history
 + Not in the limelight very often
 
-### Here's my proposition of developing a Linux driver in Rust
+## Rust
++ History
++ Why's
++ Development
++ More detailed info comes in Literature review?
+
+## Here's my proposition of developing a Linux driver in Rust
 + Demonstrate driver work written in C, undertaken before/during project.
-+ Link back to Rust and it's benefits - its benefits can only make improvements to drivers, right?
++ Link to Rust and it's benefits - its benefits can only make improvements to drivers, right?
++ Plan to write a driver for Linux in Rust that controls a peripheral connected to  Raspberry Pi 400 
 + Potentially try one of the frameworks and compare?
-+ 'Own' method 
-	+ `make VERBOSE` on C driver
-	+ Take info from that
-	+ Try to make Rust driver (maybe by binding C and Rust or vice versa)
-+ Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)
-+ Write a Rust driver that controls a generic computer mouse for Raspberry Pi 400 
+	+ 'Own' method 
+		+ `make VERBOSE` on C driver
+		+ Take info from that
+		+ Try to make Rust driver (maybe by binding C and Rust or vice versa)
+	+ Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)
+	+ There is previous work in making drivers for Rust but none of it seems solid or widely adopted so maybe there's other methods that can be explored
+		+ Securing embedded drivers
+		+ Matias Heiden
+		+ Thomas & Gaynor
 
 ---
 
@@ -48,7 +58,7 @@
 + Discuss Dingo framework for drivers
 + Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
 
-### Stuff that was tried but didn't really help
+### Stuff that was tried but didn't really help - THIS NEEDS RESEARCH ATTACHED
 + Trying to harden C
 	+ Only mitigates issues, bugs still possible
 	+ Doesn't permanetly solve issue

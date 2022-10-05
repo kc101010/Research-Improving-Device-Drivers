@@ -10,7 +10,7 @@ ity, Reliability and Security (ARES 2019) (ARES ’19), August 26–29, 2019
 
 
 ## Abstract
-+ Propretary device drivers for embedded systems typically lack quality due to little code auditing
++ Proprietary device drivers for embedded systems typically lack quality due to little code auditing
 + New solution to improve reliability and safety of drivers without changing the kernel; Rewriting drivers in Rust (focused on third party developers)
 	+ Can help developers detect security issues at compile time (language model)
 + Developed framework to help in quickly building Rust drivers

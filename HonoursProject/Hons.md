@@ -73,8 +73,8 @@
 
 ## October
 + Work on literature review - remember, I've already got a decent chunk of papers read through so most vital & relevant ones now.
-+ Start organising literature review for interim and final reports.
-+ Conduct Research into how Rust drivers are written and produced - I have decent enough know-how on the writing and use of Linux drivers that I can switch to focus on Rust a bit more, it is more relevant to the project.
++ Start organising literature review for interim and final reports - think about making a list of papers on the dissertation note.
++ Conduct Research into how Rust drivers are written and produced - I have decent enough know-how on the writing and use of Linux drivers that I can switch to focus on Rust a bit more, it is more relevant to the project and I can acquire things I need to know as I go.
 + Start work on the interim report - ideally ASAP. Might be best to focus on this after Virtualisation CW1.
 
 ## November
@@ -83,12 +83,13 @@
 	+ Email backup to Mark
 	+ 2,500 - 3000 words
 	+ Full details on trello
-+ Very quickly after interim is when I should start adding to the dissertation
-+ Start driver development at mid-way/end of month (provided Research went well last month)
-
-
++ Very quickly after interim is when I should start adding to the dissertation, focusing on the first few sections
++ Start driver development at mid-way (provided Research went well last month), end of month at a push
 
 ## December
++ Should be around mid-way through driver development
++ Continue adding to disseration
++ I should likely also start and possibly finish my presentation during this month so its out of the way and ready to go
 
 ## January
 
