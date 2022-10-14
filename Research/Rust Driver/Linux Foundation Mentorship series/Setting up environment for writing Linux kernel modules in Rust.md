@@ -21,3 +21,5 @@ Can also show off rust-analyzer
 Cloned Rust-for-Linux repo
 Cloned mirror/busybox repo
 Config the kernel
+
+`make LLVM=1 allnoconfig qemu-busybox-min.config rust.config `
