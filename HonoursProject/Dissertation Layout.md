@@ -56,9 +56,9 @@
 	+ Improvements over C/C++
 	+ More and more peope are calling for Rust to replace C/C++, provide examples
 	+ Loose discussion on similar memory safe programming lanuages (needs research)
-		+ All provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
-	+ Discuss Rust frameworks for drivers (both the windows and linux versions)
-+  Apple re-structuring of Kernel Extensions
+	+ Discuss Rust frameworks for Linux drivers 
++ All safe programming langs provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
++ Apple re-structuring of Kernel Extensions
 + Discuss Dingo framework for drivers
 + Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
 

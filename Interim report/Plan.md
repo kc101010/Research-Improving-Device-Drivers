@@ -32,6 +32,7 @@ Between 2.5k and 3k words.
 + Applications - Able to Focus on Systems programming
 + (Fastest high level programming language)
 + Why is it useful in this project
++ More and more peope are calling for Rust to replace C/C++, provide examples
 
 #### Proposition: Developing a Linux driver in Rust
 + Demonstration/Discussion on driver work in C undertaken before and during project.
@@ -42,6 +43,17 @@ Between 2.5k and 3k words.
 ----
 ## Literature Review {30%} 
 
++ Discuss Rust as a programming language
+	+ Improvements over C/C++
+	+ Loose discussion on similar memory safe programming lanuages (needs research)
+	+ Discuss Rust frameworks for Linux drivers 
+
++ All safe programming langs provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
+
++ Apple re-structuring of Kernel Extensions
++ Discuss Dingo framework for drivers
+
++ Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
 
 ----
 ## Preliminary Work {30%}
