@@ -23,3 +23,12 @@ Cloned mirror/busybox repo
 Config the kernel
 
 `make LLVM=1 allnoconfig qemu-busybox-min.config rust.config `
+
+# Running and checking for PRs
+
+`make LLVM=1 -j6 rustfmtcheck` - run to check code against rust formatting
+`make LLVM=1 -j6 rustdoc` - run to generate and verify rust documentation, incl user written docs
+`make LLVM=1 -j6 CLIPPY=1` - runs linker to verify libs and headers (?)
+`make LLVM=1 -j6 rusttest` - runs out-of-kernel tests
+
+Uses Kunit for testing.
