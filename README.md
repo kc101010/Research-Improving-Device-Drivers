@@ -1,7 +1,7 @@
 # Research-Improving-Device-Drivers
-Research @ University of the West of Scotland for Honours project 
+Main repo for Honours Project, related research and all files
 ***
-"Investigation into improving performance and reliability of device drivers" (2022 - 2023) 
+"Developing Device Drivers in Rust" (2022 - 2023) 
 by Kyle Christie
 
 NOTE: This project is best viewed with [Obsidian](https://obsidian.md/)
@@ -21,3 +21,4 @@ NOTE: This project is best viewed with [Obsidian](https://obsidian.md/)
 + [Rust playlist - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8ax757FmrreXXXe9a1ARvOR)
 + [Device Drivers playlist  - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8ZYEZ7QW13phJdMqM9pJ46b)
 + [Systems Programming Study - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8bAzBZg4X2yl5P7EIaB92eN)
++ [Writing a Rust Driver - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8agxiyYB3uKGUepCRcgFc1h)
