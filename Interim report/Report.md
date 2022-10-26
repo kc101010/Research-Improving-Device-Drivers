@@ -43,12 +43,6 @@ Rust code is immediatley reliable (Oatman, 2022). Rust code will always be backw
 
 #### 2.3.2 Driver Frameworks ()
 
-
-
-
-
-
-
 ## 3. Preliminary Work (0/500)
 
 ## 4. Current progress, future work (0/750)
