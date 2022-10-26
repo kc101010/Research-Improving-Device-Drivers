@@ -1,3 +1,5 @@
+## Abstract
+
 ## 1. Overview (497/500)
 Device drivers are a vital component of Operating Systems and facilitate the use of common peripheral devices, interaction with hardware as well as providing a multitude of extensions to an Operating System in its file system(s), network protocol, anti-virus capability and more (Ball et al, 2006). Drivers can also be described as the "software layer that lies between applications and physical devices" (Corbet et al, 2005.). While drivers are a clear necessity within an Operating System, they suffer from a range of issues that have various consequences.
 
@@ -35,7 +37,5 @@ Developers previously struggled with the Windows XP driver API (Ball et al, 2006
 ## 3. Preliminary Work (0/500)
 
 ## 4. Current progress, future work (0/750)
-
-
 
 ## References
