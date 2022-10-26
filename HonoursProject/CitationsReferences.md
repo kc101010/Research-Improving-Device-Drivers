@@ -25,6 +25,8 @@ Ritchie, M. D. (1993) "The Development of the C Language" [Online] Bell Labs, Lu
 
 Rust Community (n.d.) "The Cargo Book" [Online] Available: https://doc.rust-lang.org/cargo/index.html [Accessed 23 October 2022]
 
+Oatman, T. (No Boilerplate) (2022) "Stop writing Rust (and go outside and play!) [RUST-5]" 9.40mins. [Online] Available: https://youtu.be/Z3xPIYHKSoI [Accessed 3 August 2022]
+
 Thomas, G. Gaynor, A. (2019) "Linux Kernel Modules in Rust".  [Online] Linux Security Summit. Available: https://youtu.be/RyY01fRyGhM [Accessed 1 August 2022]
 
 University of Washington, Department of Computer Science and Engineering (2004) CSE 341: Unsafe languages (c) [Online] Available: https://courses.cs.washington.edu/courses/cse341/04wi/lectures/26-unsafe-languages.html [Accessed 14 October 2022]

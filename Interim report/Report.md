@@ -26,13 +26,28 @@ The end goal of this project is to develop a Linux Driver in Rust. It is a relat
 
 ## 2. Literature Review (1000)
 
-### 2.1. Rust (257w)
+### 2.1. Rust (442w)
 Rust is a "compiled, concurrent, safe, systems programming language" (Klabnik, 2016) which released in 2015. It was originally invented by Graydon Hoare, an employee at Mozilla, who started the project in 2006 which was then adopted by Mozilla in 2010 (Klabnik, 2016). Rust has several features which are highly attractive especially with regards to drivers and memory safety. 
 
-Cargo is the build tool package manager for the Rust language (Klabnik, 2016) and is reponsible for managing dependencies within a project while also allowing users to create their own packages (Rust Community, n.d.). Rust projects typically include a .toml configuration file which cargo uses to read dependencies. This way cargo can automatically download and install dependencies. If necessary it will also manage dependencies of dependencies and is therefore a highly convenient tool for developers. Cargo is supplemented by Crates.io which is an open-source repository (or registry) that holds all public crates or libraries (Klabnik, 2016). 
+Cargo is the build tool package manager for the Rust language (Klabnik, 2016) and is reponsible for managing dependencies within a project while also allowing users to create their own packages (Rust Community, n.d.). Rust projects typically include a .toml configuration file which cargo uses to read dependencies. This way cargo can automatically download and install dependencies. If necessary it will also manage dependencies of dependencies and is therefore a highly convenient tool for developers (Klabnik, 2016). Cargo is supplemented by Crates.io which is an open-source repository (or registry) that holds all public crates or libraries (Klabnik, 2016). 
 
-Rust is accompanied by a powerful compiler that makes use of a strong type system. It checks code at compile time so errors can be detected before code is deployed (Li et al, 2019).  Therefore, the compiler is also used to highlight errors and prevent developers from making common mistakes (Klabnik, 2016). This is critically important, especially within drivers, as it was previously established that writing device drivers is no easy task.
-Developers previously struggled with the Windows XP driver API (Ball et al, 2006) and it has  been highlighted that writing C code for the kernel is difficult (Renzelmann and Swift, 2009).
+Rust is accompanied by a powerful compiler that makes use of a strong type system and enforces good practices in code. It checks code at compile time so errors can be detected before code is deployed (Li et al, 2019).  Therefore, the compiler is also used to highlight errors and prevent developers from making common mistakes (Klabnik, 2016) as it gives clear feedback on errors and how they may be solved (Oatman, 2022). This is critically important, especially within drivers, as it was previously established that writing device drivers is no easy task. Developers previously struggled with the Windows XP driver API (Ball et al, 2006) and it has been highlighted that writing C code for the kernel is difficult (Renzelmann and Swift, 2009). The compiler also disallows unused variables and enforces correct concurrency (Oatman, 2022). If a variable is sent to be owned by a thread or channel, it can no longer be read, and a compiler error occurs if an attempt to read is made (Oatman, 2022). The compiler also forces the developer to handle errors (Oatman, 2022).
+
+Rust code is immediatley reliable (Oatman, 2022). Rust code will always be backwards compatible with old code always able to compile with new versions of the language (Oatman, 2022). This means that old code will benefit from optimisations made to the rust toolchain, code of all ages will improve and speed up alongside the language itself (Oatman, 2022). The added benefit of this is a small revolution in code maintenance, some of the most popular crates can be considered 'complete'. In some cases, they have not been updated in a long time, as the code has no issues and is less likely to rot (Oatman, 2022). 
+
+### 2.2 Memory safety and vulnerabilities ()
+
+### 2.3 Previous Works ()
+
+#### 2.3.1 Apples restructuring of Kernel Extensions ()
+
+#### 2.3.2 Driver Frameworks ()
+
+
+
+
+
+
 
 ## 3. Preliminary Work (0/500)
 

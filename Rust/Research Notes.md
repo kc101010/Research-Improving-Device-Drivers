@@ -1,5 +1,4 @@
 ["Stop Writing Rust  - No Boilerplate (14/7/2022)"](https://www.youtube.com/watch?v=Z3xPIYHKSoI)
-[Script for above video with sources and explanations](https://github.com/0atman/noboilerplate/blob/main/scripts/Stop%20Writing%20Rust.md)
 + ###### Rust is the fastest high level programming language (source: https://github.com/kostya/benchmarks)
 	+ Application expands and won't slow down
 	+ Likely no need to have a scaling plan
