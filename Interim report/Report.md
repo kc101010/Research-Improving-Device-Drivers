@@ -26,14 +26,30 @@ The end goal of this project is to develop a Linux Driver in Rust. It is a relat
 
 ## 2. Literature Review (1000)
 
-### 2.1. Rust (442w)
+### 2.1. Rust (853w)
 Rust is a "compiled, concurrent, safe, systems programming language" (Klabnik, 2016) which released in 2015. It was originally invented by Graydon Hoare, an employee at Mozilla, who started the project in 2006 which was then adopted by Mozilla in 2010 (Klabnik, 2016). Rust has several features which are highly attractive especially with regards to drivers and memory safety. 
 
-Cargo is the build tool package manager for the Rust language (Klabnik, 2016) and is reponsible for managing dependencies within a project while also allowing users to create their own packages (Rust Community, n.d.). Rust projects typically include a .toml configuration file which cargo uses to read dependencies. This way cargo can automatically download and install dependencies. If necessary it will also manage dependencies of dependencies and is therefore a highly convenient tool for developers (Klabnik, 2016). Cargo is supplemented by Crates.io which is an open-source repository (or registry) that holds all public crates or libraries (Klabnik, 2016). 
+Cargo is the build tool and package manager for the Rust language (Klabnik, 2016) and is reponsible for managing dependencies within a project while also allowing users to create their own packages (Rust Community, n.d.). Rust projects typically include a .toml configuration file which cargo uses to read dependencies. This way cargo can automatically download and install dependencies. If necessary it will also manage dependencies of dependencies and is therefore a highly convenient tool for developers (Klabnik, 2016). Cargo is supplemented by Crates.io which is an open-source repository (or registry) that holds all public crates or libraries (Klabnik, 2016). 
 
 Rust is accompanied by a powerful compiler that makes use of a strong type system and enforces good practices in code. It checks code at compile time so errors can be detected before code is deployed (Li et al, 2019).  Therefore, the compiler is also used to highlight errors and prevent developers from making common mistakes (Klabnik, 2016) as it gives clear feedback on errors and how they may be solved (Oatman, 2022). This is critically important, especially within drivers, as it was previously established that writing device drivers is no easy task. Developers previously struggled with the Windows XP driver API (Ball et al, 2006) and it has been highlighted that writing C code for the kernel is difficult (Renzelmann and Swift, 2009). The compiler also disallows unused variables and enforces correct concurrency (Oatman, 2022). If a variable is sent to be owned by a thread or channel, it can no longer be read, and a compiler error occurs if an attempt to read is made (Oatman, 2022). The compiler also forces the developer to handle errors (Oatman, 2022).
 
 Rust code is immediatley reliable (Oatman, 2022). Rust code will always be backwards compatible with old code always able to compile with new versions of the language (Oatman, 2022). This means that old code will benefit from optimisations made to the rust toolchain, code of all ages will improve and speed up alongside the language itself (Oatman, 2022). The added benefit of this is a small revolution in code maintenance, some of the most popular crates can be considered 'complete'. In some cases, they have not been updated in a long time, as the code has no issues and is less likely to rot (Oatman, 2022). 
+
+Rust has no defined memory model thus has simple memory structures compared to that of JVM and Go (Sasidharan, 2020). As there is no garbage collection there is no generational memory or complex substructures. Memory is managed as part of execution, applying the Ownership model during runtime (Sasidharan, 2020). 
+
+![[RustMemoryLayout.png]]
+
+(Figure 3. Memory layout of a Rust program. Sasidharan, 2020.)
+
+Rust, of course, implements a Stack and Dynamic Heap within programs. Typically all variables are placed on the stack with the following exceptions; A manually created box and when the variable size is unknown or grows over time (Sasidharan, 2020). In these cases, the variable is then allocated to the heap with a pointer to the data placed on the Stack. A box is an abstraction that represents a heap-allocated value (Sasidharan, 2020). In order to manage memory, Rust uses a system of Ownership upheld by three rules which are applied both the stack and heap (Sasidharan, 2020); 
+
+1. Each value must be owned by a variable
+2. There must always be a single owner for a variable at any time
+3. When the owner goes out of scope, the value is dropped
+
+These rules are checked at compile-time, memory management is conducted at runtime with execution, this means there is no cost to performance or further overhead (Sasidharan, 2020). Ownership can be changed with the `move`  function. This is performed automatically when a variable is passed to a function or when the variable is re-assigned, `copy` is instead used for static primitives (Sasidharan, 2020). Rust utilises RAIL - Resource Acquisition is Initialisation - which is enforced when a value is initialised (Sasidharan, 2020). Under RAIL, the variable owns its related resources with its destructor called when the variable goes out of scope, which reduces the need for manual memory management (Sasidharan, 2020). This concept is borrowed from C++ (Sasidharan, 2020). Rust also implements a system of borrowing where a variable which can be used rather than taking ownership of the variable, a borrow-checker enforces ownership rules (Sasidharan, 2020).
+
+Variables have lifetimes which is important for the functionality of the ownership system (Sasidharan, 2020). A variables lifetime begins at initialisation and ends when it is closed or destroyed. This should not be considered variable scope (Sasidharan, 2020). The borrow-checker uses this concept at compile time to ensure that all references to an object are valid (Sasidharan, 2020). It is clear that the implementation of memory management of Rust will help in ensuring memory safety, an important factor for the application of Rust within drivers. 
 
 ### 2.2 Memory safety and vulnerabilities ()
 

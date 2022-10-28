@@ -15,6 +15,8 @@ Klabnik, S. (2016) "The History of Rust". ACM. [Online] Available: https://youtu
 
 Klabnik, S. Nichols C. and Rust Community. (2022) "The Rust Programming Language" [Online] Available: https://doc.rust-lang.org/book/ [Accessed 3 August 2022]
 
+Oatman, T. (No Boilerplate) (2022) "Stop writing Rust (and go outside and play!) [RUST-5]" 9.40mins. [Online] Available: https://youtu.be/Z3xPIYHKSoI [Accessed 3 August 2022]
+
 Palix, N. Thomas, G. Saha, S. Calves, C. Lawall, J. Muller, G. (2011) "Faults in Linux: Ten Years Later"[Online] ACM SIGPLAN Notices, Volume 46, Issue 3. pg 305 to 318. Available: https://dl.acm.org/doi/10.1145/1961296.1950401 [Accessed 5 October 2022]
 
 Prossimo  (2022) "What is memory safety and why does it matter?" [Online] Internet Security Research Group. Available: https://www.memorysafety.org/docs/memory-safety/ [Accessed 14 October 2022]
@@ -25,7 +27,7 @@ Ritchie, M. D. (1993) "The Development of the C Language" [Online] Bell Labs, Lu
 
 Rust Community (n.d.) "The Cargo Book" [Online] Available: https://doc.rust-lang.org/cargo/index.html [Accessed 23 October 2022]
 
-Oatman, T. (No Boilerplate) (2022) "Stop writing Rust (and go outside and play!) [RUST-5]" 9.40mins. [Online] Available: https://youtu.be/Z3xPIYHKSoI [Accessed 3 August 2022]
+Sasidharan, K. D. (2020) "Visualizing memory management in Rust". [Online] Technorage. Available: https://deepu.tech/memory-management-in-rust/
 
 Thomas, G. Gaynor, A. (2019) "Linux Kernel Modules in Rust".  [Online] Linux Security Summit. Available: https://youtu.be/RyY01fRyGhM [Accessed 1 August 2022]
 
