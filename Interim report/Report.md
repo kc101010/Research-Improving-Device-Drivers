@@ -63,7 +63,22 @@ As an example, we can consider a program that manages to-do lists for several us
 
 #### 2.3.2 Driver Frameworks ()
 
-## 3. Preliminary Work (0/500)
+## 3. Preliminary Work (407/500)
+Work on this project began before the start of the academic year during July and initially continued the plan of the previously written research proposal; 'Investigation into improving performance and reliability of modern device drivers'. A GitHub repository was privately opened in order to store my work, make it available to others and to act as a backup in the case that my workstation broke down. Work began by conducting research into Linux Device Drivers and quantifying findings from the research proposal. Following this, research then continued by exploring the potential application of the Rust programmming language within Device Drivers of a range of Operating Systems including Windows, Linux and Apple products. 
+
+![[RustBMICalculator.png]]
+
+At this time, the Rust programming language was studied both in theory and practise, a small collection of programs were written to learn Rust on both Linux and Windows machines, one such example being a BMI Calculator program. This allowed for the learning of basic and fundamental Rust concepts including variable assignment, standard library functions and so on. The study of Linux kernel modules continued which lead to a fundamental understanding in how drivers may be written for an Operating System, especially for Linux. It was possible to learn about how drivers are compiled, how they are written, what libraries are used and how exactly driver software differs from standard application software. Various resources were used from textbooks to online tutorials. 
+
+![[CDriverHello.png]]
+
+Between August and September 2022, research was continued on relevant literature alongside the previously mentioned studying. From August 19th 2022, regular diaries were kept explained the work carried out, thoughts/notes on the work or topic and anything else which was relevant. These diaries have been upkept throughout the project, this will continue for the entirety of the project to provide an in-depth record of work carried out, thoughts, theses, notes, justifications and so on. During this time, I also reached out to my supervisor to discuss the project and request their supervision.
+
+![[FirstDiary.png]]
+
+
+Before the University term had commenced, A basic knowledge in the Rust programming language and Linux kernel modules written in Rust was gained. A supervisor had been informally agreed. Research had been conducted on a multitude of papers and topics including Rust driver frameworks, differences in drivers between various Operating Systems, exokernels, writing a device driver using Rust and static analysis tools. Prominent figures in Game development and Software Engineering were contacted who gave their thoughts, best wishes and potential resources. 
+
 
 ## 4. Current progress, future work (0/750)
 
