@@ -11,8 +11,8 @@ Next, Drivers have seen little to no change within the last two decades. Evidenc
 
 Such examples have been built and executed on a small collection of Linux distributions that utilise more recent kernel versions, specifically 4.19.0-17-amd64, 5.15.0-52-generic and 5.15.67-v7l+. 
 
-![[DriverRunningOnPi1.png]]
-(Figure 1. Raspberry Pi with Linux kernel 5.15.67-v7l+ running the character driver from final episode of Karthik M. tutorials. )
+
+~~(Figure 1. Raspberry Pi with Linux kernel 5.15.67-v7l+ running the character driver from final episode of Karthik M. tutorials. )~~
 
 ![[cat_char_drv results.png]]
 (Figure 2. Debian Virtual Machine with Linux Kernel 4.19.0-17-amd64 running the character driver from final episode of Karthik M. tutorials.)
@@ -77,9 +77,37 @@ Between August and September 2022, research was continued on relevant literature
 ![[FirstDiary.png]]
 
 
-Before the University term had commenced, A basic knowledge in the Rust programming language and Linux kernel modules written in Rust was gained. A supervisor had been informally agreed. Research had been conducted on a multitude of papers and topics including Rust driver frameworks, differences in drivers between various Operating Systems, exokernels, writing a device driver using Rust and static analysis tools. Prominent figures in Game development and Software Engineering were contacted who gave their thoughts, best wishes and potential resources. 
+Before the University term had commenced, A basic knowledge in the Rust programming language and Linux kernel modules written in Rust was gained. A supervisor had been informally agreed. Research had been conducted on a multitude of papers and topics including Rust driver frameworks, differences in drivers between various Operating Systems, exokernels, writing a device driver using Rust and static analysis tools. Prominent figures in Game development and Software Engineering were contacted who gave their thoughts, best wishes and suggested potential resources. 
 
 
-## 4. Current progress, future work (0/750)
+## 4. Current progress, future work (736/750)
+
+From the start of the academic year, the previously mentioned work was continued. A Raspberry Pi 400 was obtained intended to be used as a driver development workstation with an external hard drive also purchased to extend the Pi's storage capability. This Raspberry Pi machine was configured for Driver Development and previous C drivers were built and tested.  
+
+![[DriverRunningOnPi1.png]]
+
+Most recently, research has been conducted into using Rust in Linux kernel modules. Several projects have attempted to combine Rust and Drivers but none have been as successful as the Rust for Linux project, which provided the foundation for Rust to be incorporated into the Linux kernel alongside C (Wikipedia, 2022) in Linux kernel 6.1 (Vaughan-Nichols, 2022). With this, research was continued with a focus on the Rust for Linux project. As a result of this, a Linux virtual machine was developed which runs a custom kernel developed by the Rust for Linux team alongside BusyBox. This virtual machine was used to successfully test both a Hello World driver and 'Char' driver which were completely written in Rust.
+
+![[ScullReadWorking.png]]
+
+![[RustModuleCodeListing.png]]
+
+After the successes of this Virtual Machine, it was decided that it would be suitable to install this custom kernel to the Raspberry Pi. In order to safeguard the Pi, a test installation was carried out on a Debian Virtual Machine via VirtualBox where the Linux 6.1-rc3 Kernel was compiled, built and installed. It was believed that the official release candidate would be more suitable for the project as it is part of the official Linux kernel. This test installation was used as an opportunity to learn about compiling and installing a Linux kernel while also acting as an additional test in using Rust within Kernel modules. 
+
+![[DebianInstallTest.png]]
+
+This test has been less sucessful and is currently where the project lies. While the 6.1 kernel was successfully installed, this machine is (as of writing) yet to succesfully build and compile a Rust kernel module. The main reason behind this is an issue with the driver build system and Rust. It has been verified that C kernel modules can build and run with no issue but Rust kernel modules cannot build if a specific file is missing.
+
+![[CDriverRunningVM.png]]
+
+To elaborate, as part of the Rust toolchain for drivers, rust-analyzer is used to act as a language server. The main use for this server lies in IDEs. In the case of visual studio code (and its open source counterpart, 'vscodium' ) it is possible to install the rust-analyzer extension. When installed, this server allows the IDE to read documentation which is inlined to the rust kernel code as comments. This means that the developer can easily read relevant documentation from within the IDE and does not need to refer to an external document or attempt to read through code comments. In order to facilitate this, rust-analyzer relies on a JSON file which is typically produced via make but on the Debian machine this JSON file cannot be produced. The rust-analyzer alongside 'rustdoc' and rust tests are not able to run or build via make and attempting to do so results in errors. 
+
+![[TargetJSONerror.png]]
+
+As a result of the rust-analyzer problem the driver build system won't allow rust drivers to build as the JSON file does not exist. For this reason, it has not been possible to test Rust on this machine. Various solutions have been attempted to solve the issue and these are ongoing as of writing. Due to this problem, the building of Linux 6.1 on the Raspberry Pi has been delayed so a solution can be quickly applied if this issue also arises on the physical machine. 
+
+In future, after applying a new kernel, it is planned to use the Raspberry Pi to develop a Rust driver. The specific driver has not yet been decided but there is hope that a driver for a physical device (such as a mouse, USB stick and so on) may be written. It should be noted that in the event that the Pi can't be used or Rust in the 6.1 kernel continues to be problematic, it is planned to simply use the working BusyBox Virtual Machine and develop drivers for 'virtual' devices similar to that of 'Scull' (an example contained within Linux Device Drivers 3). Regardless, as part of this work, it will be necessary to conduct research into the various libraries currently provided by the Linux kernel, and how they are utilised within a device driver.
+
+*MAIN WORD COUNT EXCL REFERENCES, ABSTRACT == 2700*
 
 ## References

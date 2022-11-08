@@ -35,6 +35,8 @@ University of Washington, Department of Computer Science and Engineering (2004) 
 
 Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wiki/Memory_safety [Accessed 14 October 2022]
 
+Wikipedia (2022) "Rust for Linux" [Online] Available: https://en.wikipedia.org/wiki/Rust_for_Linux [Accessed 8 November 2022]
+
 Vaughan-Nichols, S. (2022) "Linus Torvalds: Rust will go into Linux 6.1". [Online]. zdnet. Available: https://www.zdnet.com/article/linus-torvalds-rust-will-go-into-linux-6-1/ [Accessed 2 October 2022]
 
 
