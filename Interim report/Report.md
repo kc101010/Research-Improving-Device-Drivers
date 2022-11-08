@@ -1,4 +1,5 @@
 ## Abstract
+Device drivers face several problems and one of the ways forward is Rust! This interim report expands on the problems faced by device drivers and the resulting consequences.  An introduction to the Rust programming language is provided alongside the importance of memory safety. Insight is also given into work that preceded the project as well as a report on current progress and work that lies in the future. 
 
 ## 1. Overview (497/500)
 Device drivers are a vital component of Operating Systems and facilitate the use of common peripheral devices, interaction with hardware as well as providing a multitude of extensions to an Operating System in its file system(s), network protocol, anti-virus capability and more (Ball et al, 2006). Drivers can also be described as the "software layer that lies between applications and physical devices" (Corbet et al, 2005.). While drivers are a clear necessity within an Operating System, they suffer from a range of issues that have various consequences.
