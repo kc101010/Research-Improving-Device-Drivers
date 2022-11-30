@@ -52,39 +52,7 @@ Thoughts;
 
 ----
 
-## Programming guide for Linux USB Device Drivers
-[usb_linux_programming_guide.pdf (psi.ch)](https://lmu.web.psi.ch/docu/manuals/software_manuals/linux_sl/usb_linux_programming_guide.pdf)
 
-Fliegl, D. (2000) Programming Guide for Linux USB Device Drivers. [Online] Available: https://lmu.web.psi.ch/docu/manuals/software_manuals/linux_sl/usb_linux_programming_guide.pdf [Accessed 21 November 2022]
-
-### Universal Serial Bus
-1994
-Compaq, Intel, Microsoft and NEC start to specify the USB. Originally designed with the following intentions;
-+ Connection of the PC to the telephone
-+ Ease-of-use
-+ Port expansion
-
-Specification V1 was first released jan 1996, latest official v1.1 released sep 1998
-
-USB is strictly hierarchical and is controlled by 1 host. Host uses a master/slave protocol to communicate with attached USB devices. Every kind of communication is initiated by the host and devices can't establish any direct communication to other devices.
-
-USB was designed as a compromise of costs and performance. The use of a master/slave protocol solves problems like collision avoidance or distributed bus arbitration. 
-
-[What is UHCI (Universal Host Controller Interface)? (computerhope.com)](https://www.computerhope.com/jargon/u/uhci.htm)
-
-A device can be self-powered, bus powered or both. USB can provide a power supply up to 500mA for devices. Devices that support both power options can switch to self-powered mode when attaching an external power supply.
-
-![](USB%20topology.PNG)
-
-Max comm speed can differ between particular USB devices. The specification decides between low speed and full speed devices. Low speed devices (mice, keyboards, joysticks) communicate at 1.5MBit/s and have only limited capabilities. Full speed devices (audio and video systems) can use up to 90% of the 12Mbit/s which is around 10Mbit/s including protocol overhead.
-
-**USB controllers**
-
-
-
-
-Thoughts;
-This is likely to be a good resource but I should look for something more recent - it might be that I need specification and info about USB 3? Not sure and its totally possible that all or most concepts here can translate over.
 
 
 

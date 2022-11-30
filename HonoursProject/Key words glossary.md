@@ -18,3 +18,5 @@ Hetergenous - not from the same source, individual
 [Type Inference - Wikipedia ](https://en.wikipedia.org/wiki/Type_inference) ... the automatic detecetion of the type of an expression in a formal language.
 
 [Verbose Mode - Wikipedia](https://en.wikipedia.org/wiki/Verbose_mode) Option that provides additional details as to what the computer is doing (using or expressed in more words than are needed)
+
+[What is Isochronous? | Webopedia](https://www.webopedia.com/definitions/isochronous/) - Occurring at the same time, Occupying equal time, Data must be delivered within certain time constraints
