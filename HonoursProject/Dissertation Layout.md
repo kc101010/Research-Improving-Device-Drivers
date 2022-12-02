@@ -51,6 +51,9 @@
 # LITERATURE REVIEW [c] 20
 (chasing current research)
 
+### In the real world, rust is starting to make improvements
++ Google and Android 13
+
 ### Tools, works by previous projects
 + Discuss Rust as a programming language
 	+ Improvements over C/C++
