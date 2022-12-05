@@ -37,6 +37,8 @@ Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wi
 
 Wikipedia (2022) "Rust for Linux" [Online] Available: https://en.wikipedia.org/wiki/Rust_for_Linux [Accessed 8 November 2022]
 
+Vander Stoep, J. (2022) "Memory Safe Languages in Android 13". Google Security Blog. Google. [Online] Available: https://security.googleblog.com/2022/12/memory-safe-languages-in-android-13.html [Accessed 2 December 2022]
+
 Vaughan-Nichols, S. (2022) "Linus Torvalds: Rust will go into Linux 6.1". [Online]. zdnet. Available: https://www.zdnet.com/article/linus-torvalds-rust-will-go-into-linux-6-1/ [Accessed 2 October 2022]
 
 

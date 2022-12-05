@@ -13,7 +13,8 @@
 # TABLE OF CONTENTS
 ---
 
-# BACKGROUND[c] 10
+# 1. BACKGROUND[c] 10
+An introduction to the problem, a brief history and showcase of my plan(s)
 
 ## Device Drivers
 ###  What are they?
@@ -21,14 +22,12 @@
 ### They have a lot of issues 
 + Memory unsafety in C
 + Not much evolution/change
-	+ This is where I could discuss differences between OS drivers (win, lin, bsd, mac) and history
 + Not in the limelight very often
 
 ## Rust
 + History
 + Why's
-+ Development
-+ More detailed info comes in Literature review?
++ More detailed info comes in Literature review
 
 ## Here's my proposition of developing a Linux driver in Rust
 + Demonstrate driver work written in C, undertaken before/during project.
@@ -48,24 +47,33 @@
 ---
 
 
-# LITERATURE REVIEW [c] 20
+# 2. LITERATURE REVIEW [c] 20
 (chasing current research)
 
-### In the real world, rust is starting to make improvements
-+ Google and Android 13
+## Operating System Drivers
++ Discussion of differences between OS drivers, how they compare and have they changed
 
-### Tools, works by previous projects
+## Rust
 + Discuss Rust as a programming language
 	+ Improvements over C/C++
 	+ More and more peope are calling for Rust to replace C/C++, provide examples
 	+ Loose discussion on similar memory safe programming lanuages (needs research)
 	+ Discuss Rust frameworks for Linux drivers 
+
+### Catches
 + All safe programming langs provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
-+ Apple re-structuring of Kernel Extensions
+
+### Google, Android 13
+
+### Apple re-structuring of Kernel Extensions
+
+## Memory Safety
+
+## Tools
 + Discuss Dingo framework for drivers
 + Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
 
-### Stuff that was tried but didn't really help - THIS NEEDS RESEARCH ATTACHED
+## Miscellaneous efforts
 + Trying to harden C
 	+ Only mitigates issues, bugs still possible
 	+ Doesn't permanetly solve issue
@@ -78,10 +86,10 @@
 	
 ----
 
-# DEVELOPMENT [c] 40
+# 3. DEVELOPMENT [c] 40
 ----
 
-# EXPERIMENTS [c] 10
+# 4. EXPERIMENTS [c] 10
 ### Discuss Results of Rust driver
 + Direct comparison to C
 + Showcase where Rust prevents issues (race conditions etc)
