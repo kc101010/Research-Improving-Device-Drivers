@@ -68,6 +68,7 @@ An introduction to the problem, a brief history and showcase of my plan(s)
 ### Apple re-structuring of Kernel Extensions
 
 ## Memory Safety
+Memory safety is a
 
 ## Tools
 + Discuss Dingo framework for drivers
