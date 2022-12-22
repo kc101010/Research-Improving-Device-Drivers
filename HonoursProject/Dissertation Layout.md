@@ -33,16 +33,7 @@ An introduction to the problem, a brief history and showcase of my plan(s)
 + Demonstrate driver work written in C, undertaken before/during project.
 + Link to Rust and it's benefits - its benefits can only make improvements to drivers, right?
 + Plan to write a driver for Linux in Rust that controls a peripheral connected to  Raspberry Pi 400 
-+ Potentially try one of the frameworks and compare?
-	+ 'Own' method 
-		+ `make VERBOSE` on C driver
-		+ Take info from that
-		+ Try to make Rust driver (maybe by binding C and Rust or vice versa)
-	+ Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)
-	+ There is previous work in making drivers for Rust but none of it seems solid or widely adopted so maybe there's other methods that can be explored
-		+ Securing embedded drivers
-		+ Matias Heiden
-		+ Thomas & Gaynor
+
 
 ---
 
@@ -60,8 +51,19 @@ An introduction to the problem, a brief history and showcase of my plan(s)
 	+ Loose discussion on similar memory safe programming lanuages (needs research)
 	+ Discuss Rust frameworks for Linux drivers 
 
+### Writing a Driver
++ Introduce Rust for Linux - project which has led to the inclusion of Rust in the Linux Kernel (as of Linux 6.1)
++ Discuss various previous works on Rust drivers
+	+ Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)
+	+ There is previous work in making drivers for Rust but none of it seems solid or widely adopted so maybe there's other methods that can be explored
+		+ Securing embedded drivers
+		+ Matias Heiden
+		+ Thomas & Gaynor
+
 ### Catches
 + All safe programming langs provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
++ Google - escape hatch is required for Systems program in order access additional resources, interacting with system resources and non-rust code.
+	+ Unsafe Rust is used rarely and where safety can be easily reviewed
 
 ### Google, Android 13
 Android 13 has recently seen a significant drop in memory safety vulnerabilities and an associated drop in vulnerability severity with the annual number of memory safety vulnerablities dropping from 223 to 85 between 2019 and 2022 (Vander Stoep, J. 2022). Memory safety vulnerablities now account for 35% of Androids total vulnerabilities (previously 76%) with 2022 being the first year where the majority of vulnerabilities are not related to memory safety.  This drop coincides with a move away from memory unsafe programming languages with Android 13 being "the first Android release where a majority of new code added to the release is in a memory safe language". 
@@ -81,13 +83,14 @@ Memory unsafe languages allow programmers to potentially access memory which is 
 The statistics in Figure X were observed and reproduced across several large code bases (containing millions of lines of code). Each code base was built by a different company, started development at various points in time and applies a different development methodology. The single common property that unites these codebases is that they are written in memory-unsafe programming language such as C or C++. Gaynor concludes that the magnitude of memory-unsafe vulnerabilities is higher than memory-safe vulnerablities and that the research supports the notion that the use of memory-safe languages would critically reduce the total number of vulnerabilities. 
 *Here I can also write about the data that we can take away from the table*
 
-In the case of data structures, memory unsafe languages allow programmers to access memory which is supposed to outside the bounds of a given data structure. For instance, an array is able to access an element that doesn't exist. This then means that the program fetches whatever happens to be at that position in memory. When this is the case in a memory safe language, an error is thrown which forces the program to crash. 
+In the case of data structures, memory unsafe languages allow programmers to access memory which is supposed to outside the bounds of a given data structure. For instance, an array is able to access an element that doesn't exist. This means that the program fetches whatever happens to be at that position in memory. When this is the case in a memory safe language, an error is thrown which forces the program to crash. 
 
 As an example, we can consider a program that manages to-do lists for several users. If implemented in a memory unsafe language, it is possible for the programs data structure to both access negative elements and positive elements that don't exist thus the data structure can access data which is outside of its bounds. This can lead to users having the ability to read each others lists which would then be a security vulnerability in the program, this is known as an 'out-of-bounds read'. If users were able to change elements in other users lists, this is known as an 'out-of-bounds write'. If a to-do list is deleted and later requested then a memory unsafe language has the ability to fetch the memory that it was previously finished with. Within the program, this space might now contain another users list, this is known as a 'user-after-free' vulnerability.
 
 ## Tools
 + Discuss Dingo framework for drivers
 + Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
+	+ Coccinelle is actually included within the Linux kernel alongside Rust.
 
 ## Miscellaneous efforts
 + Trying to harden C
@@ -120,6 +123,7 @@ As an example, we can consider a program that manages to-do lists for several us
 	+ Addition of Rust into Linux, what has it done and what will it do?
 	+ Anymore progress from Apple/MS?
 	+ Are there any solutions/improvements appearing that aren't Rust?
+	+ Refer back to Google & Android 13
 + Focusing on Rust;
 	+ Discuss how Volvo and other automotive companies are carrying out Research regarding Rust.
 	+ DRM driver w/ Linux on Apple silicon
