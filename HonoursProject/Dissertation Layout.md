@@ -42,7 +42,7 @@ An introduction to the problem, a brief history and showcase of my plan(s)
 (chasing current research)
 
 ## Operating System Drivers
-+ Discussion of differences between OS drivers, how they compare and have they changed
++ Discussion of differences between OS drivers, how they compare and have they compare to previous efforts
 
 ## Rust
 + Discuss Rust as a programming language
@@ -90,7 +90,7 @@ As an example, we can consider a program that manages to-do lists for several us
 ## Tools
 + Discuss Dingo framework for drivers
 + Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
-	+ Coccinelle is actually included within the Linux kernel alongside Rust.
+	+ Coccinelle is actually included within the Linux kernel alongside Rust so is relevant.
 
 ## Miscellaneous efforts
 + Trying to harden C

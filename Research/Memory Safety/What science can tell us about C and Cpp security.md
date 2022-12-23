@@ -1,6 +1,6 @@
 [What science can tell us about C and C++'s security · Alex Gaynor](https://alexgaynor.net/2020/may/27/science-on-memory-unsafety-and-security/)
 
-Gaynor, A. (2022)  "What scienc can tell us about C and C++'s security'"
+Gaynor, A. (2022)  "What science can tell us about C and C++'s security" [Accessed 21 December 2022]
 
 
 A large codebase with millions of lines of code which is written in a memory-unsafe programming language can expect at least 65% of security vulnerabilities to be caused by memory unsafety.
