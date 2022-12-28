@@ -155,6 +155,56 @@ The intent behind unsafe is that the programmer will ensure the unsafe code will
 # Embedding Rust in C/C++
 https://www.youtube.com/watch?v=x9acx2zgx4Q
 
+## ABI
+Application Binary Interface
++ An API for a linker/compiler
++ Specifies how things are laid out in memory
+
+`extern` keyword - `extern "C"`
+
+## FFI
+Use of `extern` and `unsafe`.
+
+`std::os::raw` and `std::ffi` contain FFI types to translate data types between different languages.
+
+## Using Rust in C
+Same mechanism but reversed, take data in a C form.
+Must use `#[no_mangle]` so function names are preserved otherwise functions may be lost by  compiler. 
+
+Cargo can build the Rust code but can't control everything in the project so a C/C++ build system needs to be integrated. 
+
+Necessary to place Rust functions into C header files so the funcs are accessible to C code.
+
+There's a handful of problems
++ Writing Headers may lead to build issues.
++ Necessary to deal with memory management between Rust and C.
++ It's necesary to build elegant APIs in order to best communicate  between languages.
+
+## Tooling
+CBindgen - reverse bindgen.
++ Point it to a crate and it creates header failes at compile time.
+
+## Memory Management
+Objects are created by default on the Stack.
+Use a Rust `Box` to easily solve memory management issues which works with C.
+`Box`  retains type data so the data can be re-retrieved.
+
+When you break out of Rust code, C becomes responsible for the memory so programs should have hardening to protect against these problems.
+
+## Errors
+Rust Result and Option. Result is for error and Option is for existence. 
+
+Rust to C++ communicates via C.
+
+Able to emulate Rust Result with a C struct.
+
+C++ seems to be flexible in terms of how errors can be handled. 
+
+## Can you throw a C++ exception from Rust
+It is possible.
+
+Crate `exception_rs` can be used to throw C++ exceptions in Rust.
+
 
 ###### Notes/Thoughts
 + Learning to write Rust feels like I'm learning to make sentences as simple and concise as possible.
