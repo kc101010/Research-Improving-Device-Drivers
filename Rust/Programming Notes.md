@@ -133,10 +133,27 @@ Like pointers but with additional metadata capabilities - another concept taken 
 
 Smart pointers own the data that they point to. `Box`, `String` and `Vec` are examples of smart pointers in Rust. You can also write custom smart pointers using structs.
 
-
-
 https://doc.rust-lang.org/reference/memory-allocation-and-lifetime.html
 
+# Unsafe 
+(Rust programmming book (above) Ch 19-1.)
+A second hidden language that doesn't enforce the memory safety guarantees - is effectively an override to do what you want outside the bounds of typical Rust.
+
+Another reason why unsafe exists is because the underlying hardware is inherently unsafe so if unsafe didn't exist then it would be impossible to do certain things that might be necessary. 
+
+Unsafe superpowers
++ Dereferencing a raw pointer
++ Calling an unsafe function/method
++ Access/change a mutable static variable
++ Implement an unsafe trait
++ Access fields of unions
+
+Unsafe *does not* disable the borrow checker or other Rust safety checks. Unsafe simply provides access to these 5 superpowers which aren't compiler checked.
+
+The intent behind unsafe is that the programmer will ensure the unsafe code will access memory in a valid way. As long as unsafe blocks are kept small, they are more manageable and easier to work with. 
+
+# Embedding Rust in C/C++
+https://www.youtube.com/watch?v=x9acx2zgx4Q
 
 
 ###### Notes/Thoughts
