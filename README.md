@@ -17,8 +17,13 @@ NOTE: This project is best viewed with [Obsidian](https://obsidian.md/)
 + /Rust                                            - Stores content on study/learning of Rust language
 
 ***
-##### Related YouTube playlists
+### Related YouTube playlists
 + [Rust playlist - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8ax757FmrreXXXe9a1ARvOR)
 + [Device Drivers playlist  - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8ZYEZ7QW13phJdMqM9pJ46b)
 + [Systems Programming Study - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8bAzBZg4X2yl5P7EIaB92eN)
 + [Writing a Rust Driver - My YouTube account](https://www.youtube.com/playlist?list=PL2kkY8kPiI8agxiyYB3uKGUepCRcgFc1h)
+
+***
+
+### Related Repositories
++ [Rust Device Driver](https://github.com/kc101010/Hons-Rust-DeviceDriver)
