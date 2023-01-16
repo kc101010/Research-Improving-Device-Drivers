@@ -13,7 +13,7 @@
 # TABLE OF CONTENTS
 ---
 
-# 1. BACKGROUND[c] 10 (~810 words)
+# 1. BACKGROUND[c] 10 (~892 words)
 An introduction to the problem, a brief history and showcase of my plan(s)
 
 ## Device Drivers
@@ -38,7 +38,7 @@ Gaynor praised the project, saying "Building a USB mouse driver with Rust for Li
 2. If not, they design a safe Rust API that exposes the original kernel APIs.
 3. It is then possible to use these new abstractiosn to write the original driver.
 
-Gaynor also provided me with a pull request for the Rust-For-Linux repository which aims to add support for USB device drivers. 
+Gaynor mentioned a pull request for the Rust-For-Linux repository which aims to add support for USB device drivers. After a short correspondance, Ojeda provided some advice and useful resources. He recommended getting used to reading C code within kernel. With regards to the Rust driver, his recommendation was to write a C version which can then be referenced for the Rust driver, this will also help in learning kernel APIs and verify whether issues are a result of Rust support or otherwise. 
 
 ## Project Goal
 The aim of this project is to try and overcome the previously highlighted issues by developing a Linux device driver in Rust. Not only will it replace C, Rust and its features should prevent issues with memory safety. Rust is a relatively young language with several benefits and features that aim to improve memory safety. It continues to spread through industry as it was recently incorporated into the Linux Kernel from version 6.1 (Vaughan-Nichols, 2022) and there have been public calls from developers for Rust to be utilised more. An example of this being Microsoft Azure CTO, Mark Russinovich, urging the industry (regarding to C and C++) 'For the sake of security and reliability, the industry should declare those languages as deprecated.' (Claburn, 2022).
