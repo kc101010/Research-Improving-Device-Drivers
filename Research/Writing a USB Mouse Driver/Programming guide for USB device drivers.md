@@ -12,7 +12,7 @@ Compaq, Intel, Microsoft and NEC start to specify the USB. Originally designed w
 
 Specification V1 was first released jan 1996, latest official v1.1 released sep 1998
 
-USB is strictly hierarchical and is controlled by 1 host. Host uses a master/slave protocol to communicate with attached USB devices. Every kind of communication is initiated by the host and devices can't establish any direct communication to other devices.
+USB is strictly hierarchical and is controlled by 1 host. Host uses a master/slave protocol to communicate with attached USB devices. Every kind of communication is initiated by the host and devices can't establish any direct communication to oAfter building with Rust support and ither devices.
 
 USB was designed as a compromise of costs and performance. The use of a master/slave protocol solves problems like collision avoidance or distributed bus arbitration. 
 
