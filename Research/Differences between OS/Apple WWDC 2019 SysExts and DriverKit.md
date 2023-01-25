@@ -1,6 +1,8 @@
 # [System Extensions and DriverKit](https://developer.apple.com/videos/play/wwdc2019/702/)
 ## Modernising kernel extensions and device drivers
 
+Auricchio, J. Douglas, S. Deandrea, S. (2019) "System Extensions and DriverKit: Modernizing kernel extensions and device drivers" [Online] Apple Inc. Available: https://developer.apple.com/videos/play/wwdc2019/702/ [Accessed 24 August 2022]
+
 Core OS group
 macOS 10.15 Catalina
 

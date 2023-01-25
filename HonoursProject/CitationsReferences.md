@@ -1,3 +1,9 @@
+Apple Developer Documentation (2022) "Implementing drivers, system extensions, and kexts". [Online] Apple. Available: https://developer.apple.com/documentation/kernel/implementing_drivers_system_extensions_and_kexts [Accessed 22 August 2022]
+
+Apple Developer Documentation (2022) "DriverKit". [Online] Apple. Available: https://developer.apple.com/documentation/driverkit [Accessed 22 August 2022]
+
+Auricchio, J. Douglas, S. Deandrea, S. (2019) "System Extensions and DriverKit: Modernizing kernel extensions and device drivers" [Online] Apple Inc. Available: https://developer.apple.com/videos/play/wwdc2019/702/ [Accessed 24 August 2022]
+
 Ball, T. Bounimova, E. Cook, B. Levin, V. Lichtenberg, J. McGarvey, C. Ondrusek, B. Rajamani K, S. Ustuner, A. (2006) "Thorough static analysis of device drivers" [Online] ACM. Available:
 https://dl.acm.org/doi/abs/10.1145/1218063.1217943 [Accessed 14 October 2022]
 
@@ -7,13 +13,15 @@ Corbet, J. Rubini, A. Kroah-Hartman, G. (2005) "Linux Device Drivers". 3rd ed. O
 
 Gaynor, A. (2019) "Introduction to Memory Unsafety for VPs of Engineering". [Online] Available: https://alexgaynor.net/2019/aug/12/introduction-to-memory-unsafety-for-vps-of-engineering/
 
-Li, Z. Wang, J. Sun, M. Lui, C.S. J. (2019) "Securing the Device Drivers of Your Embedded Systems: Framework and Prototype" [Online] ARES '19: Proceedings of the 14th International Conference on Availability, Reliability and Security. Article 71. pg 1 to 10. Available: doi.org/10.1145/3339252.3340506 [Accessed 8 August 2022]
-
 Karthik M. (2014) "Linux Device Drivers Training 06, Simple Character Driver" 24.54 mins. [Online] Available: https://www.youtube.com/watch?v=E_xrzGlHbac [Accessed 30 August 2022] 
 
 Klabnik, S. (2016) "The History of Rust". ACM. [Online] Available: https://youtu.be/79PSagCD_AY [Accessed 23 October 2022]
 
 Klabnik, S. Nichols C. and Rust Community. (2022) "The Rust Programming Language" [Online] Available: https://doc.rust-lang.org/book/ [Accessed 3 August 2022]
+
+Li, Z. Wang, J. Sun, M. Lui, C.S. J. (2019) "Securing the Device Drivers of Your Embedded Systems: Framework and Prototype" [Online] ARES '19: Proceedings of the 14th International Conference on Availability, Reliability and Security. Article 71. pg 1 to 10. Available: doi.org/10.1145/3339252.3340506 [Accessed 8 August 2022]
+
+Microsoft. (2022) "Getting started with drivers on Windows". [Online] Microsoft. Available: https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ [Accessed 29 December 2022]
 
 Oatman, T. (No Boilerplate) (2022) "Stop writing Rust (and go outside and play!) [RUST-5]" 9.40mins. [Online] Available: https://youtu.be/Z3xPIYHKSoI [Accessed 3 August 2022]
 
@@ -33,13 +41,13 @@ Thomas, G. Gaynor, A. (2019) "Linux Kernel Modules in Rust".  [Online] Linux Sec
 
 University of Washington, Department of Computer Science and Engineering (2004) "CSE 341: Unsafe languages (c)" [Online] Available: https://courses.cs.washington.edu/courses/cse341/04wi/lectures/26-unsafe-languages.html [Accessed 14 October 2022]
 
-Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wiki/Memory_safety [Accessed 14 October 2022]
-
-Wikipedia (2022) "Rust for Linux" [Online] Available: https://en.wikipedia.org/wiki/Rust_for_Linux [Accessed 8 November 2022]
-
 Vander Stoep, J. (2022) "Memory Safe Languages in Android 13". Google Security Blog. Google. [Online] Available: https://security.googleblog.com/2022/12/memory-safe-languages-in-android-13.html [Accessed 2 December 2022]
 
 Vaughan-Nichols, S. (2022) "Linus Torvalds: Rust will go into Linux 6.1". [Online]. zdnet. Available: https://www.zdnet.com/article/linus-torvalds-rust-will-go-into-linux-6-1/ [Accessed 2 October 2022]
+
+Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wiki/Memory_safety [Accessed 14 October 2022]
+
+Wikipedia (2022) "Rust for Linux" [Online] Available: https://en.wikipedia.org/wiki/Rust_for_Linux [Accessed 8 November 2022]
 
 
 

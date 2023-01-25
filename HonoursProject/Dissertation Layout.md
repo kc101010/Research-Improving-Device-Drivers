@@ -50,10 +50,25 @@ The aim of this project is to try and overcome the previously highlighted issues
 # 2. LITERATURE REVIEW [c] 20
 (chasing current research)
 
-## Operating System Drivers
+## Operating System Drivers (454/~500w)
 + Discussion of differences between OS drivers, how they compare and have they compare to previous efforts
 
-### Apple re-structuring of Kernel Extensions
+### Linux (165/~200)
+Linux utilises 'kernel modules' to implement most device drivers, these kernel modules are primarily written in C (Corbet et al, 2005). These kernel modules make use of kernel space, which is separated from user space though the kernel space itself is not compartmentalised. Kernel modules are typically compiled with makefiles. These convert the code into an object file by calling the kernel build system to link code and object files to '.ko' executables. Linux makes several commands available to add, remove and manage kernel modules which is one of the primary methods of testing custom built device drivers. 
+
+Kernel space is separated from user space by the CPU, the Linux kernel runs in the highest CPU level so there is little restriction on what a driver can do this also means that faults that occur within kernel space have a high likelyhood of affecting the overall system. Kernel modules can be run in user space but the associated performance issues mean doing this is worthless.
+
+### Apple ( 289/~200)
+Apple device drivers encapsulate iPad, iMac and iPhone. Apple recently re-structured their device driver technology, 'Kernel extensions' to implement additional driver types known as 'Driver extensions' and 'System extensions' (Auricchio et al, 2019). The reason behind the change being that Apple developers found several issues with kernel extensions; They are difficult to develop and debug and also pose a risk to data security, privacy and overall reliability. System and driver extensions improve on kernel extensions and thus are easier to develop while improving security and reliability. 
+
+A system extension is similar to a kernel extension but is instead a component of an application. They are intended to implement features that need kernel level co-operation, such as custom network behaviour (Apple Developer Documentation, 2022). These extensions run in userspace and contain 3 types: Network; Endpoint Security (including Anti-virus and Data loss protecetion); Driver (USB, Serial, NIC and HID). System extensions can use any framework within the macOS SDK as well as any programming language. System extensions are said to be much easier to debug as they do not pause the kernel, there is no need to restart the machine and it is possible to build, test and debug on a single machine with full debugger support. 
+
+Developers also found that the Kernel is an unforgiving environment (Auricchio et al, 2019). That writing and debugging kernel code is difficult, kernel extensions need 2 machines in order to debug which introduces overhead and only has limited debugger support and that kernel extensions are a great risk to security as sucessful attackers can gain free reign in the kernel while any bug in a kernel extension could also be a critical reliability problem. Kernel extensions only support the C and C++ programming languages.
+
+### Windows (~200)
+Windows also implements the concept of user mode and kernel mode. Microsoft lists several driver types including: Function driver (which communicates directly with the device); Filter driver (which performs auxiliary processing) and Software driver (used when desktop software needs to access something in kernel space). Windows also provides different frameworks which can be used when writing device drivers through Visual Sutdio such as the User Mode Driver Framework (UMDF) and Kernel Mode Driver Framework (KMDF). Device drivers are still written in C but are usually categorised under C++. 
+
+### Miscellaneous (~100?)
 
 ## Rust (~740 words)
 Rust is a "compiled, concurrent, safe, systems programming language" (Klabnik, 2016) which was released in 2015. It was originally invented by Graydon Hoare, an employee at Mozilla, who started the project in 2006 which was then adopted by Mozilla in 2010. Rust has several features which are highly attractive especially with regards to drivers and memory safety.
@@ -78,8 +93,8 @@ Rust utilises RAIL - Resource Acquisition is Initialisation - which is enforced 
 Variables have lifetimes, a concept which is important for the functionality of the ownership system. A variable's lifetime begins at initialisation and ends when it is closed or destroyed. This should not be considered variable scope. The borrow-checker uses this concept at compile time to ensure that alll references to an object are valid. It is clear that Rusts implementation of memory management will no doubt help in ensuring memory safety, an important factor for the application of Rust within drivers.
 
 
-+ Discuss Rust as a programming language
-	+ Improvements over C/C++
++ Discuss Rust as a programming language [X]
+	+ Improvements over C/C++ [X]
 	+ More and more peope are calling for Rust to replace C/C++, provide examples
 	+ Loose discussion on similar memory safe programming lanuages (needs research)
 	+ Discuss Rust frameworks for Linux drivers 
@@ -156,6 +171,7 @@ As an example, we can consider a program that manages to-do lists for several us
 	+ Anymore progress from Apple/MS?
 	+ Are there any solutions/improvements appearing that aren't Rust?
 	+ Refer back to Google & Android 13
+	+ Consider my own experience?
 + Focusing on Rust;
 	+ Discuss how Volvo and other automotive companies are carrying out Research regarding Rust.
 	+ DRM driver w/ Linux on Apple silicon

@@ -6,6 +6,8 @@
 + Driver exts written in C++17.
 + System exts can allegedley be written in language with Swift used as an example.
 
+Apple developers found several issues with kernel extensions: They are difficult to develop and debug and also pose a risk to data security, privacy and overall reliability. System extensions and DriverKit improve on Kernel extensions and thus are easier to develop while improving security and reliability. 
+
 ### Debugging
 System extensions can have debuggers attached to them. No risk of system crash/restart due to user mode. System extensions need to have proper entitlements and code signatures as well as meeting criteria to run on users system.
 
@@ -31,10 +33,6 @@ WinDbg - debugging tool for kernel
 
 Host - runs debugger
 Target/Test - runs driver
-
-
-
-
 
 
 # Thoughts

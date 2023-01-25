@@ -2,6 +2,8 @@ tags: #windows
 
 https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/
 
+Microsoft. (2022) "Getting started with drivers on Windows". [Online] Microsoft. Available: https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ [Accessed 29 December 2022]
+
 This is actually the most recent driver documentation i've been able to find so far, various dates between 2021 and 2022. Specifically December 2021 through to May 2022. Seems like Microsoft decided an upheaval of documentation was in order. 
 
 # What is a driver?
