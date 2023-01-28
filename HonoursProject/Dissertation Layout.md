@@ -3,7 +3,6 @@
 
 ----
 
-
 # ACKNOWLEDGEMENTS
 ----
 
@@ -48,10 +47,30 @@ The aim of this project is to try and overcome the previously highlighted issues
 
 
 # 2. LITERATURE REVIEW [c] 20
-(chasing current research)
 
-## Operating System Drivers (454/~500w)
-+ Discussion of differences between OS drivers, how they compare and have they compare to previous efforts
+## General Concepts (183w)
+
+### Kernel (40 words)
+A kernel is the primary interface between hardware and computer processes, ensuring resources are used as effectively as possible (Baeldung, 2022). The kernel runs within the operating system and controls the function of hardware alongside managing memory and computer peripherals. 
+
+![[LinuxOSLayersBreakdown-Wiki.png]]
+(Figure X, System layer breakdown of Linux. Wikipedia, 2022)
+
+### User space and Kernel Space (84 words)
+Kernel space is an area of memory used exclusively by the kernel and encapsulates device drivers (Wikipedia, 2022). User space is a separate area where user applications run and file systems can be managed (Baeldung, 2022). User applications communicate with the kernel via system calls. Kernel and user space is separated to protect memory and protect the hardware layer of the system as showcased in Figure x. The term 'space' is interchangeable with the term 'mode' as this concept is also related to processors.
+
+### Device node system
+
+### Build system
+
+### Makefile
+
+### Firmware
+
+### Development  (59 words)
+Driver development can occur across 2 different machines. As is the case in Windows and, previously, Apple systems. In such scenarios, the debugger and driver are run on seprate computers (Microsoft, 2022). The computer running the debugger can be known as the 'host' machine while the computer running the driver can be known as the 'target' or 'test' machine. 
+
+## Operating System Drivers (736/~500w)
 
 ### Linux (165/~200)
 Linux utilises 'kernel modules' to implement most device drivers, these kernel modules are primarily written in C (Corbet et al, 2005). These kernel modules make use of kernel space, which is separated from user space though the kernel space itself is not compartmentalised. Kernel modules are typically compiled with makefiles. These convert the code into an object file by calling the kernel build system to link code and object files to '.ko' executables. Linux makes several commands available to add, remove and manage kernel modules which is one of the primary methods of testing custom built device drivers. 
@@ -65,10 +84,13 @@ A system extension is similar to a kernel extension but is instead a component o
 
 Developers also found that the Kernel is an unforgiving environment (Auricchio et al, 2019). That writing and debugging kernel code is difficult, kernel extensions need 2 machines in order to debug which introduces overhead and only has limited debugger support and that kernel extensions are a great risk to security as sucessful attackers can gain free reign in the kernel while any bug in a kernel extension could also be a critical reliability problem. Kernel extensions only support the C and C++ programming languages.
 
-### Windows (~200)
-Windows also implements the concept of user mode and kernel mode. Microsoft lists several driver types including: Function driver (which communicates directly with the device); Filter driver (which performs auxiliary processing) and Software driver (used when desktop software needs to access something in kernel space). Windows also provides different frameworks which can be used when writing device drivers through Visual Sutdio such as the User Mode Driver Framework (UMDF) and Kernel Mode Driver Framework (KMDF). Device drivers are still written in C but are usually categorised under C++. 
+### Windows (143/~200)
+Windows also implements the concept of user mode and kernel mode. Microsoft documentation lists various driver types including: Function driver (which communicates directly with the device); Filter driver (which performs auxiliary processing) and Software driver (used when desktop software needs to access something in kernel space). Windows also provides different frameworks which can be used when writing device drivers through Visual Sutdio such as the User Mode Driver Framework (UMDF) and Kernel Mode Driver Framework (KMDF). Device drivers are still written in C but are usually categorised under C++. 
 
-### Miscellaneous (~100?)
+Windows drivers seem to work similarly to those of Linux. Drivers are built into a '.dll' file with  accompanying files including '.inf' (which stores driver information). Depending on the driver type, it may be built into a '.sys' file with a '.cat' file which is used by during installation to verify the drivers signature.  
+
+### FreeBSD (139/~100?)
+FreeBSD drivers are similar to that of Linux and makes use of similar concepts. Drivers can be statically compiled into the Operating System or loaded via the dynamic kernel linker facility. FreeBSD makes use of the Unix device node system, known as '/dev' (CHANGE TEXT) which is also found in Linux. FreeBSD makes use of KLD to dynamically manage and extend the kernel without rebooting, which is very similar to Linux kernel module commands. 'kldload', 'kldunload' and 'kldstat' are examples of commands used in managing drivers.  FreeBSD makes use of 'pseudo-devices' where a driver emulates the behaviour of a device in software without hardware. Drivers on FreeBSD are split into two categories: Character and Network. Character devices are typically used to directly transfer data between a user process and other processes, they are the most common type of driver. 
 
 ## Rust (~740 words)
 Rust is a "compiled, concurrent, safe, systems programming language" (Klabnik, 2016) which was released in 2015. It was originally invented by Graydon Hoare, an employee at Mozilla, who started the project in 2006 which was then adopted by Mozilla in 2010. Rust has several features which are highly attractive especially with regards to drivers and memory safety.

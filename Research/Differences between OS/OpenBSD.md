@@ -1,6 +1,8 @@
 ## [Getting started with OpenBSD device driver development](https://www.openbsd.org/papers/eurobsdcon2017-device-drivers.pdf)
 [Getting started with OpenBSD device driver development, by Stefan Sperling (EuroBSDcon 2017)](https://www.youtube.com/watch?v=W5qhWw07qpU)
 
+Sperling, S. (2017) "Getting started with OpenBSD device driver development". [Online] Available: https://www.youtube.com/watch?v=W5qhWw07qpU [Accessed  7 September 2022]
+
 + "Vendor drivers are often poorly written, we need to be able to write our own"
 + "Source code is not documentation" - most of their documentation comes from Linux source code and similar systems so OpenBSD devs would like dedicated hardware docs to work with.
 

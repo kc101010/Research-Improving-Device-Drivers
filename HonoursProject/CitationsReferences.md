@@ -4,6 +4,8 @@ Apple Developer Documentation (2022) "DriverKit". [Online] Apple. Available: htt
 
 Auricchio, J. Douglas, S. Deandrea, S. (2019) "System Extensions and DriverKit: Modernizing kernel extensions and device drivers" [Online] Apple Inc. Available: https://developer.apple.com/videos/play/wwdc2019/702/ [Accessed 24 August 2022]
 
+Baeldung (2022) "What is an OS Kernel?". [Online] Available: https://www.baeldung.com/cs/os-kernel [Accessed 28 January 2023]
+
 Ball, T. Bounimova, E. Cook, B. Levin, V. Lichtenberg, J. McGarvey, C. Ondrusek, B. Rajamani K, S. Ustuner, A. (2006) "Thorough static analysis of device drivers" [Online] ACM. Available:
 https://dl.acm.org/doi/abs/10.1145/1218063.1217943 [Accessed 14 October 2022]
 
@@ -37,6 +39,10 @@ Rust Community (n.d.) "The Cargo Book" [Online] Available: https://doc.rust-lang
 
 Sasidharan, K. D. (2020) "Visualizing memory management in Rust". [Online] Technorage. Available: https://deepu.tech/memory-management-in-rust/
 
+Sperling, S. (2017) "Getting started with OpenBSD device driver development". [Online] Available: https://www.youtube.com/watch?v=W5qhWw07qpU [Accessed  7 September 2022]
+
+The FreeBSD Documentation Project (2022) "FreeBSD Architecture Handbook ". FreeBSD Documentation. Ch 9: Writing FreeBSD Device Drivers. [Online] Available: https://docs.freebsd.org/en/books/arch-handbook/ [Accessed 9 September 2022 ]
+
 Thomas, G. Gaynor, A. (2019) "Linux Kernel Modules in Rust".  [Online] Linux Security Summit. Available: https://youtu.be/RyY01fRyGhM [Accessed 1 August 2022]
 
 University of Washington, Department of Computer Science and Engineering (2004) "CSE 341: Unsafe languages (c)" [Online] Available: https://courses.cs.washington.edu/courses/cse341/04wi/lectures/26-unsafe-languages.html [Accessed 14 October 2022]
@@ -48,6 +54,8 @@ Vaughan-Nichols, S. (2022) "Linus Torvalds: Rust will go into Linux 6.1". [Onlin
 Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wiki/Memory_safety [Accessed 14 October 2022]
 
 Wikipedia (2022) "Rust for Linux" [Online] Available: https://en.wikipedia.org/wiki/Rust_for_Linux [Accessed 8 November 2022]
+
+Wikipedia (2022) "User space and kernel space" [Online] Available: https://en.wikipedia.org/wiki/User_space_and_kernel_space [Accessed 28 January 2022]
 
 
 
