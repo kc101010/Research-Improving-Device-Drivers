@@ -11,6 +11,8 @@ https://dl.acm.org/doi/abs/10.1145/1218063.1217943 [Accessed 14 October 2022]
 
 Claburn, T. (2022) "In Rust We Trust: Microsoft Azure CTO shuns C and C++". [Online] The Register. Available: https://www.theregister.com/2022/09/20/rust_microsoft_c/ [Accessed 21 September 2022]
 
+Debian wiki (2020) "Device nodes" [Online] Available: https://wiki.debian.org/device_node
+
 Corbet, J. Rubini, A. Kroah-Hartman, G. (2005) "Linux Device Drivers". 3rd ed. O'Reilly Media, Inc. [Accessed 23 July 2022]
 
 Gaynor, A. (2019) "Introduction to Memory Unsafety for VPs of Engineering". [Online] Available: https://alexgaynor.net/2019/aug/12/introduction-to-memory-unsafety-for-vps-of-engineering/

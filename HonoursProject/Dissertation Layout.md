@@ -57,9 +57,10 @@ A kernel is the primary interface between hardware and computer processes, ensur
 (Figure X, System layer breakdown of Linux. Wikipedia, 2022)
 
 ### User space and Kernel Space (84 words)
-Kernel space is an area of memory used exclusively by the kernel and encapsulates device drivers (Wikipedia, 2022). User space is a separate area where user applications run and file systems can be managed (Baeldung, 2022). User applications communicate with the kernel via system calls. Kernel and user space is separated to protect memory and protect the hardware layer of the system as showcased in Figure x. The term 'space' is interchangeable with the term 'mode' as this concept is also related to processors.
+Kernel space is an area of memory used exclusively by the kernel and encapsulates device drivers . User space is a separate area where user applications run and file systems can be managed (Baeldung, 2022). User applications communicate with the kernel via system calls. Kernel and user space is separated to protect memory and protect the hardware layer of the system as showcased in Figure x. The term 'space' is interchangeable with the term 'mode' as this concept is also related to processors.
 
-### Device node system
+### Device node system (72w)
+Device nodes are special file types (especially in Unix-based systems) which represent a resource allocated by the kernel. These resources are identified by a major number and minor number which are both stored within the structure of the node. Typically, the major number identifies the device driver while the minor number identifies a specific device (or collection of devices) that the driver can control with these numbers being passed to the driver. 
 
 ### Build system
 
@@ -117,9 +118,7 @@ Variables have lifetimes, a concept which is important for the functionality of 
 ### Rust for Linux (185w)
 Rust for Linux is a project, originally started in 2019 by Miguel Ojeda with the aim of introducing a new system programming language into Linux kernel. Rust would be chosen as it "... guarantees no undefined behaviour takes place (as long as unsafe code is sound), particularly in terms of memory management." (Ojeda, 2022) which would eliminate issues such as use-after-free, double free and data races. The project was created as there had long been desire to write Linux kernel code in Rust. Several attempts were made, the earliest being in 2013, though none of these projects provided Rust support from within the kernel. 
 
-There has since been various technical achievements within the project with several organisations from industry approaching Ojeda with interest including Google, Arm, Microsoft and Red Hat as well as private companies. Alongside these companies, academics  have also reached out such as researchers at the University of Washington.
-
-Work carried out by the Rust for Linux project was recently integrated into the Linux kernel, starting from version 6.1, marking the first time a new programming language has successfully been introduced into the kernel. 
+There has since been various technical achievements within the project with several organisations from industry approaching Ojeda with interest including Google, Arm, Microsoft and Red Hat as well as private companies. Alongside these companies, academics  have also reached out such as researchers at the University of Washington. Work carried out by the Rust for Linux project was recently integrated into the Linux kernel, starting from version 6.1, marking the first time a new programming language has successfully been introduced into the kernel. 
 
 ### Criticisms of Rust (167w) {this section might need work/review}
 Creator of C++, Bjarne Stroustrup, has previously criticised Rust and similar memory safe languages as "every safe language, including Rust, has loopholes allowing unsafe code" (Claburn, 2022) however in Googles security blog, the use of unsafe is described as an "... escape hatch which allows interacting with system resources and non-Rust code." (Vander Stoep, 2022). Klabnik also previously noted that " fundamentally the machine definitely is not immutable by default ..." therefore unsafe is important to the language (Klabnik, 2016). 
@@ -167,6 +166,11 @@ The statistics in Figure X were observed and reproduced across several large cod
 In the case of data structures, memory unsafe languages allow programmers to access memory which is supposed to outside the bounds of a given data structure. For instance, an array is able to access an element that doesn't exist. This means that the program fetches whatever happens to be at that position in memory. When this is the case in a memory safe language, an error is thrown which forces the program to crash. 
 
 As an example, we can consider a program that manages to-do lists for several users. If implemented in a memory unsafe language, it is possible for the programs data structure to both access negative elements and positive elements that don't exist thus the data structure can access data which is outside of its bounds. This can lead to users having the ability to read each others lists which would then be a security vulnerability in the program, this is known as an 'out-of-bounds read'. If users were able to change elements in other users lists, this is known as an 'out-of-bounds write'. If a to-do list is deleted and later requested then a memory unsafe language has the ability to fetch the memory that it was previously finished with. Within the program, this space might now contain another users list, this is known as a 'user-after-free' vulnerability.
+
+### Garbage Collection (118w)
+Garbage collection refers to automatic memory management which is carried out by what is known as a garbage collector. It can also be described as a " ... memory recovery feature ..." which is " ... built into programming languages ..." (Sheldon, 2022). A programming language which uses a garbage collector may utilise many collectors which aim to free memory previously allocated to objects that are no longer in use or required by the program thus the free memory can be re-used for future object allocations. 
+
+Garbage collection has several benefits such as ensuring a program doesn't exceed allocated memory, ensuring continued functionality and taking responsbility from developers who would otherwise need to manually manage such memory thus reducing the likelihood of memory-related bugs. 
 
 ## The Exo-kernel
 
