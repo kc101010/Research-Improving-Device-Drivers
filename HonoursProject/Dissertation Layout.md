@@ -114,25 +114,39 @@ Rust utilises RAIL - Resource Acquisition is Initialisation - which is enforced 
 
 Variables have lifetimes, a concept which is important for the functionality of the ownership system. A variable's lifetime begins at initialisation and ends when it is closed or destroyed. This should not be considered variable scope. The borrow-checker uses this concept at compile time to ensure that alll references to an object are valid. It is clear that Rusts implementation of memory management will no doubt help in ensuring memory safety, an important factor for the application of Rust within drivers.
 
+### Rust for Linux (185w)
+Rust for Linux is a project, originally started in 2019 by Miguel Ojeda with the aim of introducing a new system programming language into Linux kernel. Rust would be chosen as it "... guarantees no undefined behaviour takes place (as long as unsafe code is sound), particularly in terms of memory management." (Ojeda, 2022) which would eliminate issues such as use-after-free, double free and data races. The project was created as there had long been desire to write Linux kernel code in Rust. Several attempts were made, the earliest being in 2013, though none of these projects provided Rust support from within the kernel. 
+
+There has since been various technical achievements within the project with several organisations from industry approaching Ojeda with interest including Google, Arm, Microsoft and Red Hat as well as private companies. Alongside these companies, academics  have also reached out such as researchers at the University of Washington.
+
+Work carried out by the Rust for Linux project was recently integrated into the Linux kernel, starting from version 6.1, marking the first time a new programming language has successfully been introduced into the kernel. 
+
+### Criticisms of Rust (167w) {this section might need work/review}
+Creator of C++, Bjarne Stroustrup, has previously criticised Rust and similar memory safe languages as "every safe language, including Rust, has loopholes allowing unsafe code" (Claburn, 2022) however in Googles security blog, the use of unsafe is described as an "... escape hatch which allows interacting with system resources and non-Rust code." (Vander Stoep, 2022). Klabnik also previously noted that " fundamentally the machine definitely is not immutable by default ..." therefore unsafe is important to the language (Klabnik, 2016). 
+
+
+It would seem that while the inclusion of 'unsafe' could potentially lead to issues within a safe programming language, it is ultimately deemed a necessity which allows such languages to be used within system environments and permit interactions with other languages while also considering how the hardware itself works. However, it should be considered that the use of unsafe requires the developer to be reponsible for safety. Stroustrups concerns may be valid although the implementation of unsafe seems to be a necessary trade-off for the language to function as intended. 
 
 + Discuss Rust as a programming language [X]
 	+ Improvements over C/C++ [X]
-	+ More and more peope are calling for Rust to replace C/C++, provide examples
+	+ More and more peope are calling for Rust to replace C/C++, provide examples [X]
 	+ Loose discussion on similar memory safe programming lanuages (needs research)
-	+ Discuss Rust frameworks for Linux drivers 
+		+ Carbon?
+		+ Zig?
+	+ Discuss Rust frameworks for Linux drivers [X]
 
 ### Writing a Driver
-+ Introduce Rust for Linux - project which has led to the inclusion of Rust in the Linux Kernel (as of Linux 6.1)
-+ Discuss various previous works on Rust drivers
-	+ Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)
++ Introduce Rust for Linux - project which has led to the inclusion of Rust in the Linux Kernel (as of Linux 6.1) [X]
++ Discuss various previous works on Rust drivers [X]
+	+ ~~Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)~~
 	+ There is previous work in making drivers for Rust but none of it seems solid or widely adopted so maybe there's other methods that can be explored
-		+ Securing embedded drivers
-		+ Matias Heiden
-		+ Thomas & Gaynor
+		+ Securing embedded drivers - good point to talk about 
+		+ Matias Heiden - can be discussed as Windows alternative
+		+ Thomas & Gaynor - work laid foundation for Rust for Linux
 
 ### Catches
-+ All safe programming langs provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup?
-+ Google - escape hatch is required for Systems program in order access additional resources, interacting with system resources and non-rust code.
++ All safe programming langs provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup? [X]
++ Google - escape hatch is required for Systems program in order access additional resources, interacting with system resources and non-rust code. [X]
 	+ Unsafe Rust is used rarely and where safety can be easily reviewed
 
 ### Google, Android 13 (411w)

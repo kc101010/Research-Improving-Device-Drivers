@@ -1,0 +1,1 @@
+Vaughan-Nichols, S. (2022) "Rust in the Linux kernel". [Online] The New Stack. Available: https://thenewstack.io/rust-in-the-linux-kernel/ [Accessed 1 February 2023]

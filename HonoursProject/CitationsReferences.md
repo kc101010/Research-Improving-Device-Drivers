@@ -27,6 +27,8 @@ Microsoft. (2022) "Getting started with drivers on Windows". [Online] Microsoft.
 
 Oatman, T. (No Boilerplate) (2022) "Stop writing Rust (and go outside and play!) [RUST-5]" 9.40mins. [Online] Available: https://youtu.be/Z3xPIYHKSoI [Accessed 3 August 2022]
 
+Ojeda, M. (2022) "Memory Safety for the World's Largest Software Project". [Online] Internet Security Research Group. Available: https://www.memorysafety.org/blog/memory-safety-in-linux-kernel/ [Accessed 1 February 2023]
+
 Palix, N. Thomas, G. Saha, S. Calves, C. Lawall, J. Muller, G. (2011) "Faults in Linux: Ten Years Later"[Online] ACM SIGPLAN Notices, Volume 46, Issue 3. pg 305 to 318. Available: https://dl.acm.org/doi/10.1145/1961296.1950401 [Accessed 5 October 2022]
 
 Prossimo  (2022) "What is memory safety and why does it matter?" [Online] Internet Security Research Group. Available: https://www.memorysafety.org/docs/memory-safety/ [Accessed 14 October 2022]
@@ -50,6 +52,8 @@ University of Washington, Department of Computer Science and Engineering (2004) 
 Vander Stoep, J. (2022) "Memory Safe Languages in Android 13". Google Security Blog. Google. [Online] Available: https://security.googleblog.com/2022/12/memory-safe-languages-in-android-13.html [Accessed 2 December 2022]
 
 Vaughan-Nichols, S. (2022) "Linus Torvalds: Rust will go into Linux 6.1". [Online]. zdnet. Available: https://www.zdnet.com/article/linus-torvalds-rust-will-go-into-linux-6-1/ [Accessed 2 October 2022]
+
+Vaughan-Nichols, S. (2022) "Rust in the Linux kernel". [Online] The New Stack. Available: https://thenewstack.io/rust-in-the-linux-kernel/ [Accessed 1 February 2023]
 
 Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wiki/Memory_safety [Accessed 14 October 2022]
 
