@@ -20,3 +20,27 @@ As briefly discussed, would it be suitable to swap the marking for Literature re
 Main focus now
 + Starting presentation (remember to ask expectations)
 + Contuing dissertation writing, post presentation this will be the main task
+
+---
+
+A-class submission for interim report.
+
+Possibly use Yakos full repo.
+Should just open an issue to ask about use.
+
+Send Paul Yakos repo link after meeting.
+
+Maybe a modular driver with USB and for Mouse.
+
+Communication might help solve the problems.
+
+Don't let the problem stop me from trying to work on the project.
+Don't give in but time running out isn't bad
+
+General concepts could go very nicely in background section.
+
+Haskell - Glasgow Uni, Haskell Currie. No functions allow I/O. MONADS. No global variables, everythings pure. Similarly has backdoors. Should make a comparison between Rust and Haskell. Very comparable. 
+
+Happy to hear every and re-state project for presentation. Explain to Moderator.
+Structure can be similar to dissertation.  Tell what you want to tell.  
+
