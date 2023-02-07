@@ -42,12 +42,6 @@ Gaynor mentioned a pull request for the Rust-For-Linux repository which aims to 
 ## Project Goal
 The aim of this project is to try and overcome the previously highlighted issues by developing a Linux device driver in Rust. Not only will it replace C, Rust and its features should prevent issues with memory safety. Rust is a relatively young language with several benefits and features that aim to improve memory safety. It continues to spread through industry as it was recently incorporated into the Linux Kernel from version 6.1 (Vaughan-Nichols, 2022) and there have been public calls from developers for Rust to be utilised more. An example of this being Microsoft Azure CTO, Mark Russinovich, urging the industry (regarding to C and C++) 'For the sake of security and reliability, the industry should declare those languages as deprecated.' (Claburn, 2022).
 
-
----
-
-
-# 2. LITERATURE REVIEW [c] 20
-
 ## General Concepts (183w)
 
 ### Kernel (40 words)
@@ -70,6 +64,10 @@ Device nodes are special file types (especially in Unix-based systems) which rep
 
 ### Development  (59 words)
 Driver development can occur across 2 different machines. As is the case in Windows and, previously, Apple systems. In such scenarios, the debugger and driver are run on seprate computers (Microsoft, 2022). The computer running the debugger can be known as the 'host' machine while the computer running the driver can be known as the 'target' or 'test' machine. 
+
+---
+
+# 2. LITERATURE REVIEW [c] 20
 
 ## Operating System Drivers (736/~500w)
 
