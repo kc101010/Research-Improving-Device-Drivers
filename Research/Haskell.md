@@ -29,3 +29,11 @@ Monads are useful for structuring functional programs with 3 properties that are
 1. Modularity - Computations can be composed of simpler computations and separate the combination strategy from the computations being performed.
 2. Flexibility - Allow functional programs to be more adaptable than equivalent programs written without monads. This is because the monad distills the computational strategy into a single place rather than requiring it be distributed throughout the entire program. 
 3. Isolation - Can be used to create imperative-style computational structures which remain safely isolated form main body of functional program. Useful for incorporating side-effects (I/O) and state (which violates referential transparency) into a pure functional language like Haskell.
+
+
+https://www.haskell.org/tutorial/io.html
+Haskell I/O system is purely functional but still holds the expression powers found in conventional programming languages.
+
+Imperative languages carry this out via actions that examine and change the current state with typical actions being reading & setting global variables, writing files, reading input and so on. These actions are still a part of Haskell but separated from the pure functional core of the language.
+
+In Haskell, actions are defined rather than invoked within the expression.
