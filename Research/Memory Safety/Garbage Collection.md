@@ -1,5 +1,7 @@
 https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)
 
+Wikipedia (2023)  "Garbage collection (computer science)" [Online] Available: https://en.wikipedia.org/wiki/Garbage_collection_(computer_science) [Accessed 23 December 2022]
+
 A form of automatic memory management which utilises a 'garbage collector' in order to free memory which was previously allocated but now no longer referenced - this memory is known as 'garbage'. Garbage collection was invented in 1959 by John McCarthy, an American computer scientist to simplfiy manual memory management in the Lisp programming language.
 
 This method of memory management relieves the developer the duty of performing manual memory management. It is possible that garbage collection utilises a large volume of processing time which will then affect performance.

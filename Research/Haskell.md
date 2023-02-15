@@ -2,6 +2,8 @@
 [Monad (functional programming) - Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming))
 Software design pattern in functional programming that combines functions and wraps their return values in a type with additional computation. 
 
+HaskellWiki contributors (2021) "All about Monads" [Online] HaskellWiki. Available: https://wiki.haskell.org/index.php?title=All_About_Monads&oldid=64741 [Accessed 7 February 2023]
+
 [All About Monads - HaskellWiki](https://wiki.haskell.org/All_About_Monads)
 An endofunctor - a function mapping a category to itself - together with 2 natural transformations required to fulfill certain coherence conditions. 
 
@@ -30,6 +32,7 @@ Monads are useful for structuring functional programs with 3 properties that are
 2. Flexibility - Allow functional programs to be more adaptable than equivalent programs written without monads. This is because the monad distills the computational strategy into a single place rather than requiring it be distributed throughout the entire program. 
 3. Isolation - Can be used to create imperative-style computational structures which remain safely isolated form main body of functional program. Useful for incorporating side-effects (I/O) and state (which violates referential transparency) into a pure functional language like Haskell.
 
+Hudak, P. Peterson, J. Fasel, J. Thomas, R. (2000) "A Gentle Introduction to Haskell". 98th ed. [Online] Ch 7. Available: https://www.haskell.org/tutorial/index.html [Accessed 13 February 2023]
 
 https://www.haskell.org/tutorial/io.html
 Haskell I/O system is purely functional but still holds the expression powers found in conventional programming languages.

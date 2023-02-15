@@ -18,7 +18,7 @@ An introduction to the problem, a brief history and showcase of my plan(s)
 ## Device Drivers
 Device drivers are a vital component of Operating Systems which allow for the control of peripheral devices while interacting with underlying hardware. Drivers also provide facilities which can be used to extend an Operating System via file systems, network protocol, anti-virus capability and more (Ball et al, 2006). Described as the "software layer that lies between applications and physical devices" (Corbet et al, 2005), drivers are clearly a necessity within an Operating System however they suffer from a range of issues with dangerous consequences.
 
-Drivers continue to be programmed with the C programming language which was first developed at Bell Labs between 1969 and 1973, alonudent at UWS for Computing Science, previously studied Software Development at college.gside early development of Unix (Ritchie, M.D, 1993). It was designed as a "system implementation language for the nascent Unix operacurrently sitting at ~2k words and making improvements from interim report.ting system" (Ritchie, M. D, 1993). Languages such as C, C++ and Assembly have the potential to be memory unsafe (Gaynor, 2019) which can then lead to critical vulnerabilities as observed by several organisations over the years (Thomas and Gaynor, 2019).
+Drivers continue to be programmed with the C programming language which was first developed at Bell Labs between 1969 and 1973, alongside early development of Unix (Ritchie, M.D, 1993). It was designed as a "system implementation language for the nascent Unix operating system" (Ritchie, M. D, 1993). Languages such as C, C++ and Assembly have the potential to be memory unsafe (Gaynor, 2019) which can then lead to critical vulnerabilities as observed by several organisations over the years (Thomas and Gaynor, 2019).
 
 Memory safety is an attribute found within various programmming languages with the aim of preventing the developer from introducing certain bugs which strongly relate to memory management (Prossimo, 2022). Memory safety issues usually lead to security problems with common vulnerablities being out-of-bounds reads, out-of-bounds writes and use-after-frees (Gaynor, 2019).
 
@@ -128,9 +128,9 @@ It would seem that while the inclusion of 'unsafe' could potentially lead to iss
 + Discuss Rust as a programming language [X]
 	+ Improvements over C/C++ [X]
 	+ More and more peope are calling for Rust to replace C/C++, provide examples [X]
-	+ Loose discussion on similar memory safe programming lanuages (needs research)
-		+ Carbon?
-		+ Zig?
+	+ ~~Loose discussion on similar memory safe programming lanuages (needs research)
+		+ ~~Carbon?
+		+ ~~Zig?
 	+ Discuss Rust frameworks for Linux drivers [X]
 
 ### Writing a Driver
@@ -166,10 +166,20 @@ In the case of data structures, memory unsafe languages allow programmers to acc
 
 As an example, we can consider a program that manages to-do lists for several users. If implemented in a memory unsafe language, it is possible for the programs data structure to both access negative elements and positive elements that don't exist thus the data structure can access data which is outside of its bounds. This can lead to users having the ability to read each others lists which would then be a security vulnerability in the program, this is known as an 'out-of-bounds read'. If users were able to change elements in other users lists, this is known as an 'out-of-bounds write'. If a to-do list is deleted and later requested then a memory unsafe language has the ability to fetch the memory that it was previously finished with. Within the program, this space might now contain another users list, this is known as a 'user-after-free' vulnerability.
 
-### Garbage Collection (118w)
-Garbage collection refers to automatic memory management which is carried out by what is known as a garbage collector. It can also be described as a " ... memory recovery feature ..." which is " ... built into programming languages ..." (Sheldon, 2022). A programming language which uses a garbage collector may utilise many collectors which aim to free memory previously allocated to objects that are no longer in use or required by the program thus the free memory can be re-used for future object allocations. 
+### Garbage Collection (308w)
+Garbage collection refers to automatic memory management which is carried out by what is known as a garbage collector. It can also be described as a "memory recovery feature" which is "built into programming languages" (Sheldon, 2022). A programming language which uses a garbage collector may utilise many collectors with the aim of freeing memory allocated to objects that are no longer in use or required by the program thus the free memory can be re-used for future object allocations. Garbage collection is utilised in several programming languages including: Java, C# and D. 
 
-Garbage collection has several benefits such as ensuring a program doesn't exceed allocated memory, ensuring continued functionality and taking responsbility from developers who would otherwise need to manually manage such memory thus reducing the likelihood of memory-related bugs. 
+D is a systems programming language that utilises garbage collection. The developer allocates memory as needed and from time to time the garbage collector will free unused memory, making such memory freely available once again. D garbage collection is carried out as follows;
+
+1. All other threads are stopped and the current thread is hijacked for garbage collection.
+2. Root memory ranges are scanned for pointers to allocated memory, this memory itself is recursively scanned for more pointers.
+3. All memory that holds no active pointers is freed with unreachable memory requiring destructors queued.
+4. All other threads are resumed and destructors run for all queued memory, any remaining unreachable memory is freed.
+5. Current thread is returned to previous work. 
+
+Garbage collection has several benefits such as ensuring a program doesn't exceed allocated memory, ensuring continued functionality and taking responsbility from developers who would otherwise need to manually manage such memory thus reducing the likelihood of memory-related bugs. Specifically in the case of D, it was found that garbage collected programs are often faster, can't suffer from memory leaks (thus have more long term stability) and are faster to develop and debug (explicit de-allocation code is not developed, debugged, tested or maintained) (D Language Foundation, 2022).
+
+However, garbage collection is not perfect and has clear disadvantages. 
 
 ## The Exo-kernel
 

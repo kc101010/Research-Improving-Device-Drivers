@@ -11,9 +11,11 @@ https://dl.acm.org/doi/abs/10.1145/1218063.1217943 [Accessed 14 October 2022]
 
 Claburn, T. (2022) "In Rust We Trust: Microsoft Azure CTO shuns C and C++". [Online] The Register. Available: https://www.theregister.com/2022/09/20/rust_microsoft_c/ [Accessed 21 September 2022]
 
-Debian wiki (2020) "Device nodes" [Online] Available: https://wiki.debian.org/device_node
-
 Corbet, J. Rubini, A. Kroah-Hartman, G. (2005) "Linux Device Drivers". 3rd ed. O'Reilly Media, Inc. [Accessed 23 July 2022]
+
+D Language Foundation (2022) "Language Reference: 28. Garbage Collection" [Online] Available: https://dlang.org/spec/garbage.html [Accessed 23 December 2022]
+
+Debian wiki (2020) "Device nodes" [Online] Available: https://wiki.debian.org/device_node
 
 Gaynor, A. (2019) "Introduction to Memory Unsafety for VPs of Engineering". [Online] Available: https://alexgaynor.net/2019/aug/12/introduction-to-memory-unsafety-for-vps-of-engineering/
 
@@ -43,6 +45,8 @@ Rust Community (n.d.) "The Cargo Book" [Online] Available: https://doc.rust-lang
 
 Sasidharan, K. D. (2020) "Visualizing memory management in Rust". [Online] Technorage. Available: https://deepu.tech/memory-management-in-rust/
 
+Sheldon, R. (2022) "garbage collection (gc)"  [Online] TechTarget. Available: https://www.techtarget.com/searchstorage/definition/garbage-collection [Accessed 1 February 2023]
+
 Sperling, S. (2017) "Getting started with OpenBSD device driver development". [Online] Available: https://www.youtube.com/watch?v=W5qhWw07qpU [Accessed  7 September 2022]
 
 The FreeBSD Documentation Project (2022) "FreeBSD Architecture Handbook ". FreeBSD Documentation. Ch 9: Writing FreeBSD Device Drivers. [Online] Available: https://docs.freebsd.org/en/books/arch-handbook/ [Accessed 9 September 2022 ]
@@ -56,6 +60,8 @@ Vander Stoep, J. (2022) "Memory Safe Languages in Android 13". Google Security B
 Vaughan-Nichols, S. (2022) "Linus Torvalds: Rust will go into Linux 6.1". [Online]. zdnet. Available: https://www.zdnet.com/article/linus-torvalds-rust-will-go-into-linux-6-1/ [Accessed 2 October 2022]
 
 Vaughan-Nichols, S. (2022) "Rust in the Linux kernel". [Online] The New Stack. Available: https://thenewstack.io/rust-in-the-linux-kernel/ [Accessed 1 February 2023]
+
+Wikipedia (2023)  "Garbage collection (computer science)" [Online] Available: https://en.wikipedia.org/wiki/Garbage_collection_(computer_science) [Accessed 23 December 2022]
 
 Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wiki/Memory_safety [Accessed 14 October 2022]
 
