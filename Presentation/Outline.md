@@ -7,6 +7,8 @@ Style -  20%
 Content - 50%
 Questions - 20%
 
+NEED: https://superuser.com/questions/345086/split-pdf-document-from-command-line-in-linux
+
 -----
 Resources:
 + Film demo of a Hello, World driver
