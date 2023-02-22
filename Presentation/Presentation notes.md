@@ -2,16 +2,23 @@
 
 ## Device Drivers & Problems (2 min)
 
+Drivers are found within a majority of OS' if not all
+Refer to slides
+Unfortunately they do suffer from range of issues - one of the most major being the continued use of C
+
+Memory safety: will discuss this more broadly
+
 ## Project Aim (1 min)
 
-Original intent was to create a generic USB mouse... it was then found that RFL project is maybe not quite at that stage so the aim has shifted to highlight the benefits for Linux but is not too dissimilar.
+Original intent was to create a generic USB mouse... it was then found that RFL project is maybe not quite at that stage so the aim has shifted to highlight the benefits for Linux but is not too dissimilar. Will expand on some of this later...
 
 ## Rust (3 min)
 
 One of the main components in this project, especially with regard to development, is Rust for Linux. As a bit of background....
-+ Builds on groundwork laid by gaynor and co in 2019
++ Builds on groundwork laid by gaynor and thomas in 2019
 + Started 2020
 + Recently incorporated into Linux with kernel version 6.1
++ Development continues, updates provided via Zulip and their own mailing list
 
 Rust is a relatively young system language focused on memory safety
 + Invented by Graydon Hoare, released 2015
@@ -23,8 +30,9 @@ Rust is a relatively young system language focused on memory safety
 
 ... though not perfect, crit by stroustrup
 + Unsafe for Rust is necessary
-+ Haskell similarly has backdoors so having a backdoor isn't some kind of gotcha
-
+	+ Allows interaction with system resources
+	+ Underlying hardware is not mutable
++ Haskell similarly has backdoors so having a backdoor isn't some kind of gotcha and is sometimes critical
 
 ## Memory Safety (3 min)
 So memory unsafety can be defined as....
@@ -48,8 +56,11 @@ Since the interim report I have....
 ### Development
 Detail development steps....
 + Recompiling existing kernel to Linux 6.1
++ Install Rust (if not already installed)
 + Recompiling that kernel to enable Rust
 + After this, tested Rust samples to verify all works
+
+I have found this isn't perfect and you can run into minor problems but generally, the process works.
 
 Demo before ending with questions.
 
@@ -69,8 +80,18 @@ Google found
 + Developers don't need to think about trade-offs
 
 #### Exo-kernel
+USENIX ATC '21 - Time for operating systems to rediscover hardware
+Some in OS Design & Impl feel that their field has a lot of opportunity but not much interest.
+Feel that hardware should be considered mrore carefully - thats cutting it short but is general jist.
 
-####  Other misc findings
+An example of this is the exo-kernel. 
+Wants to break down hardware abstractions, force as little abstr as possible but still make them available as needed.
+
+Hardware abstr are moved into untrusted libraries with the main goal of ensuring no forced abstraction. 
+
+Drawbacks are less consistency, exokernel interfaces are complex design
+
+Design philosophy: expose hardware as much as possible.
 
 ## Development Demonstration (~1 min)
 
