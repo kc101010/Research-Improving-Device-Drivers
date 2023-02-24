@@ -17,6 +17,8 @@ D Language Foundation (2022) "Language Reference: 28. Garbage Collection" [Onlin
 
 Debian wiki (2020) "Device nodes" [Online] Available: https://wiki.debian.org/device_node
 
+Free Software Foundation, Inc. (2022) "GNU make" 0.76 ed. Ch 1: Overview of make. Ch 2: An Introduction to Makefiles. [Online] Available: https://www.gnu.org/software/make/manual/make.html#Introduction [Accessed 24 February 2023]
+
 Gaynor, A. (2019) "Introduction to Memory Unsafety for VPs of Engineering". [Online] Available: https://alexgaynor.net/2019/aug/12/introduction-to-memory-unsafety-for-vps-of-engineering/
 
 Karthik M. (2014) "Linux Device Drivers Training 06, Simple Character Driver" 24.54 mins. [Online] Available: https://www.youtube.com/watch?v=E_xrzGlHbac [Accessed 30 August 2022] 
@@ -68,6 +70,8 @@ Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wi
 Wikipedia (2022) "Rust for Linux" [Online] Available: https://en.wikipedia.org/wiki/Rust_for_Linux [Accessed 8 November 2022]
 
 Wikipedia (2022) "User space and kernel space" [Online] Available: https://en.wikipedia.org/wiki/User_space_and_kernel_space [Accessed 28 January 2022]
+
+Zhang, C. (2020) "A Brief Introduction to Build Systems". [Online] The Startup. Medium. Available: https://medium.com/swlh/a-brief-introduction-to-build-systems-1e45cb1cf667 [Accessed 24 February 2023]
 
 
 
