@@ -1,5 +1,7 @@
 https://www.techopedia.com/definition/27006/exokernel
 
+Techopedia (2018) "Exokernel". [Online] Available: https://www.techopedia.com/definition/27006/exokernel [Accessed 24 August 2022]
+
 # Exokernel
 Type of OS developed at MIT that tries to provide application-level management of hardware resources. Designed to separate resource protection from management to facilitate application-specific customization. They're typically small in size due to limited functionality.
 

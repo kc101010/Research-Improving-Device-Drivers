@@ -21,7 +21,7 @@ Free Software Foundation, Inc. (2022) "GNU make" 0.76 ed. Ch 1: Overview of make
 
 Gaynor, A. (2019) "Introduction to Memory Unsafety for VPs of Engineering". [Online] Available: https://alexgaynor.net/2019/aug/12/introduction-to-memory-unsafety-for-vps-of-engineering/
 
-Karthik M. (2014) "Linux Device Drivers Training 06, Simple Character Driver" 24.54 mins. [Online] Available: https://www.youtube.com/watch?v=E_xrzGlHbac [Accessed 30 August 2022] 
+Karthik M. (2014) "Linux Device Drivers Training 06, Simple Character Driver". 24.54 mins. [Online] Available: https://www.youtube.com/watch?v=E_xrzGlHbac [Accessed 30 August 2022] 
 
 Klabnik, S. (2016) "The History of Rust". ACM. [Online] Available: https://youtu.be/79PSagCD_AY [Accessed 23 October 2022]
 
@@ -43,6 +43,8 @@ Renzelmann J, M. Swift M, M. (2009) "Decaf: moving device drivers to a modern la
 
 Ritchie, M. D. (1993) "The Development of the C Language" [Online] Bell Labs, Lucent Technologies. Available: https://www.bell-labs.com/usr/dmr/www/chist.html [Accessed 14 October 2022]
 
+Roscoe, T. (2021) "USENIX ATC '21/OSDI '21 Joint Keynote Address-It's Time for Operating Systems to Rediscover Hardware". 1.06.19 mins. [Online] Available: https://www.youtube.com/watch?v=36myc8wQhLo [Accessed 24 August 2022]
+
 Rust Community (n.d.) "The Cargo Book" [Online] Available: https://doc.rust-lang.org/cargo/index.html [Accessed 23 October 2022]
 
 Sasidharan, K. D. (2020) "Visualizing memory management in Rust". [Online] Technorage. Available: https://deepu.tech/memory-management-in-rust/
@@ -50,6 +52,8 @@ Sasidharan, K. D. (2020) "Visualizing memory management in Rust". [Online] Techn
 Sheldon, R. (2022) "garbage collection (gc)"  [Online] TechTarget. Available: https://www.techtarget.com/searchstorage/definition/garbage-collection [Accessed 1 February 2023]
 
 Sperling, S. (2017) "Getting started with OpenBSD device driver development". [Online] Available: https://www.youtube.com/watch?v=W5qhWw07qpU [Accessed  7 September 2022]
+
+Techopedia (2018) "Exokernel". [Online] Available: https://www.techopedia.com/definition/27006/exokernel [Accessed 24 August 2022]
 
 The FreeBSD Documentation Project (2022) "FreeBSD Architecture Handbook ". FreeBSD Documentation. Ch 9: Writing FreeBSD Device Drivers. [Online] Available: https://docs.freebsd.org/en/books/arch-handbook/ [Accessed 9 September 2022 ]
 

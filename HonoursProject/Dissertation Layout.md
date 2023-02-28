@@ -182,7 +182,14 @@ Garbage collection has several benefits such as ensuring a program doesn't excee
 
 However, garbage collection is not perfect and has clear disadvantages. 
 
-## The Exo-kernel
+## The Exo-kernel (401w)
+The exo-kernel is a concept originally developed at MIT that attempts to return management of hardware resources to the application itself. This kernel is designed in a way that separates resource protection from resource management in order to allow applications to customise how they interact with underlying resources thus the application is completely in charge of its own paging, scheduling, context switching and handling of page faults. 
+
+In present designs, the Operating System is positioned between applications and the physical hardware which impacts performance as well as functionality and scope of applications. The exo-kernel philosophy looks to force as little abstractions as possible, exposing hardware where possible. The kernel itself is small, all hardware abstractions are moved into untrusted OS libraries in order to ensure there is no forced abstraction though components such as POSIX are still available if required by a given application. 
+
+Such kernel would provide several features including improved support to application control (as security is separated from management) and the availability of a low-level interface. Abstractions are securely converted intro libraries, and offer high portability and compatability. This design and its underlying features are complimented by several benefits which include improved performance in applications, more efficiency when using hardware (due to precise resource management), development and testing is simplified alongside each application having the ability to apply its own optimised memory management. It should be noted that the main drawbacks of the exo-kernel are less consistency and a more complex design in the kernels interfaces.
+
+The exo-kernel is an example of how changes in operating system design & implementation (OSDI) may be leveraged in order to improve device drivers. It was previously found that OSDI has stagnated and, similarly to device drivers, does not see much work or research. It was previously described as 'hugely rich design space' (Roscoe, 2021) that has 'very little published work'. Roscoe, in his USENIX keynote, declared that OSDI doesn't have the priority that it should and that the design of operating systems is in fact, affecting how hardware is designed to the detriment of both the operating system and hardware (almost like a feedback loop). It may be that some of the problems we observe with device drivers could be related to the aforementioned stagnations in OSDI and that new research in the field (or making use of new concepts such as the exokernel) could lead to an improvement within drivers.  
 
 ## Tools
 + Discuss Dingo framework for drivers

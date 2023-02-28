@@ -1,5 +1,7 @@
 # [USENIX ATC '21/OSDI '21 Joint Keynote Address-It's Time for Operating Systems to Rediscover Hardware](https://www.youtube.com/watch?v=36myc8wQhLo)
 
+Roscoe, T. (2021) "USENIX ATC '21/OSDI '21 Joint Keynote Address-It's Time for Operating Systems to Rediscover Hardware". 1.06.19 mins. [Online] Available: https://www.youtube.com/watch?v=36myc8wQhLo [Accessed 24 August 2023]
+
 USENIX OSDI/ATC 2021
 
 OSDI = Operating System Design & Implementation
