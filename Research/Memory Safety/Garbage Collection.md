@@ -2,6 +2,8 @@ https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)
 
 Wikipedia (2023)  "Garbage collection (computer science)" [Online] Available: https://en.wikipedia.org/wiki/Garbage_collection_(computer_science) [Accessed 23 December 2022]
 
+Hertz, M. Berger, D. E. (2005) "Quantifying the Performance of Garbage Collection vs Explicit Memory Management". [Online] Available: https://people.cs.umass.edu/~emery/pubs/gcvsmalloc.pdf [Accessed 2 March 2023]
+
 A form of automatic memory management which utilises a 'garbage collector' in order to free memory which was previously allocated but now no longer referenced - this memory is known as 'garbage'. Garbage collection was invented in 1959 by John McCarthy, an American computer scientist to simplfiy manual memory management in the Lisp programming language.
 
 This method of memory management relieves the developer the duty of performing manual memory management. It is possible that garbage collection utilises a large volume of processing time which will then affect performance.
@@ -60,3 +62,28 @@ Though there are downsides:
 + Typically all threads aside from the collector thread must be halted while collection is in progress
 + GCs can keep around some memory that an explicit deallocator would not
 + GC should be implemented as a basic OS kernel service but is not so GC programs must carry the GC implementation. This may be a shared library but nevertheless is still overhead. 
+---
+
+Microsoft (2009) "Back to Basics: Reference Counting Garbage Collection". [Online] Available: https://learn.microsoft.com/en-gb/archive/blogs/abhinaba/back-to-basics-reference-counting-garbage-collection [Accessed 2 March 2023]
+
+https://learn.microsoft.com/en-gb/archive/blogs/abhinaba/back-to-basics-reference-counting-garbage-collection
+
++ Simple, counts the number of reference(s) to a memory block/object from other blocks
++ When mem is created or a ref to the object is assigned, the refcount is increased
++ When a pointer is dealloacted/'assigned away', the refcount is decreased
++ If the refcount reaches 0, there are no pointer references. The memory is considered unreachable and should be reclaimed as garbage
+
+This mechanism works by counting the number of references to a block of memory or object from other blocks. A reference count holds the number of references. The count is increased when memory or a reference to the object is created and decreased when a pointer to the memory is de-allocated or destroyed. Upon the count reaching 0, it is clear that there are no pointer references thus the memory is considered unreachable and should be reclaimed as garbage.
+
+Advantages 
++ Easy to implement
++ Object reclaimed as soon as it becomes garbage
++ If objects support destructs/finalisers then sys resources can be return to OS faster
++ Refcount ensures garbage collection is distributed over the whole period of execution, in interactive systems there will be no system freezes
+
+Disadvantages
++ Adds signficant bloat to code, as each assignment sees a call to update the refcount
++ In a multithreaded system, refcount can be a major issue as locks need to be used to update the refcount
++ Re-using even optimised atomic operations are costly when repeatedly used
++ Header space cost eats into the system, if they are used in small objects then it causes significant overhead
+

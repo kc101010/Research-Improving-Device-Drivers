@@ -21,6 +21,8 @@ Free Software Foundation, Inc. (2022) "GNU make" 0.76 ed. Ch 1: Overview of make
 
 Gaynor, A. (2019) "Introduction to Memory Unsafety for VPs of Engineering". [Online] Available: https://alexgaynor.net/2019/aug/12/introduction-to-memory-unsafety-for-vps-of-engineering/
 
+Hertz, M. Berger, D. E. (2005) "Quantifying the Performance of Garbage Collection vs Explicit Memory Management". [Online] Available: https://people.cs.umass.edu/~emery/pubs/gcvsmalloc.pdf [Accessed 2 March 2023]
+
 Karthik M. (2014) "Linux Device Drivers Training 06, Simple Character Driver". 24.54 mins. [Online] Available: https://www.youtube.com/watch?v=E_xrzGlHbac [Accessed 30 August 2022] 
 
 Klabnik, S. (2016) "The History of Rust". ACM. [Online] Available: https://youtu.be/79PSagCD_AY [Accessed 23 October 2022]

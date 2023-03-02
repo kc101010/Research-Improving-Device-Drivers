@@ -68,7 +68,7 @@ Driver development can occur across 2 different machines. As is the case in Wind
 
 ---
 
-# 2. LITERATURE REVIEW [c] 20
+# 2. LITERATURE REVIEW [c] 20 (3685)
 
 ## Operating System Drivers (736/~500w)
 
@@ -114,8 +114,8 @@ Rust utilises RAIL - Resource Acquisition is Initialisation - which is enforced 
 
 Variables have lifetimes, a concept which is important for the functionality of the ownership system. A variable's lifetime begins at initialisation and ends when it is closed or destroyed. This should not be considered variable scope. The borrow-checker uses this concept at compile time to ensure that alll references to an object are valid. It is clear that Rusts implementation of memory management will no doubt help in ensuring memory safety, an important factor for the application of Rust within drivers.
 
-### Rust for Linux (185w)
-Rust for Linux is a project, originally started in 2019 by Miguel Ojeda with the aim of introducing a new system programming language into Linux kernel. Rust would be chosen as it "... guarantees no undefined behaviour takes place (as long as unsafe code is sound), particularly in terms of memory management." (Ojeda, 2022) which would eliminate issues such as use-after-free, double free and data races. The project was created as there had long been desire to write Linux kernel code in Rust. Several attempts were made, the earliest being in 2013, though none of these projects provided Rust support from within the kernel. 
+### Rust for Linux (210w)
+Rust for Linux is a project, originally started in 2019 by Miguel Ojeda with the aim of introducing a new system programming language into Linux kernel. Rust would be chosen as it "guarantees no undefined behaviour takes place (as long as unsafe code is sound), particularly in terms of memory management." (Ojeda, 2022) which would eliminate issues such as use-after-free, double free and data races. The project was created as there had long been desire to write Linux kernel code in Rust. Several attempts were made, the earliest being in 2013, though none of these projects provided Rust support from within the kernel. Rust for Linux carries on initial work that was undertaken by Gaynor and Thomas (2019) in an attempt to introduce Rust into the Linux kernel.
 
 There has since been various technical achievements within the project with several organisations from industry approaching Ojeda with interest including Google, Arm, Microsoft and Red Hat as well as private companies. Alongside these companies, academics  have also reached out such as researchers at the University of Washington. Work carried out by the Rust for Linux project was recently integrated into the Linux kernel, starting from version 6.1, marking the first time a new programming language has successfully been introduced into the kernel. 
 
@@ -167,20 +167,25 @@ In the case of data structures, memory unsafe languages allow programmers to acc
 
 As an example, we can consider a program that manages to-do lists for several users. If implemented in a memory unsafe language, it is possible for the programs data structure to both access negative elements and positive elements that don't exist thus the data structure can access data which is outside of its bounds. This can lead to users having the ability to read each others lists which would then be a security vulnerability in the program, this is known as an 'out-of-bounds read'. If users were able to change elements in other users lists, this is known as an 'out-of-bounds write'. If a to-do list is deleted and later requested then a memory unsafe language has the ability to fetch the memory that it was previously finished with. Within the program, this space might now contain another users list, this is known as a 'user-after-free' vulnerability.
 
-### Garbage Collection (308w)
+### Garbage Collection (347w)
 Garbage collection refers to automatic memory management which is carried out by what is known as a garbage collector. It can also be described as a "memory recovery feature" which is "built into programming languages" (Sheldon, 2022). A programming language which uses a garbage collector may utilise many collectors with the aim of freeing memory allocated to objects that are no longer in use or required by the program thus the free memory can be re-used for future object allocations. Garbage collection is utilised in several programming languages including: Java, C# and D. 
 
 D is a systems programming language that utilises garbage collection. The developer allocates memory as needed and from time to time the garbage collector will free unused memory, making such memory freely available once again. D garbage collection is carried out as follows;
 
 1. All other threads are stopped and the current thread is hijacked for garbage collection.
-2. Root memory ranges are scanned for pointers to allocated memory, this memory itself is recursively scanned for more pointers.
+2. Root memory ranges are scanned for pointers to allocated memory, thisReference counting is a mechanism applied in garbage collection. This mechanism works by counting the number of references to a block of memory or object from other blocks. A reference count holds the number of references. The count is increased when memory or a reference to the object is created and decreased when a pointer to the memory is de-allocated or destroyed. Upon the count reaching 0, it is clear that there are no pointer references thus the memory is considered unreachable and should be reclaimed as garbage.
+
+Refence counting has several advantages including being easy to implement, reclaiming objects as soon as they become garbage, quick return of system resources (especially if objects support destructors) and ensuring that garbage collection is distributed throughout all the execution period (these means no system freezes, especially in interactive systems). Although there are several disadvantages, namely the addition of signifcant bloat within code as each assignment will see a call which updates the reference count. In multithreaded systems, the reference count becomes a potential problem as locks must be used to update the reference count. It should also be noted that re-used of optimised atomic operations can still be costly when used repeatedly and the header space used within reference counting has a high cost, when causes significant overhead especially when used with small objects. memory itself is recursively scanned for more pointerAttempts at building a virtualbox machine, recompiling the Linux distro - this saw the most progress and best results+s.
 3. All memory that holds no active pointers is freed with unreachable memory requiring destructors queued.
 4. All other threads are resumed and destructors run for all queued memory, any remaining unreachable memory is freed.
 5. Current thread is returned to previous work. 
 
-Garbage collection has several benefits such as ensuring a program doesn't exceed allocated memory, ensuring continued functionality and taking responsbility from developers who would otherwise need to manually manage such memory thus reducing the likelihood of memory-related bugs. Specifically in the case of D, it was found that garbage collected programs are often faster, can't suffer from memory leaks (thus have more long term stability) and are faster to develop and debug (explicit de-allocation code is not developed, debugged, tested or maintained) (D Language Foundation, 2022).
+Garbage collection has several benefits such as ensuring a program doesn't exceed allocated memory, ensuring continued functionality and taking responsbility from developers who would otherwise need to manually manage such memory thus reducing the likelihood of memory-related bugs. Specifically in the case of D, it was found that garbage collected programs are often faster, can't suffer from memory leaks (thus have more long term stability) and are faster to develop and debug (explicit de-allocation code is not developed, debugged, tested or maintained) (D Language Foundation, 2022). However, garbage collection is not perfect and has clear disadvantages. It was previously found that garbage collection requires 5 times more memory to compensate for overhead when selecting memory to free while retaining performance similar to that of a program without garbage collection (Hertz & Berger, 2005).
 
-However, garbage collection is not perfect and has clear disadvantages. 
+### Reference Counting (222w)
+Reference counting is a mechanism applied in garbage collection. This mechanism works by counting the number of references to a block of memory or object from other blocks. A reference count holds the number of references. The count is increased when memory or a reference to the object is created and decreased when a pointer to the memory is de-allocated or destroyed. Upon the count reaching 0, it is clear that there are no pointer references thus the memory is considered unreachable and should be reclaimed as garbage.
+
+Refence counting has several advantages including being easy to implement, reclaiming objects as soon as they become garbage, quick return of system resources (especially if objects support destructors) and ensuring that garbage collection is distributed throughout all the execution period (these means no system freezes, especially in interactive systems). Although there are several disadvantages, namely the addition of signifcant bloat within code as each assignment will see a call which updates the reference count. In multithreaded systems, the reference count becomes a potential problem as locks must be used to update the reference count. It should also be noted that re-used of optimised atomic operations can still be costly when used repeatedly and the header space used within reference counting has a high cost, when causes significant overhead especially when used with small objects.
 
 ## The Exo-kernel (401w)
 The exo-kernel is a concept originally developed at MIT that attempts to return management of hardware resources to the application itself. This kernel is designed in a way that separates resource protection from resource management in order to allow applications to customise how they interact with underlying resources thus the application is completely in charge of its own paging, scheduling, context switching and handling of page faults. 
@@ -191,25 +196,38 @@ Such kernel would provide several features including improved support to applica
 
 The exo-kernel is an example of how changes in operating system design & implementation (OSDI) may be leveraged in order to improve device drivers. It was previously found that OSDI has stagnated and, similarly to device drivers, does not see much work or research. It was previously described as 'hugely rich design space' (Roscoe, 2021) that has 'very little published work'. Roscoe, in his USENIX keynote, declared that OSDI doesn't have the priority that it should and that the design of operating systems is in fact, affecting how hardware is designed to the detriment of both the operating system and hardware (almost like a feedback loop). It may be that some of the problems we observe with device drivers could be related to the aforementioned stagnations in OSDI and that new research in the field (or making use of new concepts such as the exokernel) could lead to an improvement within drivers.  
 
-## Tools
-+ Discuss Dingo framework for drivers
-+ Loosely talk about various tools that have came up (WHOOP alongside others used in proposal)
-	+ Coccinelle is actually included within the Linux kernel alongside Rust so is relevant.
+## Summary
+(summarise main points, how they relate to the project)
 
-## Miscellaneous efforts
-+ Trying to harden C
-	+ Only mitigates issues, bugs still possible
-	+ Doesn't permanetly solve issue
-+ Isolation
-	+ Sandboxing
-	+ Microkernel
-	+ Performance issues
-+ C++ wasn't suitable
-	+ Rejected by torvalds for use linux
-	
+### Rust
+Bring up main points
++ Clearly reduces memory unsafety and makes several positive changes to a given codebase
++ Is not immune from criticism (though such point is refuted by previous languages and their features i.e. Haskell)
+
+### Memory Safety
+We do have other approaches to Memory safety that aren't just Rust such as Garbage Collection though this isn't perfect.
+
+### Exokernel
+All different approaches to improve device drivers, the exokernel is a very alternative approach wherein the design of the system itself is considered rather than the specific component (drivers) of a wider system.
+
 ----
 
 # 3. DEVELOPMENT [c] 40
+
++ Attempts at building a virtualbox machine, recompiling the Linux distro - this saw the most progress and best results
+	+ detail steps
+	+ developed a hello world driver (there should also be rust version of the char driver sitting somewhere!!
+	+ wasn't as simple, minor details on issues
+	+ attempted to create the linux usb mouse driver but ran into problems, USB support isn't quite there yet
+	
++ Initial virtual machine - following Filhos tutorial
+	+ detail steps
+	+ rust echo server
+	+ 'hello world example'?
+	
++ Attempt at building on a physical machine - not as much time spent, this should actually just be a small note somewhere
+
+
 ----
 
 # 4. EXPERIMENTS [c] 10
