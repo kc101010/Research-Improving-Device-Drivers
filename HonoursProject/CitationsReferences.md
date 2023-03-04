@@ -61,6 +61,8 @@ The FreeBSD Documentation Project (2022) "FreeBSD Architecture Handbook ". FreeB
 
 Thomas, G. Gaynor, A. (2019) "Linux Kernel Modules in Rust".  [Online] Linux Security Summit. Available: https://youtu.be/RyY01fRyGhM [Accessed 1 August 2022]
 
+Torvalds,  L. (2023) "Github: torvalds/linux repository". [Online] Available: https://github.com/torvalds/linux [Accessed 4 March 2023]
+
 University of Washington, Department of Computer Science and Engineering (2004) "CSE 341: Unsafe languages (c)" [Online] Available: https://courses.cs.washington.edu/courses/cse341/04wi/lectures/26-unsafe-languages.html [Accessed 14 October 2022]
 
 Vander Stoep, J. (2022) "Memory Safe Languages in Android 13". Google Security Blog. Google. [Online] Available: https://security.googleblog.com/2022/12/memory-safe-languages-in-android-13.html [Accessed 2 December 2022]

@@ -19,7 +19,7 @@ An introduction to the problem, a brief history and showcase of my plan(s)
 ## Device Drivers
 Device drivers are a vital component of Operating Systems which allow for the control of peripheral devices while interacting with underlying hardware. Drivers also provide facilities which can be used to extend an Operating System via file systems, network protocol, anti-virus capability and more (Ball et al, 2006). Described as the "software layer that lies between applications and physical devices" (Corbet et al, 2005), drivers are clearly a necessity within an Operating System however they suffer from a range of issues with dangerous consequences.
 
-Drivers continue to be programmed with the C programming language which was first developed at Bell Labs between 1969 and 1973, alongside early development of Unix (Ritchie, M.D, 1993). It was designed as a "system implementation language for the nascent Unix operating system" (Ritchie, M. D, 1993). Languages such as C, C++ and Assembly have the potential to be memory unsafe (Gaynor, 2019) which can then lead to critical vulnerabilities as observed by several organisations ov(~892 words)er the years (Thomas and Gaynor, 2019).
+Drivers continue to be programmed with the C programming language which was first developed at Bell Labs between 1969 and 1973, alongside early development of Unix (Ritchie, M.D, 1993). It was designed as a "system implementation language for the nascent Unix operating system" (Ritchie, M. D, 1993). Languages such as C, C++ and Assembly have the potential to be memory unsafe (Gaynor, 2019) which can then lead to critical vulnerabilities as observed by several organisations over the years (Thomas and Gaynor, 2019).
 
 Memory safety is an attribute found within various programmming languages with the aim of preventing the developer from introducing certain bugs which strongly relate to memory management (Prossimo, 2022). Memory safety issues usually lead to security problems with common vulnerablities being out-of-bounds reads, out-of-bounds writes and use-after-frees (Gaynor, 2019).
 
@@ -214,6 +214,34 @@ All different approaches to improve device drivers, the exokernel is a very alte
 
 # 3. DEVELOPMENT [c] 40
 
+## Writing C drivers (52w)
+Before working on Rust drivers, it is necessary to know how to work with their predecessor, C drivers. C is the primary language utilised by the Linux kernel and, as previously discussed, was created between 1969 and 1974 alongside Unix. C accounts for 98.5% of the code written for Linux (Torvalds, 2023). It should be noted that Linux drivers can often be referred to as 'kernel modules', throughout this report they will be referred to as drivers.
+
+### Build steps (187w)
+C is the main language used within Linux drivers with several, if not all, driver subsystems written in C. Such drivers are stored in '.c' files and can either be represented in a single file or across multiple files which contribute to make a single driver.  These files can be found alongside a 'makefile' which is used to create the executable format of the driver, in way of the '.ko' file type.
+
+After running make, the executable driver is produced alongside several other files. With this, it is now possible for the driver to be used within the kernel. Several commands are available to use and interact with a driver, 'lsmod' is an example which lists all drivers and their statuses within the kernel. 'insmod' and 'rmmod' can both be utilised to load and unload '.ko' files into the kernel. 'dmesg' can be used to display messages from within the kernel and can act as a form of debugging when loading and running a driver. Such commands form the basis of introducing, using and testing drivers within a Linux kernel and are commonly used when developing drivers. 
+
+### 'Hello World' driver (198w)
+'Hello, World.' is the common introduction to programming in any language, this also applies to drivers. A simple 'Hello, World' driver can easily be created and serves to showcase key concepts of Linux drivers and how they differ to traditional programs. Much like C the first 'include' lines represent headers and libraries and are commonly used to call various subsystems that can be used within the driver. In this example, libraries ('linux/init' and 'linux/module') can be observed that provide core components for drivers. 
+
+Following this, is a macro function that declares the license utilised by the driver. This function is a necessity and without it, issues can be encountered regarding compilation and loading. Next, are the functions utilised by the driver, in this case we simply have 'hello_init' and 'hello_exit'. Drivers typically make use of initialiser (which carry out pre-configurations before the driver runs) and exit functions (to complete all de-allocations before unloading the driver). Such functions are present within all drivers and are executed upon inserting and unloading. Finally, we have macro functions in the form of 'module_init' and 'module_exit' which declare the initialiser and exit so the proper functions can be called and used.
+
+### Character driver (61w)
+The character driver can be used to further introduce driver programming concepts. In this case, the 'file_operations' struct is introduced which controls how the driver interacts with files. Alongside this new struct is the introduction of driver registration. Driver registration refers to the process of driver software being assigned a major and minor number as well as a physical device file.
+
+## Building Linux with Rust support
+
+### Initial work
+
+### Build steps
+
+### Results
+
+### Attempts in building a USB driver
+
+### Building on a physical machine
+
 + Attempts at building a virtualbox machine, recompiling the Linux distro - this saw the most progress and best results
 	+ detail steps
 	+ developed a hello world driver (there should also be rust version of the char driver sitting somewhere!!
@@ -226,6 +254,8 @@ All different approaches to improve device drivers, the exokernel is a very alte
 	+ 'hello world example'?
 	
 + Attempt at building on a physical machine - not as much time spent, this should actually just be a small note somewhere
+
+
 
 
 ----
