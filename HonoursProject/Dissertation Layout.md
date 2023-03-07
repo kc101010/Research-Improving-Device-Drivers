@@ -12,7 +12,7 @@
 # TABLE OF CONTENTS
 ---
 
-# 1. BACKGROUND[c] 10 (1297w)
+# 1. BACKGROUND[c] 10 (1397w)
 An introduction to the problem, a brief history and showcase of my plan(s)
 (~892 words w/o concepts section)
 
@@ -43,16 +43,19 @@ Gaynor mentioned a pull request for the Rust-For-Linux repository which aims to 
 ## Project Goal
 The aim of this project is to try and overcome the previously highlighted issues by developing a Linux device driver in Rust. Not only will it replace C, Rust and its features should prevent issues with memory safety. Rust is a relatively young language with several benefits and features that aim to improve memory safety. It continues to spread through industry as it was recently incorporated into the Linux Kernel from version 6.1 (Vaughan-Nichols, 2022) and there have been public calls from developers for Rust to be utilised more. An example of this being Microsoft Azure CTO, Mark Russinovich, urging the industry (regarding to C and C++) 'For the sake of security and reliability, the industry should declare those languages as deprecated.' (Claburn, 2022).
 
-## General Concepts (405w)
+## General Concepts (505w)
 
 ### Kernel (40 words)
-A kernel is the primary interface between hardware and computer processes, ensuring resources are used as effectively as possible (Baeldung, 2022). The kernel runs within the operating system and controls the function of hardware alongside managing memory and computer peripherals. 
+A kernel is the primary interface between hardware and computer processes, ensuring resources are used as effectively as possible (Baeldung, 2022). The kernel runs within the operating system as a large section of executable code fulfilling several roles including process management, memory management, filesystem management, device control and networking. 
 
 ![[LinuxOSLayersBreakdown-Wiki.png]]
 (Figure X, System layer breakdown of Linux. Wikipedia, 2022)
 
 ### User space and Kernel Space (84 words)
 Kernel space is an area of memory used exclusively by the kernel and encapsulates device drivers . User space is a separate area where user applications run and file systems can be managed (Baeldung, 2022). User applications communicate with the kernel via system calls. Kernel and user space is separated to protect memory and protect the hardware layer of the system as showcased in Figure x. The term 'space' is interchangeable with the term 'mode' as this concept is also related to processors.
+
+### System call interface (100w)
+As kernel space is separate from user space this means that kernel-level operations are not freely available to the general user though such functions can still be accessed from user space via a system call interface.  As can be obsrved in figure X, the system call interface is the main boundary between the various kernel subsystems and user space.  System calls are widely used, especially in lower level programming languages such as C and Assembly, with their main function being to obtain information from the kernel for use within user space or send information from user space to the kernel.
 
 ### Device node system (72w)
 Device nodes are special file types (especially in Unix-based systems) which represent a resource allocated by the kernel. These resources are identified by a major number and minor number which are both stored within the structure of the node. Typically, the major number identifies the device driver while the minor number identifies a specific device (or collection of devices) that the driver can control with these numbers being passed to the driver. 
@@ -212,10 +215,12 @@ All different approaches to improve device drivers, the exokernel is a very alte
 
 ----
 
-# 3. DEVELOPMENT [c] 40 (1043)
+# 3. DEVELOPMENT [c] 40 (1633)
 
-## Writing C drivers (78w)
+## Writing C drivers (210w)
 Before working on Rust drivers, it is necessary to know how to work with their predecessor, C drivers. C being the primary language utilised by the Linux kernel and, as previously discussed, was created between 1969 and 1974 alongside Unix. C accounts for 98.5% of the code written for Linux (Torvalds, 2023). It should be noted that Linux drivers can often be referred to as 'kernel modules', though within this report they will be referred to as drivers for simplicity.
+
+It should be noted that kernel modules also implement extensions such as filesystems which is why they are not strictly labelled as 'drivers'. As such, filesystem modules are not considered to be a driver in the traditional sense and can rather be considered to be a software driver as it maps low-level data structures to higher-level data structures. While a filesystem extension indeed implements lower level system calls for file access and mapping functionality, the interface which it utilises is separate from that used to facilitate the physical transfer to the disk which is, instead, carried out by a block device driver. Thus kernel modules can also be used to facilitate core but broad functionality such as providing the low-level functions which are required for the functionlity of standard filesytems.
 
 ### Driver Types (229w)
 There are different types of drivers available for implementation within the Linux kernel, such types are flexible but are categorised into the following classes: Character, Block and Network. Character typically works with a stream of bytes by using file functions such as open, close, read and write. and by working with file system nodes. Unlike a regular file, character devices can only be accessed sequentially. Examples of a character device can be found in text consoles and serial ports. 
@@ -244,19 +249,36 @@ The file_operations struct assigns and stores new functions, written by the deve
 In order to test the functionality of this driver, various commands can be executed on the device file including 'cat', 'less', 'more' and so on which utilise the previously mentioned file functions. After interacting with the device file, the 'dmesg' command can be run to examine results and verify whether the driver itself is functioning as expected. 
 
 ### Scull (42w)
-Scull (Simple Character Utility for Loading Localities) is an example of a virtual driver that can be used when learning to work with Linux drivers. Scull acts on kernel memory as if it were a physical device thus is not hardware dependant.
+Scull (Simple Character Utility for Loading Localities) is an example of a virtual driver that can be used when learning to work with Linux drivers. Scull acts on kernel memory as if it were a physical device thus is not hardware dependant. Scull implements four devices: 'scull0' through 'scull3' with each device holding global, persistent memory for all data is shared and retained between the aformentioned devices. Alongside these device are four 'First-In-First-Out' devices which act like typical system pipes.
+
+
+## Rust system software
+(writing about the various system/applications written in Rust for learning/practise)
 
 ## Building Linux with Rust support
 
-### Initial work
+### Initial work (148 words)
+Early research and development resulted in the creation of a virtual machine used to test Rust for Linux and Rust integration into the Linux kernel. This virtual machine was built via make using busybox as an aid for configuration. Running via the QEMU hypervisor, the system served to provide insight into core concepts for the project such as building via make, enabling Rust support in the kernel and testing rust support. 
+
+Upon rust being enabled and restarting the machine, various samples were compiled and available for testing. With this, it was possible to add a new sample entry in the way of a simple echo server. This server simply prints out whatever input it receives to its device entry. After writing a new entry into the necessary kernel configuration files and makefile, the echo server was then compiled and loaded as part of the Rust samples on boot. 
 
 ### Build steps
 
-### Results
+### Results (71w)
+Further research resulted in the development being focused on virtual Linux systems available via the VirtualBox hypervisor. With this, the available system was much closer to that of a physical machine and was ultimately more capable when compared to the initial QEMU machine. 
 
-### Attempts in building a USB driver
+A first attempt was made using the Debian distribution though.... 
 
-### Building on a physical machine
+Later, a second attempt succeeded by utilising Ubuntu which eventually became the main system for development and testing. 
+
+### Rust 'Hello, World.'
+
+### USB driver
+
+### Building on physical hardware (197w)
+Attempts were made throughout development to build a Rust-enabled Linux kernel on physical hardware. One such machine was a Raspberry Pi 400 model. It was eventually found that the aforementioned method of rebuilding a Linux kernel is not the most optimal method with regards to the Raspberry Pi. The built in command 'rpi-update next' was instead used to build Linux 6.1 on the machine however this, too, was unsucessful as the kernel reverted to its previous version on restarting the machine. It was also found that while the new kernel could be built and temporaily utilised, it was not possible to enable Rust support therefore it was ultimately not possible to utilise the raspberry pi within development.
+
+Alongside the Raspberry Pi, an attempt was made to build the Rust for Linux kernel on a workstation which was much more similar to the systems created in VirtualBox. Similarly to the Pi, the new kernel would build and install though issues were encountered when attempting to rebuild the kernel with Rust support. As neither attempt to enable Rust support on the Raspberry Pi or workstation was successful, it was necessary to return to working on the functional virtualbox instance.
 
 + Attempts at building a virtualbox machine, recompiling the Linux distro - this saw the most progress and best results
 	+ detail steps
