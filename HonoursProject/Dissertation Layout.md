@@ -215,10 +215,10 @@ All different approaches to improve device drivers, the exokernel is a very alte
 
 ----
 
-# 3. DEVELOPMENT [c] 40 (1633)
+# 3. DEVELOPMENT [c] 40 (2015)
 
-## Writing C drivers (210w)
-Before working on Rust drivers, it is necessary to know how to work with their predecessor, C drivers. C being the primary language utilised by the Linux kernel and, as previously discussed, was created between 1969 and 1974 alongside Unix. C accounts for 98.5% of the code written for Linux (Torvalds, 2023). It should be noted that Linux drivers can often be referred to as 'kernel modules', though within this report they will be referred to as drivers for simplicity.
+## Writing C drivers (206w)
+Before working on Rust drivers, it is necessary to consider their predecessor, C drivers. C being the primary language employed in the Linux kernel and, as previously discussed, was created between 1969 and 1974 alongside Unix. C accounts for 98.5% of the code written for Linux (Torvalds, 2023). It should be noted that Linux drivers can often be referred to as 'kernel modules', though within this context they will be referred to as drivers for simplicity.
 
 It should be noted that kernel modules also implement extensions such as filesystems which is why they are not strictly labelled as 'drivers'. As such, filesystem modules are not considered to be a driver in the traditional sense and can rather be considered to be a software driver as it maps low-level data structures to higher-level data structures. While a filesystem extension indeed implements lower level system calls for file access and mapping functionality, the interface which it utilises is separate from that used to facilitate the physical transfer to the disk which is, instead, carried out by a block device driver. Thus kernel modules can also be used to facilitate core but broad functionality such as providing the low-level functions which are required for the functionlity of standard filesytems.
 
@@ -229,20 +229,22 @@ A block driver typically works with any device that can host a filesystem. Linux
 
 A network driver controls a network interface (whether hardware or software) which itself conducts network transactions between different hosts. The driver itself mostly uses the network subsystem within the kernel and is typically in charge of sending and receiving network packets, the driver is typically designed with a focus on packet transmission rather than focusing on individual connections. Unlike the aforementioned driver classes, the network does not utilise a stream and is not mapped to a filesystem node (though a unique name is still assigned), thus function calls for packet transmission are made rather than calls to read and write.
 
-### Build steps (192w)
-C is the main language used within Linux drivers with several, if not all, driver subsystems written in C. Driver source code is stored in '.c' files, similarly to traditional programs. They can either be represented in a single file or across multiple interconnecting files which contribute to make a single driver.  These files can be found alongside a 'makefile' which is used to create the executable format of the driver, in way of the '.ko' file type, which is the object code of the driver.
+### Build steps (301w)
+C is the main language used within Linux drivers with several, if not all, driver subsystems written in C. Driver source code is stored in '.c' files, similarly to traditional programs. They can either be represented in a single file or across multiple interconnecting files which contribute to make a single driver.  These files can be found alongside a 'makefile' which is used to create the executable format of the driver, in way of the '.ko' file type, which is the object code of the driver. If a recompiled or customised kernel is not available on the system, it is then necessary to download and install kernel headers for the specific kernel version being used this can be accomplished by running (INSERT KERNEL HEADER COMMAND) in 'apt-get' which will automatically handle installation and make the kernel header files available, typically found in (STANDARD KERNEL HEADER LOCATION). With this, it should be noted that the driver is specifically compiled for the given kernel version thus it should recompiled for other kernel versions as necessary.
 
-After running make, the executable driver is produced alongside several other files. With this, it is now possible for the driver to be used within the kernel. Several commands are available to use and interact with a driver, 'lsmod' is an example which lists all drivers and their statuses within the kernel. 'insmod' and 'rmmod' can both be utilised to link and unlink '.ko' files to the current kernel. 'dmesg' can be used to display messages from within the kernel and can act as a form of debugging when loading and running a driver. Such commands form the basis of introducing, using and testing drivers within a Linux kernel and are commonly used during development. 
+After running make, the executable driver is produced alongside several other files. With this, it is now possible for the driver to be used within the kernel. Several commands are available to use and interact with a driver, 'lsmod' is an example which lists all drivers and their statuses within the kernel. 'insmod' and 'rmmod' can both be utilised to link and unlink '.ko' files to the current kernel. 'dmesg' can be used to display messages from within the kernel and can act as a form of debugging when loading and running a driver. 'modprobe' can also be used to check and automatically debug code before insertion. Such commands form the basis of introducing, using and testing drivers within a Linux kernel and are commonly used during development. 
 
-### 'Hello World' driver (199w)
-'Hello, World.' is the common introduction to programming in any language, this also applies to drivers. A simple 'Hello, World' driver can easily be created and serves to showcase key concepts of Linux drivers and how they differ to traditional programs. Much like C the first 'include' lines represent headers and libraries and are commonly used to call various subsystems that can be used within the driver. In this example, libraries ('linux/init' and 'linux/module') can be observed that provide core components for drivers. 
+### 'Hello World' driver (211w)
+'Hello, World.' is the common introduction to programming in any language, this also applies to drivers. A simple 'Hello, World' driver can easily be created and serves to showcase key concepts of Linux drivers and how they differ to traditional programs. As expected in C, the first 'include' lines represent headers and libraries and are commonly used to call various subsystems that can be used within the driver. In this example, libraries ('linux/init' and 'linux/module') can be observed that provide core components for drivers. 
 
-Following this is a macro function that declares the license utilised by the driver. This function is usually a necessity and without it, issues may be encountered regarding compilation and loading. Next, are the functions utilised by the driver, in this case we simply have 'hello_init' and 'hello_exit'. Drivers typically make use of initialiser (which carry out pre-configurations before the driver runs) and exit functions (to complete all de-allocations before unloading the driver). Such functions are present within all drivers and are executed upon inserting and unloading. Finally, we have macro functions in the form of 'module_init' and 'module_exit' which declare the initialiser and exit functions so these can be suitably called and used.
+Following this is a macro function that declares the license utilised by the driver. This function is usually a necessity and without it, issues may be encountered regarding compilation and loading dependant on whether compilation occurs via headers or a recompiled kernel. 
 
-### Character driver (345w)
-The character driver can be used to further introduce driver programming concepts. In this case, the 'file_operations' struct is introduced which controls how the driver interacts with files. Such structures are typically used to store and declare key functions throughout several kernel subsystems. Alongside this new struct is the introduction of driver registration. Driver registration refers to the process of driver software being assigned a major and minor number as well as a physical device file. It can also be observed that the driver utilises the filesystem 'fs' subsystem.
+Next, are the functions utilised by the driver, in this case we simply have 'hello_init' and 'hello_exit'. Drivers typically make use of initialiser and exit functions to carry out pre-configurations before the driver runs and complete all de-allocations before unloading the driver. Such functions are present within all drivers and are executed upon inserting and unloading. Finally, we have macro functions in the form of 'module_init' and 'module_exit' which declare the initialiser and exit functions so these can be suitably called and used.
 
-Drivers are registered to a device entry file by running the following command: `sudo mknod -m 666 /dev/"DRIVER_NAME" c 240 0` . The first parameter '666' sets the permissions of the given file. Next is the intended name of the entry. The 'c' indicates that the driver is of the character class and finally, the major and minor number that should be used for both the device and driver. The '/dev/' directory is typically used to hold all device/driver entries. Major and minor numbers are used to associate drivers and devices. The major number, specifically, is used to associate entries to the driver with the minor number being used to represent the number of instances of that device.
+### Character driver (358w)
+The character driver can be used to further introduce driver programming concepts. In this case, the 'file_operations' struct  is introduced which controls how the driver interacts with files. Such structures are typically used to store and act as a format to declare key functions throughout several kernel subsystems. Alongside this new struct is the introduction of driver registration. Driver registration refers to the process of driver software being assigned a major and minor number as well as a physical device file. It can also be observed that the driver utilises the filesystem - 'fs'- subsystem.
+
+Drivers are registered to a device entry file by running the following command: `sudo mknod -m 666 /dev/"DRIVER_NAME" c 240 0` . The first parameter '666' sets the permissions of the given file. Next is the intended name and location of the entry. The 'c' indicates that the driver is of the character class and finally, the major and minor number that should be used for both the device and driver. The '/dev/' directory is typically used to hold all device entries to be used by drivers. Major and minor numbers are used to associate drivers to devices. The major number, specifically, is used to associate entries to the driver with the minor number being used to represent the number of instances of that device.
 
 The file_operations struct assigns and stores new functions, written by the developer, to the typical file functions: read, write, open, close (in this case, known as 'release') allowing for customised behaviour to be assigned to such functions. The struct also declares the owner of these new functions. Within this example, new replacements have been created in the form of 'chdev_open', 'chdev_read', 'chdev_write' and 'chdev_close' which simply print a message alongside the function name when that function is called on the device file.
 
@@ -252,24 +254,43 @@ In order to test the functionality of this driver, various commands can be execu
 Scull (Simple Character Utility for Loading Localities) is an example of a virtual driver that can be used when learning to work with Linux drivers. Scull acts on kernel memory as if it were a physical device thus is not hardware dependant. Scull implements four devices: 'scull0' through 'scull3' with each device holding global, persistent memory for all data is shared and retained between the aformentioned devices. Alongside these device are four 'First-In-First-Out' devices which act like typical system pipes.
 
 
-## Rust system software
-(writing about the various system/applications written in Rust for learning/practise)
+## Rust software (47w)
+Various applications were written in Rust throughout this project, from a simple guessing game to the use of unix domain sockets and a program which calls C via 'unsafe'. These programs were written with a focus on learning Rust fundamentals while gaining experience with the language itself.  
+
+### Guessing Game (205w)
+A program where the user must guess a secret number, this example can be used  to demonstrate the similarities and differences between Rust and C. While the overall structure is comparable to that of C, there are distinct changes in syntax that can be observed including the use of 'let' and 'loop' rather than the C method of using the name of the declared type and 'for', 'while' or 'do'.
+
+As expected, library calls can be found at the start of the program but simply consist of the keyword 'use' alongside a C++-esque library path.  This may considered an improvement as the library calls are much more brief and clear where, in comparison, C library calls are slightly more cluttered using a special character alongside a string.  
+
+It can also be observed that where C utilises a function - 'printf' - for output, Rust makes use of a macro function (denoted by the use of the exclamation mark). Gathering input also differs, with Rusts 'stdin' calling both 'read_line' to read the input and 'expect' to simplify error handling. This case of error handling is more convenient than that of C++ with its try-catch-finally block and the C approach of checking an error code with an 'if' statement. 
+
+### BMI Calculator
+
+### Calculator
+
+### Unix Domain Sockets
+
+### Calling unsafe C
+
+### Managing Memory
+
 
 ## Building Linux with Rust support
 
 ### Initial work (148 words)
-Early research and development resulted in the creation of a virtual machine used to test Rust for Linux and Rust integration into the Linux kernel. This virtual machine was built via make using busybox as an aid for configuration. Running via the QEMU hypervisor, the system served to provide insight into core concepts for the project such as building via make, enabling Rust support in the kernel and testing rust support. 
+Early research and development resulted in the creation of a virtual machine used to test Rust for Linux and Rust integration into the Linux kernel. This machine was built via make with busybox used  to generate configuration files. Running via the QEMU hypervisor, the system served to provide insight into core concepts for the project such as building via make, enabling and testing Rust support in the kernel.
 
 Upon rust being enabled and restarting the machine, various samples were compiled and available for testing. With this, it was possible to add a new sample entry in the way of a simple echo server. This server simply prints out whatever input it receives to its device entry. After writing a new entry into the necessary kernel configuration files and makefile, the echo server was then compiled and loaded as part of the Rust samples on boot. 
-
-### Build steps
 
 ### Results (71w)
 Further research resulted in the development being focused on virtual Linux systems available via the VirtualBox hypervisor. With this, the available system was much closer to that of a physical machine and was ultimately more capable when compared to the initial QEMU machine. 
 
-A first attempt was made using the Debian distribution though.... 
+A first attempt was made using the Debian distribution however introducting Rust support was largely unsuccessful due to... 
 
 Later, a second attempt succeeded by utilising Ubuntu which eventually became the main system for development and testing. 
+
+### Build steps
+There are, in fact, no additional or differing steps required in order to build a Rust driver.
 
 ### Rust 'Hello, World.'
 
