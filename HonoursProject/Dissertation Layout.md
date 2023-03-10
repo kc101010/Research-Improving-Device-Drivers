@@ -255,14 +255,14 @@ Scull (Simple Character Utility for Loading Localities) is an example of a virtu
 
 
 ## Rust software (47w)
-Various applications were written in Rust throughout this project, from a simple guessing game to the use of unix domain sockets and a program which calls C via 'unsafe'. These programs were written with a focus on learning Rust fundamentals while gaining experience with the language itself.  
+Various applications were written in Rust throughout this project, from a simple guessing game to the use of Unix domain sockets and calling C in Rust via 'unsafe'. These programs were written with a focus on learning Rust fundamentals while gaining experience with the language itself.  
 
 ### Guessing Game (205w)
 A program where the user must guess a secret number, this example can be used  to demonstrate the similarities and differences between Rust and C. While the overall structure is comparable to that of C, there are distinct changes in syntax that can be observed including the use of 'let' and 'loop' rather than the C method of using the name of the declared type and 'for', 'while' or 'do'.
 
 As expected, library calls can be found at the start of the program but simply consist of the keyword 'use' alongside a C++-esque library path.  This may considered an improvement as the library calls are much more brief and clear where, in comparison, C library calls are slightly more cluttered using a special character alongside a string.  
 
-It can also be observed that where C utilises a function - 'printf' - for output, Rust makes use of a macro function (denoted by the use of the exclamation mark). Gathering input also differs, with Rusts 'stdin' calling both 'read_line' to read the input and 'expect' to simplify error handling. This case of error handling is more convenient than that of C++ with its try-catch-finally block and the C approach of checking an error code with an 'if' statement. 
+It can also be observed that where C utilises a function - 'printf' - for output, Rust makes use of a macro function (denoted by the use of the exclamation mark). Gathering input also differs, with Rusts 'stdin' calling both 'read_line' to read the input and 'expect' to simplify error handling. This case of error handling may be considered more convenient than that of C++ with its try-catch-finally block and the C approach of checking an error code with an 'if' statement. 
 
 ### BMI Calculator
 
@@ -283,18 +283,26 @@ Early research and development resulted in the creation of a virtual machine use
 Upon rust being enabled and restarting the machine, various samples were compiled and available for testing. With this, it was possible to add a new sample entry in the way of a simple echo server. This server simply prints out whatever input it receives to its device entry. After writing a new entry into the necessary kernel configuration files and makefile, the echo server was then compiled and loaded as part of the Rust samples on boot. 
 
 ### Results (71w)
-Further research resulted in the development being focused on virtual Linux systems available via the VirtualBox hypervisor. With this, the available system was much closer to that of a physical machine and was ultimately more capable when compared to the initial QEMU machine. 
+Further research resulted in the development being focused on virtual Linux systems created via the VirtualBox hypervisor. With this, the available system was much closer to that of a physical machine and was ultimately more capable when compared to the initial QEMU machine. 
 
-A first attempt was made using the Debian distribution however introducting Rust support was largely unsuccessful due to... 
+A first attempt was made using the Debian distribution however introducting Rust support was largely unsuccessful due to issues with introducing Rust support into a newly compiled kernel, the process was also found to be time-consuming due to long kernel build times on the virtual machine, though this could also be attributed to the availability of less resources. An issue was encountered where a special file, 'target.json', for the 'rust-analyzer' component was unable to be produced, this file is used within code editors to generate documentation which is embedded into the Rust code for kernel subsystems thus the file is important for making documentation available to the user throughout development.   
 
-Later, a second attempt succeeded by utilising Ubuntu which eventually became the main system for development and testing. 
+Later, a second attempt saw full success. This new machine utilised Ubuntu which was much found to be much easier to recompile on, eventually becoming the main system for development and testing. 
 
 ### Build steps
-There are, in fact, no additional or differing steps required in order to build a Rust driver.
 
-### Rust 'Hello, World.'
 
-### USB driver
+### Rust 'Hello, World.' (269w)
+It should be noted there are, in fact, no additional or differing steps required in order to build a Rust driver. So the same steps described for C drivers can generally be used with Rust with some minor changes such as the makefile. 
+
+Found in Appendix APPEND, the Rust 'Hello, World.' driver structure is loosely similar to that of its equivalent in C. First, is the library calls as expected in Rust. Next, is a structure known as the module descriptor. This data structure replaces equivalent macro functions utilised in C including the driver name, author, description and license. Following this is the 'RustMouse' struct which in this case is unused but must be declared as it represents the driver itself. Next is a structure to hold our driver functions which holds our initialiser which simply prints 'Hello, World!' before loading the rest of the driver. Finally, is the 'Drop' function which automatically deallocates the driver and related resources after printing a 'Goodbye!' message. 
+
+In comparison to C, this Rust driver is much more compartmentalised as can be observed with the license and author macro functions reimplemented as its own structure. However, the functions themselves are encapsulated within 'impl' structures which is not as clean as C which has no such feature. In an improvement over the C version, the Rust driver does not require the use of macro functions to declare initialiser and exit functions. Overall, Rust seems to have cleaned up driver code where such a change is most needed but consequently uses 'impl' to hold functions which may almost be viewed as negating the previous improvement.  
+
+### Rust character driver
+
+### USB driver (108w)
+Research eventually became focused on developing a Generic USB Mouse driver, delivering on the proposed Linux driver as outlined in the project goal. Ultimately, it was found that such a driver is not currently feasible to develop using the Rust for Linux project. At the time of writing, not all kernel subsystems are fully implemented within the Rust for Linux project. The USB subsystem that would be required for such a driver is not yet included though there is work being conducted which has resulted in a USB sample written in full Rust (Rodriguez, 2023) this has yet to be merged into the main Rust for Linux repository. 
 
 ### Building on physical hardware (197w)
 Attempts were made throughout development to build a Rust-enabled Linux kernel on physical hardware. One such machine was a Raspberry Pi 400 model. It was eventually found that the aforementioned method of rebuilding a Linux kernel is not the most optimal method with regards to the Raspberry Pi. The built in command 'rpi-update next' was instead used to build Linux 6.1 on the machine however this, too, was unsucessful as the kernel reverted to its previous version on restarting the machine. It was also found that while the new kernel could be built and temporaily utilised, it was not possible to enable Rust support therefore it was ultimately not possible to utilise the raspberry pi within development.

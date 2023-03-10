@@ -45,6 +45,8 @@ Renzelmann J, M. Swift M, M. (2009) "Decaf: moving device drivers to a modern la
 
 Ritchie, M. D. (1993) "The Development of the C Language" [Online] Bell Labs, Lucent Technologies. Available: https://www.bell-labs.com/usr/dmr/www/chist.html [Accessed 14 October 2022]
 
+Rodriguez R. M. (2023) "Github: YakoYakoYokuYoku/linux repository (usb-support branch).". [Online] Available: https://github.com/YakoYakoYokuYoku/linux/tree/usb-support [Accessed 10 March 2023]
+
 Roscoe, T. (2021) "USENIX ATC '21/OSDI '21 Joint Keynote Address-It's Time for Operating Systems to Rediscover Hardware". 1.06.19 mins. [Online] Available: https://www.youtube.com/watch?v=36myc8wQhLo [Accessed 24 August 2022]
 
 Rust Community (n.d.) "The Cargo Book" [Online] Available: https://doc.rust-lang.org/cargo/index.html [Accessed 23 October 2022]
