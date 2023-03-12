@@ -39,6 +39,8 @@ Li, Z. Wang, J. Sun, M. Lui, C.S. J. (2019) "Securing the Device Drivers of Your
 
 LLVM Documentation (2023) "LLD - The LLVM Linker". [Online] Available: https://lld.llvm.org/ [Accessed 12 March 2023]
 
+LLVM Administration Team (2023) "LLVM Overview". [Online] Available: https://llvm.org/ [Accessed 12 March 2023]
+
 Microsoft. (2022) "Getting started with drivers on Windows". [Online] Microsoft. Available: https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ [Accessed 29 December 2022]
 
 Oatman, T. (No Boilerplate) (2022) "Stop writing Rust (and go outside and play!) [RUST-5]" 9.40mins. [Online] Available: https://youtu.be/Z3xPIYHKSoI [Accessed 3 August 2022]
