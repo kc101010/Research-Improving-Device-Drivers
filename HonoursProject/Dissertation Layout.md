@@ -129,28 +129,6 @@ The comparison could be likened to how I/O is implemented in Haskell, a purely f
 
 It would seem that while the inclusion of 'unsafe' could potentially lead to issues within a safe programming language, it is ultimately deemed a necessity which allows such languages to be used within system environments and permit interactions with other languages while also considering how the hardware itself works. There are other languages, namely Haskell, that have similarly implemented necessary backdoors. However, it should be considered that the use of unsafe requires the developer to be reponsible for safety. Stroustrups concerns may be valid although the implementation of unsafe seems to be a necessary trade-off for the language to function as intended.  
 
-+ Discuss Rust as a programming language [X]
-	+ Improvements over C/C++ [X]
-	+ More and more peope are calling for Rust to replace C/C++, provide examples [X]
-	+ ~~Loose discussion on similar memory safe programming lanuages (needs research)
-		+ ~~Carbon?
-		+ ~~Zig?
-	+ Discuss Rust frameworks for Linux drivers [X]
-
-### Writing a Driver
-+ Introduce Rust for Linux - project which has led to the inclusion of Rust in the Linux Kernel (as of Linux 6.1) [X]
-+ Discuss various previous works on Rust drivers [X]
-	+ ~~Apple claim any language can be used, let's look into things and see if any research or work has been produced where Rust or similar have been used, has it helped? (Should this be more supplementary over being an outright point to make/discuss?)~~
-	+ There is previous work in making drivers for Rust but none of it seems solid or widely adopted so maybe there's other methods that can be explored
-		+ Securing embedded drivers - good point to talk about 
-		+ Matias Heiden - can be discussed as Windows alternative
-		+ Thomas & Gaynor - work laid foundation for Rust for Linux
-
-### Catches
-+ All safe programming langs provide some kind of unsafe 'loophole' - is this good or bad? Is it a good point by Stroustrup? [X]
-+ Google - escape hatch is required for Systems program in order access additional resources, interacting with system resources and non-rust code. [X]
-	+ Unsafe Rust is used rarely and where safety can be easily reviewed
-
 ### Google, Android 13 (411w)
 Android 13 has recently seen a significant drop in memory safety vulnerabilities and an associated drop in vulnerability severity with the annual number of memory safety vulnerablities dropping from 223 to 85 between 2019 and 2022 (Vander Stoep, J. 2022). Memory safety vulnerablities now account for 35% of Androids total vulnerabilities (previously 76%) with 2022 being the first year where the majority of vulnerabilities are not related to memory safety.  This drop coincides with a move away from memory unsafe programming languages with Android 13 being "the first Android release where a majority of new code added to the release is in a memory safe language". 
 
@@ -199,14 +177,6 @@ Such kernel would provide several features including improved support to applica
 
 The exo-kernel is an example of how changes in operating system design & implementation (OSDI) may be leveraged in order to improve device drivers. It was previously found that OSDI has stagnated and, similarly to device drivers, does not see much work or research. It was previously described as 'hugely rich design space' (Roscoe, 2021) that has 'very little published work'. Roscoe, in his USENIX keynote, declared that OSDI doesn't have the priority that it should and that the design of operating systems is in fact, affecting how hardware is designed to the detriment of both the operating system and hardware (almost like a feedback loop). It may be that some of the problems we observe with device drivers could be related to the aforementioned stagnations in OSDI and that new research in the field (or making use of new concepts such as the exokernel) could lead to an improvement within drivers.  
 
-## Summary
-(summarise main points, how they relate to the project)
-
-### Rust
-Bring up main points
-+ Clearly reduces memory unsafety and makes several positive changes to a given codebase
-+ Is not immune from criticism (though such point is refuted by previous languages and their features i.e. Haskell)
-
 ### Memory Safety
 We do have other approaches to Memory safety that aren't just Rust such as Garbage Collection though this isn't perfect.
 
@@ -215,7 +185,7 @@ All different approaches to improve device drivers, the exokernel is a very alte
 
 ----
 
-# 3. DEVELOPMENT [c] 40 (2015)
+# 3. DEVELOPMENT [c] 40 (2606)
 
 ## Writing C drivers (206w)
 Before working on Rust drivers, it is necessary to consider their predecessor, C drivers. C being the primary language employed in the Linux kernel and, as previously discussed, was created between 1969 and 1974 alongside Unix. C accounts for 98.5% of the code written for Linux (Torvalds, 2023). It should be noted that Linux drivers can often be referred to as 'kernel modules', though within this context they will be referred to as drivers for simplicity.
@@ -282,7 +252,7 @@ Early research and development resulted in the creation of a virtual machine use
 
 Upon rust being enabled and restarting the machine, various samples were compiled and available for testing. With this, it was possible to add a new sample entry in the way of a simple echo server. This server simply prints out whatever input it receives to its device entry. After writing a new entry into the necessary kernel configuration files and makefile, the echo server was then compiled and loaded as part of the Rust samples on boot. 
 
-### Results (71w)
+### Results (185w)
 Further research resulted in the development being focused on virtual Linux systems created via the VirtualBox hypervisor. With this, the available system was much closer to that of a physical machine and was ultimately more capable when compared to the initial QEMU machine. 
 
 A first attempt was made using the Debian distribution however introducting Rust support was largely unsuccessful due to issues with introducing Rust support into a newly compiled kernel, the process was also found to be time-consuming due to long kernel build times on the virtual machine, though this could also be attributed to the availability of less resources. An issue was encountered where a special file, 'target.json', for the 'rust-analyzer' component was unable to be produced, this file is used within code editors to generate documentation which is embedded into the Rust code for kernel subsystems thus the file is important for making documentation available to the user throughout development.   
@@ -299,7 +269,12 @@ Found in Appendix APPEND, the Rust 'Hello, World.' driver structure is loosely s
 
 In comparison to C, this Rust driver is much more compartmentalised as can be observed with the license and author macro functions reimplemented as its own structure. However, the functions themselves are encapsulated within 'impl' structures which is not as clean as C which has no such feature. In an improvement over the C version, the Rust driver does not require the use of macro functions to declare initialiser and exit functions. Overall, Rust seems to have cleaned up driver code where such a change is most needed but consequently uses 'impl' to hold functions which may almost be viewed as negating the previous improvement.  
 
-### Rust character driver
+### Rust character driver (142w)
+A rust equivalent of the character driver example, this driver further highlights benefits of Rust code alongside Rust implementations of driver concepts. As always, calls to libraries can be observed first with calls to several subsystems compacted into a single line via brackets. Following the typical module information structure, the driver structure can be observed which holds a declaration of the drivers entry file. Next, is the Rust implementation of the previously discussed file operations structure which holds the new open, read and write functions. This is prepended by #[vtable], a macro used in creating virtual tables which allow the use of traits with the bindgen system (Docs.rs team, 2023).
+
+The bindgen system is important...
+
+Finally, within the kernel module structure lies the initialiser function which, alongside other actions, registers the driver and sets which name should be utilised (which in this case is 'scull'). 
 
 ### USB driver (108w)
 Research eventually became focused on developing a Generic USB Mouse driver, delivering on the proposed Linux driver as outlined in the project goal. Ultimately, it was found that such a driver is not currently feasible to develop using the Rust for Linux project. At the time of writing, not all kernel subsystems are fully implemented within the Rust for Linux project. The USB subsystem that would be required for such a driver is not yet included though there is work being conducted which has resulted in a USB sample written in full Rust (Rodriguez, 2023) this has yet to be merged into the main Rust for Linux repository. 
@@ -308,22 +283,6 @@ Research eventually became focused on developing a Generic USB Mouse driver, del
 Attempts were made throughout development to build a Rust-enabled Linux kernel on physical hardware. One such machine was a Raspberry Pi 400 model. It was eventually found that the aforementioned method of rebuilding a Linux kernel is not the most optimal method with regards to the Raspberry Pi. The built in command 'rpi-update next' was instead used to build Linux 6.1 on the machine however this, too, was unsucessful as the kernel reverted to its previous version on restarting the machine. It was also found that while the new kernel could be built and temporaily utilised, it was not possible to enable Rust support therefore it was ultimately not possible to utilise the raspberry pi within development.
 
 Alongside the Raspberry Pi, an attempt was made to build the Rust for Linux kernel on a workstation which was much more similar to the systems created in VirtualBox. Similarly to the Pi, the new kernel would build and install though issues were encountered when attempting to rebuild the kernel with Rust support. As neither attempt to enable Rust support on the Raspberry Pi or workstation was successful, it was necessary to return to working on the functional virtualbox instance.
-
-+ Attempts at building a virtualbox machine, recompiling the Linux distro - this saw the most progress and best results
-	+ detail steps
-	+ developed a hello world driver (there should also be rust version of the char driver sitting somewhere!!
-	+ wasn't as simple, minor details on issues
-	+ attempted to create the linux usb mouse driver but ran into problems, USB support isn't quite there yet
-	
-+ Initial virtual machine - following Filhos tutorial
-	+ detail steps
-	+ rust echo server
-	+ 'hello world example'?
-	
-+ Attempt at building on a physical machine - not as much time spent, this should actually just be a small note somewhere
-
-
-
 
 ----
 

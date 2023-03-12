@@ -1,3 +1,5 @@
+
+
 Apple Developer Documentation (2022) "Implementing drivers, system extensions, and kexts". [Online] Apple. Available: https://developer.apple.com/documentation/kernel/implementing_drivers_system_extensions_and_kexts [Accessed 22 August 2022]
 
 Apple Developer Documentation (2022) "DriverKit". [Online] Apple. Available: https://developer.apple.com/documentation/driverkit [Accessed 22 August 2022]
@@ -17,7 +19,11 @@ D Language Foundation (2022) "Language Reference: 28. Garbage Collection" [Onlin
 
 Debian wiki (2020) "Device nodes" [Online] Available: https://wiki.debian.org/device_node
 
+Docs.rs team (2023) "Crate vtable" [Online] Available: https://docs.rs/vtable/latest/vtable/ [Accessed 12 March 2021]
+
 Free Software Foundation, Inc. (2022) "GNU make" 0.76 ed. Ch 1: Overview of make. Ch 2: An Introduction to Makefiles. [Online] Available: https://www.gnu.org/software/make/manual/make.html#Introduction [Accessed 24 February 2023]
+
+Free Software Foundation, Inc. (2014) "GNU Bison". [Online] Available: https://www.gnu.org/software/bison/ [Accessed 12 March 2023]
 
 Gaynor, A. (2019) "Introduction to Memory Unsafety for VPs of Engineering". [Online] Available: https://alexgaynor.net/2019/aug/12/introduction-to-memory-unsafety-for-vps-of-engineering/
 
@@ -31,11 +37,15 @@ Klabnik, S. Nichols C. and Rust Community. (2022) "The Rust Programming Language
 
 Li, Z. Wang, J. Sun, M. Lui, C.S. J. (2019) "Securing the Device Drivers of Your Embedded Systems: Framework and Prototype" [Online] ARES '19: Proceedings of the 14th International Conference on Availability, Reliability and Security. Article 71. pg 1 to 10. Available: doi.org/10.1145/3339252.3340506 [Accessed 8 August 2022]
 
+LLVM Documentation (2023) "LLD - The LLVM Linker". [Online] Available: https://lld.llvm.org/ [Accessed 12 March 2023]
+
 Microsoft. (2022) "Getting started with drivers on Windows". [Online] Microsoft. Available: https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/ [Accessed 29 December 2022]
 
 Oatman, T. (No Boilerplate) (2022) "Stop writing Rust (and go outside and play!) [RUST-5]" 9.40mins. [Online] Available: https://youtu.be/Z3xPIYHKSoI [Accessed 3 August 2022]
 
 Ojeda, M. (2022) "Memory Safety for the World's Largest Software Project". [Online] Internet Security Research Group. Available: https://www.memorysafety.org/blog/memory-safety-in-linux-kernel/ [Accessed 1 February 2023]
+
+Ojeda, M. (2022) "Rust for Linux documentation: General information". Ch 3: Abstractions vs. bindings. [Online] Available: https://github.com/Rust-for-Linux/linux/blob/rust/Documentation/rust/general-information.rst [Accessed 12 March 2023]
 
 Palix, N. Thomas, G. Saha, S. Calves, C. Lawall, J. Muller, G. (2011) "Faults in Linux: Ten Years Later"[Online] ACM SIGPLAN Notices, Volume 46, Issue 3. pg 305 to 318. Available: https://dl.acm.org/doi/10.1145/1961296.1950401 [Accessed 5 October 2022]
 
@@ -65,6 +75,8 @@ Thomas, G. Gaynor, A. (2019) "Linux Kernel Modules in Rust".  [Online] Linux Sec
 
 Torvalds,  L. (2023) "Github: torvalds/linux repository". [Online] Available: https://github.com/torvalds/linux [Accessed 4 March 2023]
 
+Ubuntu manuals (2023) "flex - fast lexical analyzer generator". Ubuntu. [Online] Available: https://manpages.ubuntu.com/manpages/bionic/man1/lex.1.html [Accessed 12 March 2023]
+
 University of Washington, Department of Computer Science and Engineering (2004) "CSE 341: Unsafe languages (c)" [Online] Available: https://courses.cs.washington.edu/courses/cse341/04wi/lectures/26-unsafe-languages.html [Accessed 14 October 2022]
 
 Vander Stoep, J. (2022) "Memory Safe Languages in Android 13". Google Security Blog. Google. [Online] Available: https://security.googleblog.com/2022/12/memory-safe-languages-in-android-13.html [Accessed 2 December 2022]
@@ -80,6 +92,8 @@ Wikipedia (2022) "Memory safety" [Online] Available: https://en.wikipedia.org/wi
 Wikipedia (2022) "Rust for Linux" [Online] Available: https://en.wikipedia.org/wiki/Rust_for_Linux [Accessed 8 November 2022]
 
 Wikipedia (2022) "User space and kernel space" [Online] Available: https://en.wikipedia.org/wiki/User_space_and_kernel_space [Accessed 28 January 2022]
+
+Wong, V. Fitzgerland, N. Ruiz, P, C. Imlay, S. Peeters, K. Munns, J. Hlopko, M. Bateman, G. Baxter, A. (2023) "The 'bindgen' user guide". [Online] Available: https://rust-lang.github.io/rust-bindgen/introduction.html [Accessed 12 March 2023]
 
 Zhang, C. (2020) "A Brief Introduction to Build Systems". [Online] The Startup. Medium. Available: https://medium.com/swlh/a-brief-introduction-to-build-systems-1e45cb1cf667 [Accessed 24 February 2023]
 
