@@ -63,6 +63,8 @@ Roscoe, T. (2021) "USENIX ATC '21/OSDI '21 Joint Keynote Address-It's Time for O
 
 Rust Community (n.d.) "The Cargo Book" [Online] Available: https://doc.rust-lang.org/cargo/index.html [Accessed 23 October 2022]
 
+Rust Community (2023) "The Rustc Book". Ch 3: Lints. [Online] Available: https://doc.rust-lang.org/rustc/what-is-rustc.html [Accessed 14 March 2023]
+
 Sasidharan, K. D. (2020) "Visualizing memory management in Rust". [Online] Technorage. Available: https://deepu.tech/memory-management-in-rust/
 
 Sheldon, R. (2022) "garbage collection (gc)"  [Online] TechTarget. Available: https://www.techtarget.com/searchstorage/definition/garbage-collection [Accessed 1 February 2023]
@@ -72,6 +74,10 @@ Sperling, S. (2017) "Getting started with OpenBSD device driver development". [O
 Techopedia (2018) "Exokernel". [Online] Available: https://www.techopedia.com/definition/27006/exokernel [Accessed 24 August 2022]
 
 The FreeBSD Documentation Project (2022) "FreeBSD Architecture Handbook ". FreeBSD Documentation. Ch 9: Writing FreeBSD Device Drivers. [Online] Available: https://docs.freebsd.org/en/books/arch-handbook/ [Accessed 9 September 2022 ]
+
+The Kernel Development Community (2023) "Rust: Quick start". [Online] Available: https://docs.kernel.org/rust/quick-start.html [Accessed 14 March 2023]
+
+The Rust Clippy Developers (2018) "Clippy Documentation". [Online] Available: https://doc.rust-lang.org/clippy/ [Accessed 14 March 2023]
 
 Thomas, G. Gaynor, A. (2019) "Linux Kernel Modules in Rust".  [Online] Linux Security Summit. Available: https://youtu.be/RyY01fRyGhM [Accessed 1 August 2022]
 

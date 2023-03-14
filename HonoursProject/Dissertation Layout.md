@@ -306,6 +306,9 @@ Alongside the Raspberry Pi, an attempt was made to build the Rust for Linux kern
 + Focusing on Rust;
 	+ Discuss how Volvo and other automotive companies are carrying out Research regarding Rust.
 	+ DRM driver w/ Linux on Apple silicon
+
+Gaynor was proven right by Google & Android 13 
+
 ----
 
 # REFLECTION [c] 10
