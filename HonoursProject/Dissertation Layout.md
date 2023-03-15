@@ -301,8 +301,10 @@ Within this program, it is also possible to observe how Rusts enforced variable 
 
 As the primary focus of Rust is memory safety, the presence of these features is likely aimed at preventing common issues such as overwriting with calls to 'clear' therefore consolidating security by ensuring proper cleansing of mutable data. 
 
-## Calculator
+## Calculator(179w)
+Within this program, which simply evaluates a calculation given by the user, it is possible to observe how 'crates' are applied. A crate refers to an external Rust library, such crates can be specified within  'cargo.toml' under the dependencies section. The previously mentioned file can be compared to a windows '.ini' file as it holds information and configurations for a given Rust project. This file is also utilised by Cargo to properly install and manage related dependencies.
 
+Within Rust, a crate can be declared with 'extern crate', as observed in Appendix APPEND. With this call, it is then possible to utilise the crate. In this example, the 'meval' crate is used to evaluate the calculation provided by the user. Crates and related information can be found via a resource named 'crates.io'. This resource provides information about crates and their functionality alongside installation steps, license information, crate owners, documentation, previous versions, dependant crates and more. The use of crates alongside the cargo tool is clearly a highly attractive feature of Rust as library installation and management is much more simple.
 
 ## Unix Domain Sockets
 
