@@ -292,6 +292,24 @@ Alongside the Raspberry Pi, an attempt was made to build the Rust for Linux kern
 + Showcase where Rust prevents issues (race conditions etc)
 + Discuss any shortcomings with Rust
 + Short discussion on development experience? (Productivity etc)
+
+
+## BMI Calculator (177w)
+A simple application to calculate a given BMI, previously discussed features can once again be observed. A difference in type keywords can also be observed in the use of 'f64' which represents a 64-bit floating point value. It is also possible to observe Rusts format specifier in the way of '{:.64}'.
+
+Within this program, it is also possible to observe how Rusts enforced variable mutability affects the program itself. Unlike most programming languages, where variables are mutable by default, Rust variables are immutable therefore mutable data must be specified via the 'mut' keyword. As the string variable 'input' is mutable, it is then necessary to clear the stored data each time that new data should be saved which can observed after the 'height' variable is created. This is dissimilar to many other programming languages, which typically implement opposite behaviour.
+
+As the primary focus of Rust is memory safety, the presence of these features is likely aimed at preventing common issues such as overwriting with calls to 'clear' therefore consolidating security by ensuring proper cleansing of mutable data. 
+
+## Calculator
+
+
+## Unix Domain Sockets
+
+## Calling Unsafe C
+
+## Managing Memory
+
 ----
 
 
