@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbadmath.a CMakeFiles/badmath.dir/badmath.c.o
+/usr/bin/ranlib libbadmath.a

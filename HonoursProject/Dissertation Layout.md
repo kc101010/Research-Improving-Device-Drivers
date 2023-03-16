@@ -307,8 +307,16 @@ Within this program, which simply evaluates a calculation given by the user, it 
 Within Rust, a crate can be declared with 'extern crate', as observed in Appendix APPEND. With this call, it is then possible to utilise the crate. In this example, the 'meval' crate is used to evaluate the calculation provided by the user. Crates and related information can be found via a resource named 'crates.io'. This resource provides information about crates and their functionality alongside installation steps, license information, crate owners, documentation, previous versions, dependant crates and more. The use of crates alongside the cargo tool is clearly a highly attractive feature of Rust as library installation and management is much more simple.
 
 ## Unix Domain Sockets
+This unix exclusive project consists of a client and server source files. The client connects to the server and simply awaits user input, which is written to the server. The server is responsible for dispatching new threads to handle client connections and reading from the client, printing data to the terminal. 
+
+Within the server program, the 'match' block can be observed which serves to provide pattern matching. This mechanism is somewhat similar to a 'switch'. In this case it is used for error handling by matching the return value of the 'stream' type. If the given 'stream' returns 'Ok', this is matched and a thread to handle the client is produced. If an error is returned then the given error handling, in this case a short message and program halt, is called.
+
+Within each program, the server name is declared alongside the library calls as 'common::SERVER_NAME'. This call is possible due to the presence of 'mod common' where 'common.rs' is an additional source file in the project directory. This source file simply declares a public static string which is the server name that will be provided to both the client and server. 
 
 ## Calling Unsafe C
+This program declares a C library, 'libbadmath', which is called within Rust via 'unsafe'. To use each language within the same project, it is necessary to utilise cmake to properly build the project. Cmake can simply be called as a dependency within the projects 'cargo.toml'. The C library can be placed within its own directory containing its source code and 'CMakeLists.txt'  which details build steps for the library. The library source code is extremely simple, containing a single float function 'bad_add'.
+
+Next, within Rust the link to C can be observed in the form of the 'extern' block, which declares the library function, as well as the 'link' attribute, responsible for linking the library to the Rust source. Within the main function, the application of 'unsafe' can be observed where the 'bad_add' C function is called from Rust. Alongside the source files, it is also necessary to write 'build.rs'. This file calls the cmake crate and is used to automatically build the C library and print build information. 
 
 ## Managing Memory
 
@@ -321,13 +329,14 @@ Within Rust, a crate can be declared with 'extern crate', as observed in Appendi
 	+ Addition of Rust into Linux, what has it done and what will it do?
 	+ Anymore progress from Apple/MS?
 	+ Are there any solutions/improvements appearing that aren't Rust?
-	+ Refer back to Google & Android 13
+	+ Refer back to Google & Android 13 - Gaynor was proven right 
 	+ Consider my own experience?
 + Focusing on Rust;
 	+ Discuss how Volvo and other automotive companies are carrying out Research regarding Rust.
-	+ DRM driver w/ Linux on Apple silicon
+	+ [DRM driver w/ Linux on Apple silicon](https://discord.com/channels/@me/403877022360666123/1080789090682818601)
+	+ [Rust available for Infineon MCU lines](https://discord.com/channels/@me/403877022360666123/1083379491570716753)
 
-Gaynor was proven right by Google & Android 13 
+
 
 ----
 

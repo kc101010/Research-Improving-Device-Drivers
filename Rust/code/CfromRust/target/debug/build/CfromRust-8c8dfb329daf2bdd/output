@@ -1,0 +1,36 @@
+CMAKE_TOOLCHAIN_FILE_x86_64-unknown-linux-gnu = None
+CMAKE_TOOLCHAIN_FILE_x86_64_unknown_linux_gnu = None
+HOST_CMAKE_TOOLCHAIN_FILE = None
+CMAKE_TOOLCHAIN_FILE = None
+CMAKE_GENERATOR_x86_64-unknown-linux-gnu = None
+CMAKE_GENERATOR_x86_64_unknown_linux_gnu = None
+HOST_CMAKE_GENERATOR = None
+CMAKE_GENERATOR = None
+CMAKE_PREFIX_PATH_x86_64-unknown-linux-gnu = None
+CMAKE_PREFIX_PATH_x86_64_unknown_linux_gnu = None
+HOST_CMAKE_PREFIX_PATH = None
+CMAKE_PREFIX_PATH = None
+CMAKE_x86_64-unknown-linux-gnu = None
+CMAKE_x86_64_unknown_linux_gnu = None
+HOST_CMAKE = None
+CMAKE = None
+running: cd "/mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/target/debug/build/CfromRust-8c8dfb329daf2bdd/out/build" && CMAKE_PREFIX_PATH="" "cmake" "/mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/libbadmath" "-DCMAKE_INSTALL_PREFIX=/mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/target/debug/build/CfromRust-8c8dfb329daf2bdd/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64" "-DCMAKE_C_COMPILER=/usr/bin/cc" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64" "-DCMAKE_CXX_COMPILER=/usr/bin/c++" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64" "-DCMAKE_ASM_COMPILER=/usr/bin/cc" "-DCMAKE_BUILD_TYPE=Debug"
+-- The C compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/target/debug/build/CfromRust-8c8dfb329daf2bdd/out/build
+running: cd "/mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/target/debug/build/CfromRust-8c8dfb329daf2bdd/out/build" && MAKEFLAGS="-j --jobserver-fds=7,9 --jobserver-auth=7,9" "cmake" "--build" "." "--target" "install" "--config" "Debug"
+[ 50%] Building C object CMakeFiles/badmath.dir/badmath.c.o
+[100%] Linking C static library libbadmath.a
+[100%] Built target badmath
+Install the project...
+-- Install configuration: "Debug"
+-- Installing: /mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/target/debug/build/CfromRust-8c8dfb329daf2bdd/out/./libbadmath.a
+cargo:root=/mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/target/debug/build/CfromRust-8c8dfb329daf2bdd/out
+cargo:rustc-link-search=native=/mnt/15f210d7-aa4f-4ea8-a4b3-2bd52aeba8fc/Programming/Uni/Year 4 Hons/Research-Improving-Device-Drivers/Rust/code/CfromRust/target/debug/build/CfromRust-8c8dfb329daf2bdd/out
+cargo:rustc-link-lib=static=badmath
