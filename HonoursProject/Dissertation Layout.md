@@ -333,8 +333,8 @@ Next, within Rust the link to C can be observed in the form of the 'extern' bloc
 	+ Consider my own experience?
 + Focusing on Rust;
 	+ Discuss how Volvo and other automotive companies are carrying out Research regarding Rust.
-	+ [DRM driver w/ Linux on Apple silicon](https://discord.com/channels/@me/403877022360666123/1080789090682818601)
-	+ [Rust available for Infineon MCU lines](https://discord.com/channels/@me/403877022360666123/1083379491570716753)
+	+ [DRM driver w/ Linux on Apple silicon]()
+	+ [Rust available for Infineon MCU lines]()
 
 
 
