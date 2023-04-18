@@ -1,5 +1,5 @@
-//! Scull module in Rust
-//! 
+//! Character driver example in Rust
+//! Simply uses 'scull' as a name
 //! 
 //! 
 //! 
