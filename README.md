@@ -1,8 +1,10 @@
 # Research-Improving-Device-Drivers
-Main repo for Honours Project, related research and all files
+Main repository for Honours Project, related research and all files.
 ***
-"Developing Device Drivers in Rust" (2022 - 2023) 
+"Developing Device Drivers in Rust" 
+(2022 - 2023) 
 by Kyle Christie
+at University of the West of Scotland
 
 NOTE: This project is best viewed with [Obsidian](https://obsidian.md/)
 
@@ -12,6 +14,8 @@ NOTE: This project is best viewed with [Obsidian](https://obsidian.md/)
 + /Admin                                          - Stores admin/project management notes
 + /DevDriversStudy                        - Stores files and notes on my study for Drivers
 + /HonoursProject                          - Stores files, notes on the Honours project itself
++ /Interim report               - Stores work related to interim report
++ /Presentation                 - Stores work related to presentation
 + /ProposalNotesImprovements   - Stores content on RMIC proposal improvements
 + /Research                                    - Stores main body of research for Hons project
 + /Rust                                            - Stores content on study/learning of Rust language
