@@ -7,5 +7,5 @@ Rust/code/MemMgmt/StackVHeap.exe
 Rust/code/MemMgmt/StackVHeap.pdb
 Presentation/work
 .obsidian
-*.ko.o.cmd
+*.o.cmd
 *.d
